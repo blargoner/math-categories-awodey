@@ -13,6 +13,8 @@
 
 \newcommand{\iso}{\cong}
 
+\newcommand{\after}{\circ}
+
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\fdom}{\mathbf{dom}}
@@ -60,19 +62,19 @@ Then \(C\)~is a functor.
 \begin{enumerate}[itemsep=0pt]
 \item[(a)] We must verify that composition of relations is associative and unital. Suppose \(R\subseteq A\times B\), \(S\subseteq B\times C\), and \(T\subseteq C\times D\). For \(\pair{w}{z}\in A\times D\), by the definition of composition we have
 \begin{align*}
-\pair{w}{z}\in(T\circ S)\circ R&\iff\exists x\in B[\pair{w}{x}\in R\land\pair{x}{z}\in T\circ S]\\
+\pair{w}{z}\in(T\after S)\after R&\iff\exists x\in B[\pair{w}{x}\in R\land\pair{x}{z}\in T\after S]\\
 								&\iff\exists x\in B,y\in C[\pair{w}{x}\in R\land\pair{x}{y}\in S\land\pair{y}{z}\in T]\\
-								&\iff\exists y\in C[\pair{w}{y}\in S\circ R\land\pair{y}{z}\in T]\\
-								&\iff\pair{w}{z}\in T\circ(S\circ R)
+								&\iff\exists y\in C[\pair{w}{y}\in S\after R\land\pair{y}{z}\in T]\\
+								&\iff\pair{w}{z}\in T\after(S\after R)
 \end{align*}
-So \((T\circ S)\circ R=T\circ(S\circ R)\). It is immediate that \(R\circ 1_A=R=1_B\circ R\), where \(1_X\)~denotes the identity relation on~\(X\).
-\item[(b)] By construction, \(G\)~maps objects to objects and arrows to arrows, and \(G(f:A\to B)\)~is an arrow from \(G(A)=A\) to \(G(B)=B\). Clearly \(G(1_A)=1_A=1_{G(A)}\). If \(f:A\to B\) and \(g:B\to C\), then \((g\circ f)(x)=z\) if and only if \(f(x)=y\) and \(g(y)=z\), so \(G(g\circ f)=G(g)\circ G(f)\).
+So \((T\after S)\after R=T\after(S\after R)\). It is immediate that \(R\after 1_A=R=1_B\after R\), where \(1_X\)~denotes the identity relation on~\(X\).
+\item[(b)] By construction, \(G\)~maps objects to objects and arrows to arrows, and \(G(f:A\to B)\)~is an arrow from \(G(A)=A\) to \(G(B)=B\). Clearly \(G(1_A)=1_A=1_{G(A)}\). If \(f:A\to B\) and \(g:B\to C\), then \((g\after f)(x)=z\) if and only if \(f(x)=y\) and \(g(y)=z\), so \(G(g\after f)=G(g)\after G(f)\).
 \item[(c)] Recall for a relation \(R\subseteq A\times B\), \(R\)~is represented as an arrow in~\(\Rel\) by the triple~\((R,A,B)\), and in~\(\dual{\Rel}\) by the triple~\((R,B,A)\), where it is denoted by~\(\star{R}\).\footnote{Importantly, \(R\)~is \emph{not} represented in~\(\dual{\Rel}\) by~\((R^{-1},B,A)\). The arrow is reversed by swapping the domain and codomain, but the underlying relation (set of ordered pairs) is unchanged.} So in~\(\Rel\), \(\dom R=A\) and \(\cod R=B\), whereas in~\(\dual{\Rel}\), \(\dom\star{R}=B=\star{B}\) and \(\cod\star{R}=A=\star{A}\), where \(R\)~and~\(\star{R}\) are here treated as arrows.
 
 By construction, \(C\)~maps objects to objects and arrows to arrows. Now \(C((R,B,A))=(R^{-1},B,A)\), so \(C\)~preserves domains and codomains. Also
 \[C(1_{\star{A}})=C(\star{1_A})=1_A^{-1}=1_A=1_{C(\star{A})}\]
 For \(S\subseteq B\times C\),
-\[C(\star{R}\circ\star{S})=C(\star{(S\circ R)})=(S\circ R)^{-1}=R^{-1}\circ S^{-1}=C(\star{R})\circ C(\star{S})\qedhere\]
+\[C(\star{R}\after\star{S})=C(\star{(S\after R)})=(S\after R)^{-1}=R^{-1}\after S^{-1}=C(\star{R})\after C(\star{S})\qedhere\]
 \end{enumerate}
 \end{proof}
 \end{exer}
@@ -105,12 +107,12 @@ so \(C\)~preserves composites. Therefore \(C\)~is a functor. Since \(C\)~is clea
 \begin{proof}\
 \begin{enumerate}
 \item[(a)] A function \(f:A\to B\) has a (two-sided) inverse if and only if it is bijective. Indeed, suppose \(g:B\to A\) is an inverse of~\(f\). If \(a,a'\in A\) and \(f(a)=f(a')\), then
-\[a=1_A(a)=(g\circ f)(a)=g(f(a))=g(f(a'))=(g\circ f)(a')=1_A(a')=a'\]
-If \(b\in B\), then \(b=1_B(b)=(f\circ g)(b)=f(g(b))\). Conversely, if \(f\)~is bijective, then for each \(b\in B\) we can let~\(g(b)\) to be the unique \(a\in A\) with \(f(a)=b\). Then \(g:B\to A\) is clearly an inverse of~\(f\).
+\[a=1_A(a)=(g\after f)(a)=g(f(a))=g(f(a'))=(g\after f)(a')=1_A(a')=a'\]
+If \(b\in B\), then \(b=1_B(b)=(f\after g)(b)=f(g(b))\). Conversely, if \(f\)~is bijective, then for each \(b\in B\) we can let~\(g(b)\) to be the unique \(a\in A\) with \(f(a)=b\). Then \(g:B\to A\) is clearly an inverse of~\(f\).
 \item[(b)] A monoid homomorphism is, in particular, a function, hence an isomorphism is a bijective homomorphism by~(a). Conversely, if \(f:A\to B\) is a bijective homomorphism, then \(f\)~has an inverse \emph{function} \(g:B\to A\) by~(a). If \(b,b'\in B\), then
-\[bb'=1_B(b)1_B(b')=(f\circ g)(b)(f\circ g)(b')=f(g(b))f(g(b'))=f(g(b)g(b'))\]
+\[bb'=1_B(b)1_B(b')=(f\after g)(b)(f\after g)(b')=f(g(b))f(g(b'))=f(g(b)g(b'))\]
 so
-\[g(bb')=g(f(g(b)g(b')))=(g\circ f)(g(b)g(b'))=1_A(g(b)g(b'))=g(b)g(b')\]
+\[g(bb')=g(f(g(b)g(b')))=(g\after f)(g(b)g(b'))=1_A(g(b)g(b'))=g(b)g(b')\]
 Therefore \(g\)~is a homomorphism and hence \(f\)~is an isomorphism.
 \item[(c)] As in~(b), a poset homomorphism is, in particular, a function, hence an isomorphism is a bijective homomorphism by~(a). However, unlike in~(b), the inverse of a bijective homomorphism need not be a homomorphism. For example, consider a poset consisting of two copies of \(\N=(N,\le)\) with no relations between the copies. Map this poset into~\(\N\) by ``zipping'' the two copies together, sending one to the evens in order, and the other to the odds in order. This mapping is clearly a bijective homomorphism, but its inverse is not since, for example, \(0\le 1\) in the image, but the preimage of~\(0\) is not related to the preimage of~\(1\).\qedhere
 \end{enumerate}
@@ -118,14 +120,14 @@ Therefore \(g\)~is a homomorphism and hence \(f\)~is an isomorphism.
 \end{exer}
 
 \begin{exer}[5]
-Let \(\cat{C}\)~be a category and \(C\in\cat{C}\). Let \(U:\cat{C}/C\to\cat{C}\) ``forget about the base object~\(C\)'' by mapping each object \(f:A\to C\) to its domain~\(A\) and each arrow \(a:A\to B\) to ``itself.''\footnote{An arrow in~\(\cat{C}/C\) is understood as a triple \((a,f,f')\) where \(a:A\to B\), \(f:A\to C\), and \(f':B\to C\) are arrows in~\(\cat{C}\) with \(f=f'\circ a\). So \(U((a,f,f'))=a\).} Then \(U\)~is a functor.
+Let \(\cat{C}\)~be a category and \(C\in\cat{C}\). Let \(U:\cat{C}/C\to\cat{C}\) ``forget about the base object~\(C\)'' by mapping each object \(f:A\to C\) to its domain~\(A\) and each arrow \(a:A\to B\) to ``itself.''\footnote{An arrow in~\(\cat{C}/C\) is understood as a triple \((a,f,f')\) where \(a:A\to B\), \(f:A\to C\), and \(f':B\to C\) are arrows in~\(\cat{C}\) with \(f=f'\after a\). So \(U((a,f,f'))=a\).} Then \(U\)~is a functor.
 
-Let \(F:\cat{C}/C\to\arr{\cat{C}}\) map objects to themselves and each arrow \(a:A\to B\) to the pair~\((a,1_C)\), where \(1_C\)~is the identity arrow for~\(C\) in~\(\cat{C}\). Then \(F\)~is a functor, and \(\fdom\circ F=U\), where \(\fdom:\arr{\cat{C}}\to\cat{C}\) is the functor mapping each object \(f:A\to B\) to its domain~\(A\) and each arrow \((g_1,g_2)\) to~\(g_1\).
+Let \(F:\cat{C}/C\to\arr{\cat{C}}\) map objects to themselves and each arrow \(a:A\to B\) to the pair~\((a,1_C)\), where \(1_C\)~is the identity arrow for~\(C\) in~\(\cat{C}\). Then \(F\)~is a functor, and \(\fdom\after F=U\), where \(\fdom:\arr{\cat{C}}\to\cat{C}\) is the functor mapping each object \(f:A\to B\) to its domain~\(A\) and each arrow \((g_1,g_2)\) to~\(g_1\).
 \end{exer}
 \begin{proof}
 \(U\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Since \(\cat{C}/C\) inherits identities and composites from~\(\cat{C}\), \(U\)~also preserves identities and composites. Therefore \(U\)~is a functor.
 
-\(F\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows, since if \(a:A\to B\) maps \(f:A\to C\) to \(f':B\to C\) in~\(\cat{C}/C\), then \(1_C\circ f=f=f'\circ a\), hence \((a,1_C)\)~maps~\(f\) to~\(f'\) in~\(\arr{\cat{C}}\). Since \(\arr{\cat{C}}\)~also inherits identities and composites from~\(\cat{C}\), \(F\)~also preserves identities and composites. Therefore \(F\)~is a functor. Clearly \(\fdom\circ F=U\).
+\(F\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows, since if \(a:A\to B\) maps \(f:A\to C\) to \(f':B\to C\) in~\(\cat{C}/C\), then \(1_C\after f=f=f'\after a\), hence \((a,1_C)\)~maps~\(f\) to~\(f'\) in~\(\arr{\cat{C}}\). Since \(\arr{\cat{C}}\)~also inherits identities and composites from~\(\cat{C}\), \(F\)~also preserves identities and composites. Therefore \(F\)~is a functor. Clearly \(\fdom\after F=U\).
 \end{proof}
 
 \begin{exer}[6]
@@ -143,13 +145,13 @@ For a (small) category~\(\cat{C}\), let \(P(\cat{C})\) consist of the objects fr
 \begin{center}
 \(A\le B\) if and only if there exists an arrow \(A\to B\) in~\(\cat{C}\)
 \end{center}
-Then \(P(\cat{C})\)~is a preorder, and \(P:\Cat\to\Pre\) determines a functor with \(P\circ C=1_{\Pre}\), where \(C:\Pre\to\Cat\) is the evident inclusion functor.
+Then \(P(\cat{C})\)~is a preorder, and \(P:\Cat\to\Pre\) determines a functor with \(P\after C=1_{\Pre}\), where \(C:\Pre\to\Cat\) is the evident inclusion functor.
 \end{exer}
 \begin{proof}
-Reflexivity and transitivity of the order in~\(P(\cat{C})\) follow from the existence of identities and composites in~\(\cat{C}\). So \(P\)~maps categories to preorders. For a functor \(F:\cat{C}\to\cat{D}\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\cat{C})\), there exists an arrow \(f:A\to B\) in~\(\cat{C}\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\cat{D}\), so \(F(A)\le F(B)\) in~\(P(\cat{D})\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\circ C=1_{\Pre}\).
+Reflexivity and transitivity of the order in~\(P(\cat{C})\) follow from the existence of identities and composites in~\(\cat{C}\). So \(P\)~maps categories to preorders. For a functor \(F:\cat{C}\to\cat{D}\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\cat{C})\), there exists an arrow \(f:A\to B\) in~\(\cat{C}\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\cat{D}\), so \(F(A)\le F(B)\) in~\(P(\cat{D})\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\after C=1_{\Pre}\).
 \end{proof}
 \begin{rmk}
-In general \(C\circ P\ne 1_{\Cat}\) because \(P\)~loses information about the arrow structure of categories. Specifically, multiple arrows from one object to another will be represented by a single relation between those objects under~\(P\).
+In general \(C\after P\ne 1_{\Cat}\) because \(P\)~loses information about the arrow structure of categories. Specifically, multiple arrows from one object to another will be represented by a single relation between those objects under~\(P\).
 \end{rmk}
 
 \begin{exer}[11]
@@ -162,14 +164,14 @@ We prove this in two ways.
 \[M(f)(a_1\cdots a_k)=f(a_1)\cdots f(a_k)\quad a_1,\ldots,a_k\in A\]
 \(M(f)\)~is well defined on~\(\star{A}\) since every element in~\(\star{A}\) can be expressed uniquely as a product of elements of~\(A\), and by construction \(M(f)\)~is a monoid homomorphism extending~\(f\). So \(M\)~maps objects to objects and arrows to arrows. Clearly \(M\)~preserves domains and codomains of arrows and \(M(1_A)=1_{\star{A}}\). If \(g:B\to C\), then
 \begin{align*}
-M(g\circ f)(a_1\cdots a_k)&=(g\circ f)(a_1)\cdots(g\circ f)(a_k)\\
+M(g\after f)(a_1\cdots a_k)&=(g\after f)(a_1)\cdots(g\after f)(a_k)\\
 	&=g(f(a_1))\cdots g(f(a_k))\\
 	&=M(g)(f(a_1)\cdots f(a_k))\\
 	&=M(g)(M(f)(a_1\cdots a_k))\\
-	&=(M(g)\circ M(f))(a_1\cdots a_k)
+	&=(M(g)\after M(f))(a_1\cdots a_k)
 \end{align*}
-So \(M(g\circ f)=M(g)\circ M(f)\) and \(M\)~preserves composites. Therefore \(M\)~is a functor.
-\item[(b)] Let \(M(A)\)~be ``the'' free monoid on~\(A\) satisfying the universal mapping property (Propositions 1.9~and~1.10). For \(f:A\to B\to M(B)\), let \(M(f)\)~be the unique monoid homomorphism from~\(M(A)\) to~\(M(B)\) extending~\(f\). Clearly \(M\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Now \(1_{M(A)}\)~extends~\(1_A\), hence we must have \(M(1_A)=1_{M(A)}\). Similarly if \(g:B\to C\to M(C)\), then \(M(g)\circ M(f)\) extends~\(g\circ f\), hence we must have \(M(g\circ f)=M(g)\circ M(f)\). Therefore \(M\)~is a functor.\qedhere
+So \(M(g\after f)=M(g)\after M(f)\) and \(M\)~preserves composites. Therefore \(M\)~is a functor.
+\item[(b)] Let \(M(A)\)~be ``the'' free monoid on~\(A\) satisfying the universal mapping property (Propositions 1.9~and~1.10). For \(f:A\to B\to M(B)\), let \(M(f)\)~be the unique monoid homomorphism from~\(M(A)\) to~\(M(B)\) extending~\(f\). Clearly \(M\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Now \(1_{M(A)}\)~extends~\(1_A\), hence we must have \(M(1_A)=1_{M(A)}\). Similarly if \(g:B\to C\to M(C)\), then \(M(g)\after M(f)\) extends~\(g\after f\), hence we must have \(M(g\after f)=M(g)\after M(f)\). Therefore \(M\)~is a functor.\qedhere
 \end{enumerate}
 \end{proof}
 
