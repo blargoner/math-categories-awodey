@@ -12,6 +12,7 @@
 \newcommand{\Cat}{\mathbf{Cat}}
 
 \newcommand{\iso}{\cong}
+\newcommand{\onto}{\twoheadrightarrow}
 
 \newcommand{\after}{\circ}
 
@@ -21,6 +22,7 @@
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\comp}[1]{\overline{#1}}
+\newcommand{\inv}[1]{#1^{-1}}
 \renewcommand{\star}[1]{#1^{*}}
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\dual}[1]{#1^{\mathrm{op}}}
@@ -55,7 +57,7 @@ In~\(\Rel\), let the objects be sets and the arrows be relations between sets,\f
 \[G(f:A\to B)=\{\,\pair{x}{f(x)}\mid x\in A\,\}\subseteq A\times B\]
 Then \(G\)~is a functor.
 \item[(c)] Let \(C:\dual{\Rel}\to\Rel\) map sets to themselves and relations to their inverses, so \(C(A)=A\) and
-\[C(R\subseteq A\times B)=R^{-1}=\{\,\pair{y}{x}\mid\pair{x}{y}\in R\,\}\subseteq B\times A\]
+\[C(R\subseteq A\times B)=\inv{R}=\{\,\pair{y}{x}\mid\pair{x}{y}\in R\,\}\subseteq B\times A\]
 Then \(C\)~is a functor.
 \end{enumerate}
 \begin{proof}\
@@ -69,12 +71,12 @@ Then \(C\)~is a functor.
 \end{align*}
 So \((T\after S)\after R=T\after(S\after R)\). It is immediate that \(R\after 1_A=R=1_B\after R\), where \(1_X\)~denotes the identity relation on~\(X\).
 \item[(b)] By construction, \(G\)~maps objects to objects and arrows to arrows, and \(G(f:A\to B)\)~is an arrow from \(G(A)=A\) to \(G(B)=B\). Clearly \(G(1_A)=1_A=1_{G(A)}\). If \(f:A\to B\) and \(g:B\to C\), then \((g\after f)(x)=z\) if and only if \(f(x)=y\) and \(g(y)=z\), so \(G(g\after f)=G(g)\after G(f)\).
-\item[(c)] Recall for a relation \(R\subseteq A\times B\), \(R\)~is represented as an arrow in~\(\Rel\) by the triple~\((R,A,B)\), and in~\(\dual{\Rel}\) by the triple~\((R,B,A)\), where it is denoted by~\(\star{R}\).\footnote{Importantly, \(R\)~is \emph{not} represented in~\(\dual{\Rel}\) by~\((R^{-1},B,A)\). The arrow is reversed by swapping the domain and codomain, but the underlying relation (set of ordered pairs) is unchanged.} So in~\(\Rel\), \(\dom R=A\) and \(\cod R=B\), whereas in~\(\dual{\Rel}\), \(\dom\star{R}=B=\star{B}\) and \(\cod\star{R}=A=\star{A}\), where \(R\)~and~\(\star{R}\) are here treated as arrows.
+\item[(c)] Recall for a relation \(R\subseteq A\times B\), \(R\)~is represented as an arrow in~\(\Rel\) by the triple~\((R,A,B)\), and in~\(\dual{\Rel}\) by the triple~\((R,B,A)\), where it is denoted by~\(\star{R}\).\footnote{Importantly, \(R\)~is \emph{not} represented in~\(\dual{\Rel}\) by~\((\inv{R},B,A)\). The arrow is reversed by swapping the domain and codomain, but the underlying relation (set of ordered pairs) is unchanged.} So in~\(\Rel\), \(\dom R=A\) and \(\cod R=B\), whereas in~\(\dual{\Rel}\), \(\dom\star{R}=B=\star{B}\) and \(\cod\star{R}=A=\star{A}\), where \(R\)~and~\(\star{R}\) are here treated as arrows.
 
-By construction, \(C\)~maps objects to objects and arrows to arrows. Now \(C((R,B,A))=(R^{-1},B,A)\), so \(C\)~preserves domains and codomains. Also
-\[C(1_{\star{A}})=C(\star{1_A})=1_A^{-1}=1_A=1_{C(\star{A})}\]
+By construction, \(C\)~maps objects to objects and arrows to arrows. Now \(C((R,B,A))=(\inv{R},B,A)\), so \(C\)~preserves domains and codomains. Also
+\[C(1_{\star{A}})=C(\star{1_A})=\inv{1_A}=1_A=1_{C(\star{A})}\]
 For \(S\subseteq B\times C\),
-\[C(\star{R}\after\star{S})=C(\star{(S\after R)})=(S\after R)^{-1}=R^{-1}\after S^{-1}=C(\star{R})\after C(\star{S})\qedhere\]
+\[C(\star{R}\after\star{S})=C(\star{(S\after R)})=\inv{(S\after R)}=\inv{R}\after\inv{S}=C(\star{R})\after C(\star{S})\qedhere\]
 \end{enumerate}
 \end{proof}
 \end{exer}
@@ -174,6 +176,127 @@ So \(M(g\after f)=M(g)\after M(f)\) and \(M\)~preserves composites. Therefore \(
 \item[(b)] Let \(M(A)\)~be ``the'' free monoid on~\(A\) satisfying the universal mapping property (Propositions 1.9~and~1.10). For \(f:A\to B\to M(B)\), let \(M(f)\)~be the unique monoid homomorphism from~\(M(A)\) to~\(M(B)\) extending~\(f\). Clearly \(M\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Now \(1_{M(A)}\)~extends~\(1_A\), hence we must have \(M(1_A)=1_{M(A)}\). Similarly if \(g:B\to C\to M(C)\), then \(M(g)\after M(f)\) extends~\(g\after f\), hence we must have \(M(g\after f)=M(g)\after M(f)\). Therefore \(M\)~is a functor.\qedhere
 \end{enumerate}
 \end{proof}
+
+\section*{Chapter~2}
+\begin{exer}[1]
+In~\(\Sets\), the epis are precisely the surjections. Therefore the isos are precisely the epi-monos.
+\end{exer}
+\begin{proof}
+If \(f:A\to B\) is a surjection, then \(f\)~has a right inverse (AC), hence \(f\)~is a split epi. Conversely, if \(f\)~is not a surjection, there exists \(b\in B\) with \(b\not\in f[A]\). Define \(g:B\to 2\) by
+\[g(x)=\begin{cases}
+1&\text{if }x=b\\
+0&\text{otherwise}
+\end{cases}\]
+Then \(g\ne0\), but \(g\after f=0\after f\), so \(f\)~is not an epi. Therefore the epis are precisely the surjections.
+
+Now by this result and Proposition~2.2, the epi-monos are precisely the bijections. By Exercise~1.3, the bijections are precisely the isos. Therefore the epi-monos are precisely the isos.
+\end{proof}
+
+\begin{exer}[2]
+In a poset category, every arrow is an epi-mono since there is at most one arrow between any two objects.
+\end{exer}
+
+\begin{exer}[3]
+Inverses are unique.
+\end{exer}
+\begin{proof}
+If \(f:A\to B\) and \(g,g':B\to A\) are inverses of~\(f\), then
+\[g=g\after 1_B=g\after(f\after g')=(g\after f)\after g'=1_A\after g'=g'\qedhere\]
+\end{proof}
+
+\begin{exer}[4]
+Let \(f:A\to B\), \(g:B\to C\), and \(h:A\to C\) form a commutative triangle (\(h=g\after f\)).
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] If \(f\)~and~\(g\) are monic [epic, iso], so is~\(h\).
+\item[(b)] If \(h\)~is monic, so is~\(f\).
+\item[(c)] If \(h\)~is epic, so is~\(g\).
+\item[(d)] If \(h\)~is monic, \(g\)~need not be.
+\item[(e)] If \(h\)~is epic, \(f\)~need not be.
+\end{enumerate}
+\begin{proof}\
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] Suppose \(f\)~and~\(g\) are monic. If \(x,y:D\to A\) and \(h\after x=h\after y\), then
+\[g\after(f\after x)=(g\after f)\after x=h\after x=h\after y=(g\after f)\after y=g\after(f\after y)\]
+so \(f\after x=f\after y\) since \(g\)~is monic, and \(x=y\) since \(f\)~is monic. Therefore \(h\)~is monic.
+
+Suppose \(f\)~and~\(g\) are epic. If \(i,j:C\to D\) and \(i\after h=j\after h\), then
+\[(i\after g)\after f=i\after (g\after f)=i\after h=j\after h=j\after(g\after f)=(j\after g)\after f\]
+so \(i\after g=j\after g\) since \(f\)~is epic, and \(i=j\) since \(g\)~is epic. Therefore \(h\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~and~\(g\) are epic in~\(\cat{C}\), then \(\star{f}\)~and~\(\star{g}\) are monic in~\(\dual{\cat{C}}\), so \(\star{h}\)~is monic in~\(\dual{\cat{C}}\), so \(h\)~is epic in~\(\cat{C}\).}
+
+If \(f\)~and~\(g\) are isos, then \(\inv{h}=\inv{f}\after\inv{g}\), so \(h\)~is an iso.
+\item[(b)] If \(f\)~is not monic, choose \(x\ne y\) such that \(f\after x=f\after y\). Then
+\[h\after x=(g\after f)\after x=g\after(f\after x)=g\after(f\after y)=(g\after f)\after y=h\after y\]
+So \(h\)~is not monic.
+\item[(c)] If \(g\)~is not epic, choose \(i\ne j\) such that \(i\after g=j\after g\). Then
+\[i\after h=i\after(g\after f)=(i\after g)\after f=(j\after g)\after f=j\after(g\after f)=j\after h\]
+So \(h\)~is not epic.\footnote{This also follows from the previous result by duality. If \(h\)~is epic in~\(\cat{C}\), then \(\star{h}=\star{f}\after\star{g}\)~is monic in~\(\dual{\cat{C}}\), so \(\star{g}\)~is monic in~\(\dual{\cat{C}}\), so \(g\)~is epic in~\(\cat{C}\).}
+\item[(d),(e)] In~\(\Sets\), let \(A=C=1\) and \(B=2\) and let \(f=0_{A\to B}\) and \(g=0_{B\to C}\). Then \(h=0_{A\to C}\) is both monic and epic, but \(g\)~is not monic and \(f\)~is not epic.\qedhere
+\end{enumerate}
+\end{proof}
+\end{exer}
+
+\begin{exer}[5]
+For \(f:A\to B\), the following are equivalent:
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] \(f\)~is an iso.
+\item[(b)] \(f\)~is a mono and a split epi.
+\item[(c)] \(f\)~is a split mono and an epi.
+\item[(d)] \(f\)~is a split mono and a split epi.
+\end{enumerate}
+\begin{proof}
+It is immediate that (a)~\(\implies\)~(d)~\(\implies\)~(b),(c).
+
+For (b)~\(\implies\)~(a), suppose that \(f\)~is monic and \(g:B\to A\) satisfies \(f\after g=1_B\). We claim \(g\)~also satisfies \(g\after f=1_A\), so \(f\)~is an iso. But this follows from
+\[f\after(g\after f)=(f\after g)\after f=1_B\after f=f=f\after 1_A\]
+since \(f\)~is monic.
+
+For (c)~\(\implies\)~(a), suppose that \(f\)~is epic and \(g:B\to A\) satisfies \(g\after f=1_A\). We claim \(g\)~also satisfies \(f\after g=1_B\), so \(f\)~is an iso. But this follows from
+\[(f\after g)\after f=f\after(g\after f)=f\after 1_A=f=1_B\after f\]
+since \(f\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~is epic and \(g\)~is a left inverse of~\(f\) in~\(\cat{C}\), then \(\star{f}\)~is monic and \(\star{g}\)~is a right inverse of~\(\star{f}\) in~\(\dual{\cat{C}}\). Therefore \(\star{f}\)~is an iso in~\(\dual{\cat{C}}\), so \(f\)~is an iso in~\(\cat{C}\).} 
+\end{proof}
+\end{exer}
+
+\begin{exer}[7]
+A retract of a projective object is projective.
+\end{exer}
+\begin{proof}
+Let \(P\)~be projective and \(R\)~be a retract of~\(P\) where \(s:R\to P\), \(r:P\to R\), and \(r\after s=1_R\). Suppose \(f:R\to Y\) and \(e:X\onto Y\). Note \(f\after r:P\to Y\), so by projectivity of~\(P\) there exists \(p:P\to X\) such that \(e\after p=f\after r\). Now \(p\after s:R\to X\) and
+\[e\after(p\after s)=(e\after p)\after s=(f\after r)\after s=f\after(r\after s)=f\after 1_R=f\]
+Therefore \(R\)~is projective.
+\end{proof}
+
+\begin{exer}[8]
+In~\(\Sets\), every set is projective.
+\end{exer}
+\begin{proof}
+If \(f:P\to Y\) and \(g:X\onto Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\). Then
+\[g\after p=g\after(h\after f)=(g\after h)\after f=1_Y\after f=f\]
+Therefore \(P\)~is projective. 
+\end{proof}
+\begin{rmk}
+Projectivity is more interesting in categories of structured sets, where it implies ``freeness'' of structure allowing factoring of outgoing homomorphisms.
+\end{rmk}
+
+\begin{exer}[11]
+For a set~\(A\), let \(A\text{-}\Mon\) be the category of \(A\)-monoids \((M,m)\), where \(M\)~is a monoid and \(m:A\to U(M)\), with arrows \(h:(M,m)\to(N,n)\), where \(h:M\to N\) is a monoid homomorphism and \(n=U(h)\after m\).
+
+An initial object in \(A\text{-}\Mon\) is just a free monoid on~\(A\) in~\(\Mon\).
+\end{exer}
+\begin{proof}
+The \(A\)-monoid~\((M,m)\) is initial if and only if for all \(A\)-monoids~\((N,n)\), there is a unique \(A\)-monoid homomorphism \(h:(M,m)\to(N,n)\). This is just to say that \(m:A\to U(M)\) and for all monoids~\(N\) with \(n:A\to U(N)\) there is a unique monoid homomorphism \(h:M\to N\) with \(n=U(h)\after m\). But this is just the universal mapping property for the free monoid on~\(A\) in~\(\Mon\).
+\end{proof}
+
+\begin{exer}[15]
+For a category~\(\cat{C}\) and objects \(A,B\in\cat{C}\), let \(\cat{C}_{A,B}\)~be the category with objects \((X,x_1,x_2)\), where \(x_1:X\to A\) and \(x_2:X\to B\) in~\(\cat{C}\), and with arrows \(f:(X,x_1,x_2)\to(Y,y_1,y_2)\), where \(f:X\to Y\) and \(x_i=y_i\after f\) in~\(\cat{C}\).
+
+A terminal object in~\(\cat{C}_{A,B}\) is just a product of \(A\)~and~\(B\) in~\(\cat{C}\).
+\end{exer}
+\begin{proof}
+Object \((P,p_1,p_2)\) in~\(\cat{C}_{A,B}\) is terminal if and only if for all objects \((X,x_1,x_2)\) there is a unique \(p:(X,x_1,x_2)\to(P,p_1,p_2)\). This is just to say that \(p_1:P\to A\), \(p_2:P\to B\), and for all objects \(X\in\cat{C}\) with arrows \(x_1:X\to A\) and \(x_2:X\to B\) there is a unique \(p:X\to P\) with \(x_i=p_i\after p\). But this is just the universal mapping property for the product~\(A\times B\) in~\(\cat{C}\).
+\end{proof}
+\begin{rmk}
+The objects in~\(\cat{C}_{A,B}\) are just pairs of ``generalized elements'' of \(A\)~and~\(B\) in~\(\cat{C}\). A terminal object in~\(\cat{C}_{A,B}\) has a unique ``generalized element'' for every such pair, hence it is just the product~\(A\times B\).
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
