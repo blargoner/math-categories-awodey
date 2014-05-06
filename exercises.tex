@@ -9,9 +9,11 @@
 \newcommand{\Mon}{\mathbf{Mon}}
 \newcommand{\Pre}{\mathbf{Pre}}
 \newcommand{\Pos}{\mathbf{Pos}}
+\newcommand{\Types}{\mathbf{C}(\lambda)}
 \newcommand{\Cat}{\mathbf{Cat}}
 
 \newcommand{\iso}{\cong}
+\newcommand{\into}{\rightarrowtail}
 \newcommand{\onto}{\twoheadrightarrow}
 
 \newcommand{\after}{\circ}
@@ -19,6 +21,8 @@
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\fdom}{\mathbf{dom}}
+\DeclareMathOperator{\fst}{fst}
+\DeclareMathOperator{\snd}{snd}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\comp}[1]{\overline{#1}}
@@ -298,6 +302,49 @@ Object \((P,p_1,p_2)\) in~\(\cat{C}_{A,B}\) is terminal if and only if for all o
 The objects in~\(\cat{C}_{A,B}\) are just pairs of ``generalized elements'' of \(A\)~and~\(B\) in~\(\cat{C}\). A terminal object in~\(\cat{C}_{A,B}\) has a unique ``generalized element'' for every such pair, hence it is just the product~\(A\times B\).
 \end{rmk}
 
+\begin{exer}[16]
+Let \(\Types\)~be the category of types in the \(\lambda\)-calculus. Then the product functor \(\times:\Types\times\Types\to\Types\) maps objects \(A\)~and~\(B\) to~\(A\times B\) and arrows \(f:A\to B\) and \(g:A'\to B'\) to \(f\times g:A\times A'\to B\times B'\) where
+\[f\times g=\lambda c.\pair{f(\fst(c))}{g(\snd(c))}\]
+For any fixed type~\(A\), there is a functor~\(A\to(-)\) on~\(\Types\) taking each type~\(X\) to the type~\(A\to X\).
+\end{exer}
+\begin{proof}
+We know that \(\Types\)~has products, so the product functor is defined on~\(\Types\). For \(f:A\to B\) and \(g:A'\to B\), if
+\[A\xleftarrow{p_1}A\times A'\xrightarrow{p_2}A'\]
+where \(p_1=\lambda z.\fst(z)\) and \(p_2=\lambda z.\snd(z)\), then
+\begin{align*}
+f\times g&=\pair{f\after p_1}{g\after p_2}\\
+	&=\lambda c.\pair{f(p_1c)}{g(p_2c)}\\
+	&=\lambda c.\pair{f(\fst(c))}{g(\snd(c))}
+\end{align*}
+Fix a type~\(A\). Let \(A\to(-)\)~map each type~\(X\) to the type~\(A\to X\) and map each function \(f:X\to Y\) to the function \(\overline{f}:(A\to X)\to(A\to Y)\) given by \(\overline{f}=\lambda g.f\after g\), where \(f\after g=\lambda x.f(gx)\). We claim this mapping is a functor.
+
+Indeed, this mapping clearly maps objects to objects and arrows to arrows and it preserves domains and codomains of arrows. It also clearly preserves identities. If \(g:Y\to Z\), then
+\begin{align*}
+\overline{g\after f}&=\lambda h.(g\after f)\after h\\
+	&=\lambda h.g\after(f\after h)\\
+	&=\lambda h.\overline{g}(\overline{f}h)\\
+	&=\overline{g}\after\overline{f}
+\end{align*}
+So the mapping also preserves composites.\footnote{Note preservation of identities and composites relies on \(\beta\eta\)-equivalence for \emph{equality} of the functions involved.} Therefore it is a functor.
+\end{proof}
+\begin{rmk}
+This result shows that in functional programming languages such as Haskell, functions of a fixed input type are ``functorial'' types. This implies that functions on arbitrary types can be lifted to operate on such functions through composition.
+\end{rmk}
+
+\begin{exer}[17]
+In any category~\(\cat{C}\) with products, define the \emph{graph} of an arrow \(f:A\to B\) by
+\[\Gamma(f)=\pair{1_A}{f}:A\into A\times B\]
+Then \(\Gamma(f)\)~is a mono for every arrow~\(f\).
+
+In~\(\Sets\), \(\Gamma\)~determines a functor \(G:\Sets\to\Rel\) mapping sets to themselves and functions to their graphs.
+\end{exer}
+\begin{proof}
+To see that \(\Gamma(f)\)~is a mono, suppose \(x,y:X\to A\) and \(\Gamma(f)\after x=\Gamma(f)\after y\). By the universal mapping property of~\(A\times B\),
+\[\Gamma(f)\after x=\pair{1_A}{f}\after x=\pair{1_A\after x}{f\after x}=\pair{x}{f\after x}\]
+Similarly \(\Gamma(f)\after y=\pair{y}{f\after y}\). Therefore \(\pair{x}{f\after x}=\pair{y}{f\after y}\), so \(x=y\).
+
+Define \(G:\Sets\to\Rel\) by \(G(A)=A\) and \(G(f:A\to B)=\Gamma(f)[A]\subseteq A\times B\). Then clearly \(G\)~is just the map from Exercise~1.1(b), which is a functor.
+\end{proof}
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
