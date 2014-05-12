@@ -4,14 +4,6 @@
 
 \newcommand{\N}{\mathbb{N}}
 
-\newcommand{\Rel}{\mathbf{Rel}}
-\newcommand{\Sets}{\mathbf{Sets}}
-\newcommand{\Mon}{\mathbf{Mon}}
-\newcommand{\Pre}{\mathbf{Pre}}
-\newcommand{\Pos}{\mathbf{Pos}}
-\newcommand{\Types}{\mathbf{C}(\lambda)}
-\newcommand{\Cat}{\mathbf{Cat}}
-
 \newcommand{\iso}{\cong}
 \newcommand{\into}{\rightarrowtail}
 \newcommand{\onto}{\twoheadrightarrow}
@@ -31,6 +23,16 @@
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\dual}[1]{#1^{\mathrm{op}}}
 \newcommand{\arr}[1]{#1^{\rightarrow}}
+
+\newcommand{\C}{\cat{C}}
+\newcommand{\Cop}{\dual{\C}}
+\newcommand{\Rel}{\cat{Rel}}
+\newcommand{\Sets}{\cat{Sets}}
+\newcommand{\Mon}{\cat{Mon}}
+\newcommand{\Pre}{\cat{Pre}}
+\newcommand{\Pos}{\cat{Pos}}
+\newcommand{\Types}{\C(\lambda)}
+\newcommand{\Cat}{\cat{Cat}}
 
 % Theorems
 \theoremstyle{definition}
@@ -126,35 +128,35 @@ Therefore \(g\)~is a homomorphism and hence \(f\)~is an isomorphism.
 \end{exer}
 
 \begin{exer}[5]
-Let \(\cat{C}\)~be a category and \(C\in\cat{C}\). Let \(U:\cat{C}/C\to\cat{C}\) ``forget about the base object~\(C\)'' by mapping each object \(f:A\to C\) to its domain~\(A\) and each arrow \(a:A\to B\) to ``itself.''\footnote{An arrow in~\(\cat{C}/C\) is understood as a triple \((a,f,f')\) where \(a:A\to B\), \(f:A\to C\), and \(f':B\to C\) are arrows in~\(\cat{C}\) with \(f=f'\after a\). So \(U((a,f,f'))=a\).} Then \(U\)~is a functor.
+Let \(\C\)~be a category and \(C\in\C\). Let \(U:\C/C\to\C\) ``forget about the base object~\(C\)'' by mapping each object \(f:A\to C\) to its domain~\(A\) and each arrow \(a:A\to B\) to ``itself.''\footnote{An arrow in~\(\C/C\) is understood as a triple \((a,f,f')\) where \(a:A\to B\), \(f:A\to C\), and \(f':B\to C\) are arrows in~\(\C\) with \(f=f'\after a\). So \(U((a,f,f'))=a\).} Then \(U\)~is a functor.
 
-Let \(F:\cat{C}/C\to\arr{\cat{C}}\) map objects to themselves and each arrow \(a:A\to B\) to the pair~\((a,1_C)\), where \(1_C\)~is the identity arrow for~\(C\) in~\(\cat{C}\). Then \(F\)~is a functor, and \(\fdom\after F=U\), where \(\fdom:\arr{\cat{C}}\to\cat{C}\) is the functor mapping each object \(f:A\to B\) to its domain~\(A\) and each arrow \((g_1,g_2)\) to~\(g_1\).
+Let \(F:\C/C\to\arr{\C}\) map objects to themselves and each arrow \(a:A\to B\) to the pair~\((a,1_C)\), where \(1_C\)~is the identity arrow for~\(C\) in~\(\C\). Then \(F\)~is a functor, and \(\fdom\after F=U\), where \(\fdom:\arr{\C}\to\C\) is the functor mapping each object \(f:A\to B\) to its domain~\(A\) and each arrow \((g_1,g_2)\) to~\(g_1\).
 \end{exer}
 \begin{proof}
-\(U\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Since \(\cat{C}/C\) inherits identities and composites from~\(\cat{C}\), \(U\)~also preserves identities and composites. Therefore \(U\)~is a functor.
+\(U\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Since \(\C/C\) inherits identities and composites from~\(\C\), \(U\)~also preserves identities and composites. Therefore \(U\)~is a functor.
 
-\(F\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows, since if \(a:A\to B\) maps \(f:A\to C\) to \(f':B\to C\) in~\(\cat{C}/C\), then \(1_C\after f=f=f'\after a\), hence \((a,1_C)\)~maps~\(f\) to~\(f'\) in~\(\arr{\cat{C}}\). Since \(\arr{\cat{C}}\)~also inherits identities and composites from~\(\cat{C}\), \(F\)~also preserves identities and composites. Therefore \(F\)~is a functor. Clearly \(\fdom\after F=U\).
+\(F\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows, since if \(a:A\to B\) maps \(f:A\to C\) to \(f':B\to C\) in~\(\C/C\), then \(1_C\after f=f=f'\after a\), hence \((a,1_C)\)~maps~\(f\) to~\(f'\) in~\(\arr{\C}\). Since \(\arr{\C}\)~also inherits identities and composites from~\(\C\), \(F\)~also preserves identities and composites. Therefore \(F\)~is a functor. Clearly \(\fdom\after F=U\).
 \end{proof}
 
 \begin{exer}[6]
-Let \(\cat{C}\)~be a category and \(C\in\cat{C}\). Then \(C/\cat{C}=\dual{\cat{C}}/C\).\footnote{In this exercise, we informally identify an arrow \(f:A\to B\) in~\(\cat{C}\) with the corresponding reversed arrow \(\star{f}:\star{B}\to\star{A}\) in~\(\dual{\cat{C}}\), and with any corresponding arrows in slices or coslices.}
+Let \(\C\)~be a category and \(C\in\C\). Then \(C/\C=\Cop/C\).\footnote{In this exercise, we informally identify an arrow \(f:A\to B\) in~\(\C\) with the corresponding reversed arrow \(\star{f}:\star{B}\to\star{A}\) in~\(\Cop\), and with any corresponding arrows in slices or coslices.}
 \end{exer}
 \begin{proof}
-The arrows out of~\(C\) in~\(\cat{C}\) are precisely the arrows into~\(C\) in~\(\dual{\cat{C}}\), and the commuting triangles among the former in~\(\cat{C}\) are precisely the commuting triangles among the latter in~\(\dual{\cat{C}}\). Therefore \(C/\cat{C}\)~and~\(\dual{\cat{C}}/C\) have the same objects and arrows. They also have the same identities and composites since these are inherited from \(\cat{C}\)~and~\(\dual{\cat{C}}\), respectively, where they are the same by definition of~\(\dual{\cat{C}}\).
+The arrows out of~\(C\) in~\(\C\) are precisely the arrows into~\(C\) in~\(\Cop\), and the commuting triangles among the former in~\(\C\) are precisely the commuting triangles among the latter in~\(\Cop\). Therefore \(C/\C\)~and~\(\Cop/C\) have the same objects and arrows. They also have the same identities and composites since these are inherited from \(\C\)~and~\(\Cop\), respectively, where they are the same by definition of~\(\Cop\).
 \end{proof}
 \begin{rmk}
-Similarly \(C/\dual{\cat{C}}=\cat{C}/C\).
+Similarly \(C/\Cop=\C/C\).
 \end{rmk}
 
 \begin{exer}[8]
-For a (small) category~\(\cat{C}\), let \(P(\cat{C})\) consist of the objects from~\(\cat{C}\) ordered as follows:
+For a (small) category~\(\C\), let \(P(\C)\) consist of the objects from~\(\C\) ordered as follows:
 \begin{center}
-\(A\le B\) if and only if there exists an arrow \(A\to B\) in~\(\cat{C}\)
+\(A\le B\) if and only if there exists an arrow \(A\to B\) in~\(\C\)
 \end{center}
-Then \(P(\cat{C})\)~is a preorder, and \(P:\Cat\to\Pre\) determines a functor with \(P\after C=1_{\Pre}\), where \(C:\Pre\to\Cat\) is the evident inclusion functor.
+Then \(P(\C)\)~is a preorder, and \(P:\Cat\to\Pre\) determines a functor with \(P\after C=1_{\Pre}\), where \(C:\Pre\to\Cat\) is the evident inclusion functor.
 \end{exer}
 \begin{proof}
-Reflexivity and transitivity of the order in~\(P(\cat{C})\) follow from the existence of identities and composites in~\(\cat{C}\). So \(P\)~maps categories to preorders. For a functor \(F:\cat{C}\to\cat{D}\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\cat{C})\), there exists an arrow \(f:A\to B\) in~\(\cat{C}\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\cat{D}\), so \(F(A)\le F(B)\) in~\(P(\cat{D})\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\after C=1_{\Pre}\).
+Reflexivity and transitivity of the order in~\(P(\C)\) follow from the existence of identities and composites in~\(\C\). So \(P\)~maps categories to preorders. For a functor \(F:\C\to\cat{D}\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\C)\), there exists an arrow \(f:A\to B\) in~\(\C\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\cat{D}\), so \(F(A)\le F(B)\) in~\(P(\cat{D})\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\after C=1_{\Pre}\).
 \end{proof}
 \begin{rmk}
 In general \(C\after P\ne 1_{\Cat}\) because \(P\)~loses information about the arrow structure of categories. Specifically, multiple arrows from one object to another will be represented by a single relation between those objects under~\(P\).
@@ -225,7 +227,7 @@ so \(f\after x=f\after y\) since \(g\)~is monic, and \(x=y\) since \(f\)~is moni
 
 Suppose \(f\)~and~\(g\) are epic. If \(i,j:C\to D\) and \(i\after h=j\after h\), then
 \[(i\after g)\after f=i\after (g\after f)=i\after h=j\after h=j\after(g\after f)=(j\after g)\after f\]
-so \(i\after g=j\after g\) since \(f\)~is epic, and \(i=j\) since \(g\)~is epic. Therefore \(h\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~and~\(g\) are epic in~\(\cat{C}\), then \(\star{f}\)~and~\(\star{g}\) are monic in~\(\dual{\cat{C}}\), so \(\star{h}\)~is monic in~\(\dual{\cat{C}}\), so \(h\)~is epic in~\(\cat{C}\).}
+so \(i\after g=j\after g\) since \(f\)~is epic, and \(i=j\) since \(g\)~is epic. Therefore \(h\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~and~\(g\) are epic in~\(\C\), then \(\star{f}\)~and~\(\star{g}\) are monic in~\(\Cop\), so \(\star{h}\)~is monic in~\(\Cop\), so \(h\)~is epic in~\(\C\).}
 
 If \(f\)~and~\(g\) are isos, then \(\inv{h}=\inv{f}\after\inv{g}\), so \(h\)~is an iso.
 \item[(b)] If \(f\)~is not monic, choose \(x\ne y\) such that \(f\after x=f\after y\). Then
@@ -233,7 +235,7 @@ If \(f\)~and~\(g\) are isos, then \(\inv{h}=\inv{f}\after\inv{g}\), so \(h\)~is 
 So \(h\)~is not monic.
 \item[(c)] If \(g\)~is not epic, choose \(i\ne j\) such that \(i\after g=j\after g\). Then
 \[i\after h=i\after(g\after f)=(i\after g)\after f=(j\after g)\after f=j\after(g\after f)=j\after h\]
-So \(h\)~is not epic.\footnote{This also follows from the previous result by duality. If \(h\)~is epic in~\(\cat{C}\), then \(\star{h}=\star{f}\after\star{g}\)~is monic in~\(\dual{\cat{C}}\), so \(\star{g}\)~is monic in~\(\dual{\cat{C}}\), so \(g\)~is epic in~\(\cat{C}\).}
+So \(h\)~is not epic.\footnote{This also follows from the previous result by duality. If \(h\)~is epic in~\(\C\), then \(\star{h}=\star{f}\after\star{g}\)~is monic in~\(\Cop\), so \(\star{g}\)~is monic in~\(\Cop\), so \(g\)~is epic in~\(\C\).}
 \item[(d),(e)] In~\(\Sets\), let \(A=C=1\) and \(B=2\) and let \(f=0_{A\to B}\) and \(g=0_{B\to C}\). Then \(h=0_{A\to C}\) is both monic and epic, but \(g\)~is not monic and \(f\)~is not epic.\qedhere
 \end{enumerate}
 \end{proof}
@@ -256,7 +258,7 @@ since \(f\)~is monic.
 
 For (c)~\(\implies\)~(a), suppose that \(f\)~is epic and \(g:B\to A\) satisfies \(g\after f=1_A\). We claim \(g\)~also satisfies \(f\after g=1_B\), so \(f\)~is an iso. But this follows from
 \[(f\after g)\after f=f\after(g\after f)=f\after 1_A=f=1_B\after f\]
-since \(f\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~is epic and \(g\)~is a left inverse of~\(f\) in~\(\cat{C}\), then \(\star{f}\)~is monic and \(\star{g}\)~is a right inverse of~\(\star{f}\) in~\(\dual{\cat{C}}\). Therefore \(\star{f}\)~is an iso in~\(\dual{\cat{C}}\), so \(f\)~is an iso in~\(\cat{C}\).} 
+since \(f\)~is epic.\footnote{This also follows from the previous result by duality. If \(f\)~is epic and \(g\)~is a left inverse of~\(f\) in~\(\C\), then \(\star{f}\)~is monic and \(\star{g}\)~is a right inverse of~\(\star{f}\) in~\(\Cop\). Therefore \(\star{f}\)~is an iso in~\(\Cop\), so \(f\)~is an iso in~\(\C\).} 
 \end{proof}
 \end{exer}
 
@@ -291,15 +293,15 @@ The \(A\)-monoid~\((M,m)\) is initial if and only if for all \(A\)-monoids~\((N,
 \end{proof}
 
 \begin{exer}[15]
-For a category~\(\cat{C}\) and objects \(A,B\in\cat{C}\), let \(\cat{C}_{A,B}\)~be the category with objects \((X,x_1,x_2)\), where \(x_1:X\to A\) and \(x_2:X\to B\) in~\(\cat{C}\), and with arrows \(f:(X,x_1,x_2)\to(Y,y_1,y_2)\), where \(f:X\to Y\) and \(x_i=y_i\after f\) in~\(\cat{C}\).
+For a category~\(\C\) and objects \(A,B\in\C\), let \(\C_{A,B}\)~be the category with objects \((X,x_1,x_2)\), where \(x_1:X\to A\) and \(x_2:X\to B\) in~\(\C\), and with arrows \(f:(X,x_1,x_2)\to(Y,y_1,y_2)\), where \(f:X\to Y\) and \(x_i=y_i\after f\) in~\(\C\).
 
-A terminal object in~\(\cat{C}_{A,B}\) is just a product of \(A\)~and~\(B\) in~\(\cat{C}\).
+A terminal object in~\(\C_{A,B}\) is just a product of \(A\)~and~\(B\) in~\(\C\).
 \end{exer}
 \begin{proof}
-Object \((P,p_1,p_2)\) in~\(\cat{C}_{A,B}\) is terminal if and only if for all objects \((X,x_1,x_2)\) there is a unique \(p:(X,x_1,x_2)\to(P,p_1,p_2)\). This is just to say that \(p_1:P\to A\), \(p_2:P\to B\), and for all objects \(X\in\cat{C}\) with arrows \(x_1:X\to A\) and \(x_2:X\to B\) there is a unique \(p:X\to P\) with \(x_i=p_i\after p\). But this is just the universal mapping property for the product~\(A\times B\) in~\(\cat{C}\).
+Object \((P,p_1,p_2)\) in~\(\C_{A,B}\) is terminal if and only if for all objects \((X,x_1,x_2)\) there is a unique \(p:(X,x_1,x_2)\to(P,p_1,p_2)\). This is just to say that \(p_1:P\to A\), \(p_2:P\to B\), and for all objects \(X\in\C\) with arrows \(x_1:X\to A\) and \(x_2:X\to B\) there is a unique \(p:X\to P\) with \(x_i=p_i\after p\). But this is just the universal mapping property for the product~\(A\times B\) in~\(\C\).
 \end{proof}
 \begin{rmk}
-The objects in~\(\cat{C}_{A,B}\) are just pairs of ``generalized elements'' of \(A\)~and~\(B\) in~\(\cat{C}\). A terminal object in~\(\cat{C}_{A,B}\) has a unique ``generalized element'' for every such pair, hence it is just the product~\(A\times B\).
+The objects in~\(\C_{A,B}\) are just pairs of ``generalized elements'' of \(A\)~and~\(B\) in~\(\C\). A terminal object in~\(\C_{A,B}\) has a unique ``generalized element'' for every such pair, hence it is just the product~\(A\times B\).
 \end{rmk}
 
 \begin{exer}[16]
@@ -332,7 +334,7 @@ This result shows that in functional programming languages such as Haskell, func
 \end{rmk}
 
 \begin{exer}[17]
-In any category~\(\cat{C}\) with products, define the \emph{graph} of an arrow \(f:A\to B\) by
+In any category~\(\C\) with products, define the \emph{graph} of an arrow \(f:A\to B\) by
 \[\Gamma(f)=\pair{1_A}{f}:A\into A\times B\]
 Then \(\Gamma(f)\)~is a mono for every arrow~\(f\).
 
