@@ -15,14 +15,17 @@
 \DeclareMathOperator{\fdom}{\mathbf{dom}}
 \DeclareMathOperator{\fst}{fst}
 \DeclareMathOperator{\snd}{snd}
+\DeclareMathOperator{\Hom}{Hom}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
+\newcommand{\copair}[2]{[{#1},{#2}]}
 \newcommand{\comp}[1]{\overline{#1}}
 \newcommand{\inv}[1]{#1^{-1}}
 \renewcommand{\star}[1]{#1^{*}}
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\dual}[1]{#1^{\mathrm{op}}}
 \newcommand{\arr}[1]{#1^{\rightarrow}}
+\newcommand{\under}[1]{|{#1}|}
 
 \newcommand{\C}{\cat{C}}
 \newcommand{\Cop}{\dual{\C}}
@@ -347,6 +350,45 @@ Similarly \(\Gamma(f)\after y=\pair{y}{f\after y}\). Therefore \(\pair{x}{f\afte
 
 Define \(G:\Sets\to\Rel\) by \(G(A)=A\) and \(G(f:A\to B)=\Gamma(f)[A]\subseteq A\times B\). Then clearly \(G\)~is just the map from Exercise~1.1(b), which is a functor.
 \end{proof}
+
+\section*{Chapter~3}
+\begin{exer}[1]
+Let \(\C\)~be a (locally small) category. Then
+\[A\xrightarrow{c_1}C\xleftarrow{c_2}B\]
+is a coproduct if and only if for all objects~\(Z\) the function
+\begin{align*}
+\Hom(C,Z)&\to\Hom(A,Z)\times\Hom(B,Z)\\
+f&\mapsto\pair{f\after c_1}{f\after c_2}
+\end{align*}
+is an iso.
+\end{exer}
+\begin{proof}
+By duality, the given diagram is a coproduct in~\(\C\) if and only if
+\[\star{A}\xleftarrow{\star{c_1}}\star{C}\xrightarrow{\star{c_2}}\star{B}\]
+is a product in~\(\Cop\). We know this diagram is a product in~\(\Cop\) if and only if for all objects~\(\star{Z}\), the function
+\begin{align*}
+\Hom_{\Cop}(\star{Z},\star{C})&\to\Hom_{\Cop}(\star{Z},\star{A})\times\Hom_{\Cop}(\star{Z},\star{B})\\
+\star{f}&\mapsto\pair{\star{c_1}\after\star{f}}{\star{c_2}\after\star{f}}
+\end{align*}
+is an iso (Proposition~2.20). But by definition of~\(\Cop\),
+\[\Hom_{\Cop}(\star{Z},\star{X})=\Hom_{\C}(X,Z)\]
+for all objects \(X\in\C\) and \(\star{c_i}\after\star{f}=\star{(f\after c_i)}\) for all arrows \(f\in\C\), so the functions are the same.
+\end{proof}
+
+\begin{exer}[2]
+The free monoid functor preserves coproducts, that is,
+\[M(A+B)\iso M(A)+M(B)\]
+\end{exer}
+\begin{proof}
+By the universal property of~\(M(A)\), let \(i_1:M(A)\to M(A+B)\) extend the inclusion \(A\to A+B\to\under{M(A+B)}\).\footnote{The inclusion \(A\to A+B\) is from the coproduct construction, and the inclusion \(A+B\to\under{M(A+B)}\) is from the free monoid construction.} Similarly let \(i_2:M(B)\to M(A+B)\) extend the inclusion \(B\to A+B\to\under{M(A+B)}\). We claim
+\[M(A)\xrightarrow{i_1}M(A+B)\xleftarrow{i_2}M(B)\]
+is a coproduct of \(M(A)\)~and~\(M(B)\), from which the desired result follows by uniqueness of the coproduct (Proposition~3.12).
+
+Given \(x:M(A)\to N\) and \(y:M(B)\to N\), let \(\under{x}_A:A\to\under{N}\) be the composite of the inclusion \(A\to\under{M(A)}\) with \(\under{x}:\under{M(A)}\to\under{N}\), and similarly let \(\under{y}_B:B\to\under{N}\) be the composite of the inclusion \(B\to\under{M(B)}\) with \(\under{y}:\under{M(B)}\to\under{N}\). By the universal property of~\(A+B\), there is a unique copairing~\(\copair{\under{x}_A}{\under{y}_B}:A+B\to\under{N}\), and by the universal property of~\(M(A+B)\) this copairing extends uniquely to a homomorphism \(z:M(A+B)\to N\).
+
+It follows from the copairing and the universal property of~\(M(A)\) that \(z\after i_1=x\) since both \(z\after i_1\)~and~\(x\) extend~\(\under{x}_A\) to~\(M(A)\), and similarly \(z\after i_2=y\). Moreover it follows from uniqueness of the copairing and the extension that \(z\)~uniquely satisfies these equations. Therefore \(z\)~is a copairing~\(\copair{x}{y}\), and \(M(A+B)\)~is a coproduct of \(M(A)\)~and~\(M(B)\) as claimed.
+\end{proof}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
