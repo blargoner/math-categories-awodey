@@ -182,9 +182,12 @@ M(g\after f)(a_1\cdots a_k)&=(g\after f)(a_1)\cdots(g\after f)(a_k)\\
 	&=(M(g)\after M(f))(a_1\cdots a_k)
 \end{align*}
 So \(M(g\after f)=M(g)\after M(f)\) and \(M\)~preserves composites. Therefore \(M\)~is a functor.
-\item[(b)] Let \(M(A)\)~be ``the'' free monoid on~\(A\) satisfying the universal mapping property (Propositions 1.9~and~1.10). For \(f:A\to B\to M(B)\), let \(M(f)\)~be the unique monoid homomorphism from~\(M(A)\) to~\(M(B)\) extending~\(f\). Clearly \(M\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Now \(1_{M(A)}\)~extends~\(1_A\), hence we must have \(M(1_A)=1_{M(A)}\). Similarly if \(g:B\to C\to M(C)\), then \(M(g)\after M(f)\) extends~\(g\after f\), hence we must have \(M(g\after f)=M(g)\after M(f)\). Therefore \(M\)~is a functor.\qedhere
+\item[(b)] Let \(M(A)\)~be ``the'' free monoid on~\(A\) satisfying the universal mapping property (Propositions 1.9~and~1.10). For \(f:A\to B\to\under{M(B)}\), let \(M(f)\)~be the unique monoid homomorphism from~\(M(A)\) to~\(M(B)\) extending~\(f\). Clearly \(M\)~maps objects to objects and arrows to arrows, and preserves domains and codomains of arrows. Now \(1_{M(A)}\)~extends~\(1_A\), hence we must have \(M(1_A)=1_{M(A)}\). Similarly if \(g:B\to C\to\under{M(C)}\), then \(M(g)\after M(f)\) extends~\(g\after f\), hence we must have \(M(g\after f)=M(g)\after M(f)\). Therefore \(M\)~is a functor.\qedhere
 \end{enumerate}
 \end{proof}
+\begin{rmk}
+A homomorphism \(h:M(A)\to B\) is uniquely determined by its action on~\(A\), where this action is \(\under{h}\after i:A\to\under{M(A)}\to\under{B}\). This is trivially true by the universal mapping property since \(h\)~extends~\(\under{h}\after i\) to~\(M(A)\), that is, \(\under{h}\after i=\under{h}\after i\). This is a familiar concept in mathematics (for example, a linear transformation of a vector space is uniquely determined by its action on a basis, etc.).
+\end{rmk}
 
 \section*{Chapter~2}
 \begin{exer}[1]
