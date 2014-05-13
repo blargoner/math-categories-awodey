@@ -387,7 +387,7 @@ The free monoid functor preserves coproducts, that is,
 \[M(A+B)\iso M(A)+M(B)\]
 \end{exer}
 \begin{proof}
-By the universal property of~\(M(A)\), let \(i_1:M(A)\to M(A+B)\) extend the inclusion \(A\to A+B\to\under{M(A+B)}\).\footnote{The inclusion \(A\to A+B\) is from the coproduct construction, and the inclusion \(A+B\to\under{M(A+B)}\) is from the free monoid construction.} Similarly let \(i_2:M(B)\to M(A+B)\) extend the inclusion \(B\to A+B\to\under{M(A+B)}\). We claim
+By the universal property of~\(M(A)\), let \(i_1:M(A)\to M(A+B)\) extend the inclusion \(A\to A+B\to\under{M(A+B)}\).\footnote{The inclusion \(A\to A+B\) is from the coproduct construction, and the inclusion \(A+B\to\under{M(A+B)}\) is from the free monoid construction. Observe \(A\to A+B\) is lifted to~\(i_1\) by the free monoid functor.} Similarly let \(i_2:M(B)\to M(A+B)\) extend the inclusion \(B\to A+B\to\under{M(A+B)}\). We claim
 \[M(A)\xrightarrow{i_1}M(A+B)\xleftarrow{i_2}M(B)\]
 is a coproduct of \(M(A)\)~and~\(M(B)\), from which the desired result follows by uniqueness of the coproduct (Proposition~3.12).
 
@@ -395,6 +395,68 @@ Given \(x:M(A)\to N\) and \(y:M(B)\to N\), let \(\under{x}_A:A\to\under{N}\) be 
 
 It follows from the copairing and the universal property of~\(M(A)\) that \(z\after i_1=x\) since both \(z\after i_1\)~and~\(x\) extend~\(\under{x}_A\) to~\(M(A)\), and similarly \(z\after i_2=y\). Moreover it follows from uniqueness of the copairing and the extension that \(z\)~uniquely satisfies these equations. Therefore \(z\)~is a copairing~\(\copair{x}{y}\), and \(M(A+B)\)~is a coproduct of \(M(A)\)~and~\(M(B)\) as claimed.
 \end{proof}
+
+\begin{exer}[5]
+Let \(\C\)~be the category of proofs in a natural deduction system with disjunction introduction rules
+\[\begin{array}{c}
+\varphi\\
+\hline
+\varphi\lor\psi
+\end{array}
+\qquad
+\begin{array}{c}
+\psi\\
+\hline
+\varphi\lor\psi
+\end{array}\]
+and disjunction elimination rule
+\[\begin{array}{ccc}
+&[\varphi]&[\psi]\\
+&\vdots&\vdots\\
+\varphi\lor\psi&\vartheta&\vartheta\\
+\hline
+&\vartheta&
+\end{array}\]
+Note the introduction rules give proofs \(i_1:\varphi\to\varphi\lor\psi\) and \(i_2:\psi\to\varphi\lor\psi\), and the elimination rule gives a proof \(\copair{p}{q}:\varphi\lor\psi\to\vartheta\) from proofs \(p:\varphi\to\vartheta\) and \(q:\psi\to\vartheta\).
+
+For any proofs \(p:\varphi\to\vartheta\), \(q:\psi\to\vartheta\), and \(r:\varphi\lor\psi\to\vartheta\), identify proofs under the equations
+\[r\after i_1=p\qquad r\after i_2=q\qquad [r\after i_1,r\after i_2]=r\]
+to disregard unnecessary introduction and elimination of disjunction.
+
+Then \(\C\)~has coproducts, and in fact \(\varphi+\psi=\varphi\lor\psi\).
+\end{exer}
+\begin{proof}
+To see that
+\[\varphi\xrightarrow{i_1}\varphi\lor\psi\xleftarrow{i_2}\psi\]
+is a coproduct, suppose \(p:\varphi\to\vartheta\) and \(q:\psi\to\vartheta\) are proofs. Let \(r:\varphi\lor\psi\to\vartheta\) be the proof given by application of the elimination rule to \(p\)~and~\(q\). Then by the first two identification rules, \(r\after i_1=p\) and \(r\after i_2=q\). If \(s:\varphi\lor\psi\to\vartheta\) also satisfies these properties, then by the second identification rule
+\[s=[s\after i_1,s\after i_2]=[p,q]=[r\after i_1,r\after i_2]=r\]
+Therefore \(r\)~is unique, and so \(\varphi\lor\psi\)~is a coproduct.
+\end{proof}
+\begin{rmk}
+Dually, it can be shown that the category of proofs in a system with conjunction elimination rules
+\[\begin{array}{c}
+\varphi\land\psi\\
+\hline
+\varphi
+\end{array}
+\qquad
+\begin{array}{c}
+\varphi\land\psi\\
+\hline
+\psi
+\end{array}\]
+determining proofs \(p_1:\varphi\land\psi\to\varphi\) and \(p_2:\varphi\land\psi\to\psi\), together with conjunction introduction rule
+\[\begin{array}{ccc}
+&[\vartheta]&[\vartheta]\\
+&\vdots&\vdots\\
+\vartheta&\varphi&\psi\\
+\hline
+&\varphi\land\psi&
+\end{array}\]
+determining a proof \(\pair{p}{q}:\vartheta\to\varphi\land\psi\) from proofs \(p:\vartheta\to\varphi\) and \(q:\vartheta\to\psi\), all under identification rules
+\[p_1\after\pair{p}{q}=p\qquad p_2\after\pair{p}{q}=q\qquad\pair{p_1\after r}{p_2\after r}=r\]
+for arbitrary proofs \(p:\vartheta\to\varphi\), \(q:\vartheta\to\psi\), and \(r:\vartheta\to\varphi\land\psi\), has products, and in fact \(\varphi\times\psi=\varphi\land\psi\).
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
