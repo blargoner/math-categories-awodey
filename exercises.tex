@@ -5,8 +5,8 @@
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\iso}{\cong}
-\newcommand{\into}{\rightarrowtail}
-\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\mono}{\rightarrowtail}
+\newcommand{\epi}{\twoheadrightarrow}
 
 \newcommand{\after}{\circ}
 \newcommand{\eq}{\sim}
@@ -277,7 +277,7 @@ since \(f\)~is epic.\footnote{This also follows from the previous result by dual
 A retract of a projective object is projective.
 \end{exer}
 \begin{proof}
-Let \(P\)~be projective and \(R\)~be a retract of~\(P\) where \(s:R\to P\), \(r:P\to R\), and \(r\after s=1_R\). Suppose \(f:R\to Y\) and \(e:X\onto Y\). Note \(f\after r:P\to Y\), so by projectivity of~\(P\) there exists \(p:P\to X\) such that \(e\after p=f\after r\). Now \(p\after s:R\to X\) and
+Let \(P\)~be projective and \(R\)~be a retract of~\(P\) where \(s:R\to P\), \(r:P\to R\), and \(r\after s=1_R\). Suppose \(f:R\to Y\) and \(e:X\epi Y\). Note \(f\after r:P\to Y\), so by projectivity of~\(P\) there exists \(p:P\to X\) such that \(e\after p=f\after r\). Now \(p\after s:R\to X\) and
 \[e\after(p\after s)=(e\after p)\after s=(f\after r)\after s=f\after(r\after s)=f\after 1_R=f\]
 Therefore \(R\)~is projective.
 \end{proof}
@@ -286,7 +286,7 @@ Therefore \(R\)~is projective.
 In~\(\Sets\), every set is projective.
 \end{exer}
 \begin{proof}
-If \(f:P\to Y\) and \(g:X\onto Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\). Then
+If \(f:P\to Y\) and \(g:X\epi Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\). Then
 \[g\after p=g\after(h\after f)=(g\after h)\after f=1_Y\after f=f\]
 Therefore \(P\)~is projective. 
 \end{proof}
@@ -346,7 +346,7 @@ This result shows that in functional programming languages such as Haskell, func
 
 \begin{exer}[17]
 In any category~\(\C\) with products, define the \emph{graph} of an arrow \(f:A\to B\) by
-\[\Gamma(f)=\pair{1_A}{f}:A\into A\times B\]
+\[\Gamma(f)=\pair{1_A}{f}:A\mono A\times B\]
 Then \(\Gamma(f)\)~is a mono for every arrow~\(f\).
 
 In~\(\Sets\), \(\Gamma\)~determines a functor \(G:\Sets\to\Rel\) mapping sets to themselves and functions to their graphs.
@@ -480,7 +480,7 @@ Let \(\C\)~be a category with coproducts. If \(P\)~and~\(Q\) are projective, the
 \begin{proof}
 Suppose
 \[P\xrightarrow{i_1}P+Q\xleftarrow{i_2}Q\]
-is a coproduct diagram. If \(f:P+Q\to X\) and \(e:E\onto X\), then by projectivity of \(P\)~and~\(Q\) there exist arrows \(\overline{f\after i_1}:P\to E\) and \(\overline{f\after i_2}:Q\to E\) satisfying equations \(e\after\overline{f\after i_k}=f\after i_k\). Define \(\overline{f}=\copair{\overline{f\after i_1}}{\overline{f\after i_2}}\). Then
+is a coproduct diagram. If \(f:P+Q\to X\) and \(e:E\epi X\), then by projectivity of \(P\)~and~\(Q\) there exist arrows \(\overline{f\after i_1}:P\to E\) and \(\overline{f\after i_2}:Q\to E\) satisfying equations \(e\after\overline{f\after i_k}=f\after i_k\). Define \(\overline{f}=\copair{\overline{f\after i_1}}{\overline{f\after i_2}}\). Then
 \[e\after\overline{f}
 =e\after\copair{\overline{f\after i_1}}{\overline{f\after i_2}}
 =\copair{e\after\overline{f\after i_1}}{e\after\overline{f\after i_2}}
@@ -490,7 +490,7 @@ Therefore \(P+Q\)~is projective.
 \end{proof}
 
 \begin{exer}[8]
-An object~\(Q\) is \emph{injective} in a category~\(\C\) if \(\star{Q}\)~is projective in~\(\Cop\), that is, if for all arrows \(f:X\to Q\) and monos \(m:X\into A\), there exists \(\overline{f}:A\to Q\) such that \(\overline{f}\after m=f\).
+An object~\(Q\) is \emph{injective} in a category~\(\C\) if \(\star{Q}\)~is projective in~\(\Cop\), that is, if for all arrows \(f:X\to Q\) and monos \(m:X\mono A\), there exists \(\overline{f}:A\to Q\) such that \(\overline{f}\after m=f\).
 
 In~\(\Pos\), the empty poset is not injective, but the singleton poset is injective.
 \end{exer}
