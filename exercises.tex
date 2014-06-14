@@ -1,6 +1,6 @@
 % Notes and exercises on Category Theory
 \documentclass[letterpaper,12pt]{article}
-\usepackage{amsmath,amssymb,amsthm,enumitem,fourier}
+\usepackage{amsmath,amssymb,amsthm,enumitem,fourier,diagrams}
 
 \newcommand{\N}{\mathbb{N}}
 
@@ -41,6 +41,10 @@
 \newcommand{\Pos}{\cat{Pos}}
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
+
+% Arrows
+\newarrow{Mono} >--->
+\newarrow{Epi} ----{>>}
 
 % Theorems
 \theoremstyle{definition}
@@ -222,7 +226,12 @@ If \(f:A\to B\) and \(g,g':B\to A\) are inverses of~\(f\), then
 \end{proof}
 
 \begin{exer}[4]
-Let \(f:A\to B\), \(g:B\to C\), and \(h:A\to C\) form a commutative triangle (\(h=g\after f\)).
+Let \(f:A\to B\), \(g:B\to C\), and \(h:A\to C\) form a commutative triangle (\(h=g\after f\)):
+\begin{diagram}[nohug]
+A	&\rTo^f	&B\\
+	&\rdTo_h&\dTo>g\\
+	&		&C
+\end{diagram}
 \begin{enumerate}[itemsep=0pt]
 \item[(a)] If \(f\)~and~\(g\) are monic [epic, iso], so is~\(h\).
 \item[(b)] If \(h\)~is monic, so is~\(f\).
@@ -277,7 +286,13 @@ since \(f\)~is epic.\footnote{This also follows from the previous result by dual
 A retract of a projective object is projective.
 \end{exer}
 \begin{proof}
-Let \(P\)~be projective and \(R\)~be a retract of~\(P\) where \(s:R\to P\), \(r:P\to R\), and \(r\after s=1_R\). Suppose \(f:R\to Y\) and \(e:X\epi Y\). Note \(f\after r:P\to Y\), so by projectivity of~\(P\) there exists \(p:P\to X\) such that \(e\after p=f\after r\). Now \(p\after s:R\to X\) and
+Let \(P\)~be projective and \(R\)~be a retract of~\(P\) where \(s:R\to P\), \(r:P\to R\), and \(r\after s=1_R\). Suppose \(f:R\to Y\) and \(e:X\epi Y\). Note \(f\after r:P\to Y\), so by projectivity of~\(P\) there exists \(p:P\to X\) such that \(e\after p=f\after r\):
+\begin{diagram}[nohug]
+	&						&	&				&X\\
+	&						&	&\ruTo(4,2)^p	&\dEpi>e\\
+P	&\pile{\rTo^r\\\lTo_s}	&R	&\rTo_f			&Y
+\end{diagram}
+Now \(p\after s:R\to X\) and
 \[e\after(p\after s)=(e\after p)\after s=(f\after r)\after s=f\after(r\after s)=f\after 1_R=f\]
 Therefore \(R\)~is projective.
 \end{proof}
@@ -286,7 +301,13 @@ Therefore \(R\)~is projective.
 In~\(\Sets\), every set is projective.
 \end{exer}
 \begin{proof}
-If \(f:P\to Y\) and \(g:X\epi Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\). Then
+If \(f:P\to Y\) and \(g:X\epi Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\):
+\begin{diagram}[nohug]
+	&					&X\\
+	&\ruTo^{p=h\after f}	&\dEpi<g\uTo>h\\
+P	&\rTo_f				&Y
+\end{diagram}
+Then
 \[g\after p=g\after(h\after f)=(g\after h)\after f=1_Y\after f=f\]
 Therefore \(P\)~is projective. 
 \end{proof}
@@ -322,7 +343,7 @@ For any fixed type~\(A\), there is a functor~\(A\to(-)\) on~\(\Types\) taking ea
 \end{exer}
 \begin{proof}
 We know that \(\Types\)~has products, so the product functor is defined on~\(\Types\). For \(f:A\to B\) and \(g:A'\to B\), if
-\[A\xleftarrow{p_1}A\times A'\xrightarrow{p_2}A'\]
+\[A\lTo^{p_1}A\times A'\rTo^{p_2}A'\]
 where \(p_1=\lambda z.\fst(z)\) and \(p_2=\lambda z.\snd(z)\), then
 \begin{align*}
 f\times g&=\pair{f\after p_1}{g\after p_2}\\
@@ -366,7 +387,7 @@ Recall that a monoid homomorphism \(h:M(A)\to B\) is uniquely determined by its 
 \section*{Chapter~3}
 \begin{exer}[1]
 Let \(\C\)~be a (locally small) category. Then
-\[A\xrightarrow{c_1}C\xleftarrow{c_2}B\]
+\[A\rTo^{c_1}C\lTo^{c_2}B\]
 is a coproduct if and only if for all objects~\(Z\) the function
 \begin{align*}
 \Hom(C,Z)&\to\Hom(A,Z)\times\Hom(B,Z)\\
@@ -376,7 +397,7 @@ is an iso.
 \end{exer}
 \begin{proof}
 By duality, the given diagram is a coproduct in~\(\C\) if and only if
-\[\star{A}\xleftarrow{\star{c_1}}\star{C}\xrightarrow{\star{c_2}}\star{B}\]
+\[\star{A}\lTo^{\star{c_1}}\star{C}\rTo^{\star{c_2}}\star{B}\]
 is a product in~\(\Cop\). We know this diagram is a product in~\(\Cop\) if and only if for all objects~\(\star{Z}\), the function
 \begin{align*}
 \Hom_{\Cop}(\star{Z},\star{C})&\to\Hom_{\Cop}(\star{Z},\star{A})\times\Hom_{\Cop}(\star{Z},\star{B})\\
@@ -393,7 +414,7 @@ The free monoid functor preserves coproducts, that is,
 \end{exer}
 \begin{proof}
 By the universal property of~\(M(A)\), let \(i_1:M(A)\to M(A+B)\) extend the inclusion \(A\to A+B\to\under{M(A+B)}\).\footnote{The inclusion \(A\to A+B\) is from the coproduct construction, and the inclusion \(A+B\to\under{M(A+B)}\) is from the free monoid construction. Observe \(A\to A+B\) is lifted to~\(i_1\) by the free monoid functor.} Similarly let \(i_2:M(B)\to M(A+B)\) extend the inclusion \(B\to A+B\to\under{M(A+B)}\). We claim
-\[M(A)\xrightarrow{i_1}M(A+B)\xleftarrow{i_2}M(B)\]
+\[M(A)\rTo^{i_1}M(A+B)\lTo^{i_2}M(B)\]
 is a coproduct of \(M(A)\)~and~\(M(B)\), from which the desired result follows by uniqueness of the coproduct (Proposition~3.12).
 
 Given \(x:M(A)\to N\) and \(y:M(B)\to N\), let \(\under{x}_A:A\to\under{N}\) be the composite of the inclusion \(A\to\under{M(A)}\) with \(\under{x}:\under{M(A)}\to\under{N}\), and similarly let \(\under{y}_B:B\to\under{N}\) be the composite of the inclusion \(B\to\under{M(B)}\) with \(\under{y}:\under{M(B)}\to\under{N}\). By the universal property of~\(A+B\), there is a unique copairing~\(\copair{\under{x}_A}{\under{y}_B}:A+B\to\under{N}\), and by the universal property of~\(M(A+B)\) this copairing extends uniquely to a homomorphism \(z:M(A+B)\to N\).
@@ -432,7 +453,7 @@ Then \(\C\)~has coproducts, and in fact \(\varphi+\psi=\varphi\lor\psi\).
 \end{exer}
 \begin{proof}
 To see that
-\[\varphi\xrightarrow{i_1}\varphi\lor\psi\xleftarrow{i_2}\psi\]
+\[\varphi\rTo^{i_1}\varphi\lor\psi\lTo^{i_2}\psi\]
 is a coproduct, suppose \(p:\varphi\to\vartheta\) and \(q:\psi\to\vartheta\) are proofs. Let \(r:\varphi\lor\psi\to\vartheta\) be the proof given by application of the elimination rule to \(p\)~and~\(q\). Then by the first two identification rules, \(r\after i_1=p\) and \(r\after i_2=q\). If \(s:\varphi\lor\psi\to\vartheta\) also satisfies these properties, then by the second identification rule
 \[s=[s\after i_1,s\after i_2]=[p,q]=[r\after i_1,r\after i_2]=r\]
 Therefore \(r\)~is unique, and so \(\varphi\lor\psi\)~is a coproduct.
@@ -479,7 +500,7 @@ Let \(\C\)~be a category with coproducts. If \(P\)~and~\(Q\) are projective, the
 \end{exer}
 \begin{proof}
 Suppose
-\[P\xrightarrow{i_1}P+Q\xleftarrow{i_2}Q\]
+\[P\rTo^{i_1}P+Q\lTo^{i_2}Q\]
 is a coproduct diagram. If \(f:P+Q\to X\) and \(e:E\epi X\), then by projectivity of \(P\)~and~\(Q\) there exist arrows \(\overline{f\after i_1}:P\to E\) and \(\overline{f\after i_2}:Q\to E\) satisfying equations \(e\after\overline{f\after i_k}=f\after i_k\). Define \(\overline{f}=\copair{\overline{f\after i_1}}{\overline{f\after i_2}}\). Then
 \[e\after\overline{f}
 =e\after\copair{\overline{f\after i_1}}{\overline{f\after i_2}}
@@ -490,7 +511,12 @@ Therefore \(P+Q\)~is projective.
 \end{proof}
 
 \begin{exer}[8]
-An object~\(Q\) is \emph{injective} in a category~\(\C\) if \(\star{Q}\)~is projective in~\(\Cop\), that is, if for all arrows \(f:X\to Q\) and monos \(m:X\mono A\), there exists \(\overline{f}:A\to Q\) such that \(\overline{f}\after m=f\).
+An object~\(Q\) is \emph{injective} in a category~\(\C\) if \(\star{Q}\)~is projective in~\(\Cop\), that is, if for all arrows \(f:X\to Q\) and monos \(m:X\mono A\), there exists \(\overline{f}:A\to Q\) such that \(\overline{f}\after m=f\):
+\begin{diagram}[nohug]
+X		&\rTo^f					&Q\\
+\dMono<m&\ruTo_{\overline{f}}	&\\
+A		&						&
+\end{diagram}
 
 In~\(\Pos\), the empty poset is not injective, but the singleton poset is injective.
 \end{exer}
@@ -517,7 +543,7 @@ Therefore \(\pi\)~is a coequalizer of \(f\)~and~\(g\).
 In the category~\(\Sets\):
 \begin{enumerate}[itemsep=0pt]
 \item[(a)] If \(f:A\to B\) and
-\[A\xleftarrow{p_1}A\times A\xrightarrow{p_2}A\]
+\[A\lTo^{p_1}A\times A\rTo^{p_2}A\]
 then the equalizer of \(f\after p_1\)~and~\(f\after p_2\) is an equivalence relation on~\(A\), called the \emph{kernel} of~\(f\).
 \item[(b)] If \(R\)~is an equivalence relation on~\(A\) and \(\pi:A\to A/R\) is the projection \(x\mapsto[x]\), then \(\ker\pi=R\).
 \item[(c)] If \(R\)~is a binary relation on~\(A\) and \(\gen{R}\)~is the equivalence relation on~\(A\) generated by~\(R\), then the projection \(\pi:A\to A/\gen{R}\) is a coequalizer of the projections \(p_1,p_2:R\to A\).
