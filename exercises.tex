@@ -17,6 +17,7 @@
 \DeclareMathOperator{\fst}{fst}
 \DeclareMathOperator{\snd}{snd}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sub}{Sub}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
@@ -41,6 +42,8 @@
 \newcommand{\Pos}{\cat{Pos}}
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
+
+\newcommand{\obj}{{\cdot}}
 
 % Arrows
 \newarrow{Mono} >--->
@@ -651,6 +654,67 @@ Therefore \(F(f)\eq G(f)\) for all \(f\in\C\).\footnote{In fact, \(\eq\)~is the 
 
 Let \(P:\D\to\D/{\eq}\) be the projection functor \(f\mapsto[f]\). Then \(PF\)~and~\(PG\) agree on objects since \(F\)~and~\(G\) do, and \(PF\)~and~\(PG\) agree on arrows since \(F(f)\eq G(f)\) for all \(f\in\C\). Therefore \(PF=PG\). If \(H:\D\to\E\) is any functor with \(HF=HG\), then \(H\)~respects the congruence by definition of the congruence, so the functor \(\overline{H}:\D/{\eq}\to\E\) given by \([f]\mapsto H(f)\) is well defined with \(\overline{H}P=H\). Moreover, \(\overline{H}\)~is unique in this regard since \(P\)~is epic.
 \end{proof}
+
+\section*{Chapter~5}
+\begin{exer}[1]
+Let \(\C\)~be a category and \(X\in\C\). A pullback in~\(\C\) over~\(X\) is just a product in~\(\C/X\).
+\end{exer}
+\begin{proof}
+This follows directly from the universal mapping properties. Alternately, we know (Example~5.20) that a pullback is a limit of a diagram of this type:
+\begin{diagram}
+	&		&\obj\\
+	&		&\dTo\\
+\obj&\rTo	&\obj
+\end{diagram}
+Similarly (Example~5.17), a product is a limit of a diagram of this type:
+\[\obj\qquad\obj\]
+A diagram of the former type in~\(\C\) over~\(X\) is just a diagram of the latter type in~\(\C/X\), so the limits coincide.
+\end{proof}
+
+\begin{exer}[3]
+A pullback of a mono is a mono.
+\end{exer}
+\begin{proof}
+Suppose \(m:M\mono A\) is a mono and \(m':M'\to A'\) is a pullback of~\(m\) along \(f:A'\to A\). Further suppose \(x,y:X\to M'\) with \(m'x=m'y\):
+\begin{diagram}
+X	&\pile{\rTo^x\\\rTo_y}	&M'			&\rTo^{f'}	&M\\
+	&\rdTo					&\dTo<{m'}	&			&\dMono>m\\
+	&						&A'			&\rTo_f		&A
+\end{diagram}
+Then
+\[m(f'x)=(mf')x=(fm')x=f(m'x)=f(m'y)=(fm')y=(mf')y=m(f'y)\]
+It follows that \(f'x=f'y\) since \(m\)~is monic. Set \(g=m'x=m'y\) and \(h=f'x=f'y\). Since \(M'\)~is a pullback, there is a unique \(z:X\to M'\) with \(m'z=g\) and \(f'z=h\), and since \(x\)~and~\(y\) both satisfy these equations, it follows that \(x=y\). Therefore \(m'\)~is monic as desired.
+\end{proof}
+
+\begin{exer}[4]
+Let \(\C\)~be a category, \(A\in\C\), and \(M,N\in\Sub_{\C}(A)\). Then
+\[M\subseteq N\iff\forall z:Z\to A\ (z\in_A M\implies z\in_A N)\]
+\end{exer}
+\begin{proof}
+If \(M\subseteq N\), let \(i:M\to N\) satisfy \(m=ni\). For \(z:Z\to A\) with \(z\in_A M\), let \(\overline{z}:Z\to M\) satisfy \(z=m\overline{z}\):
+\begin{diagram}[nohug]
+Z	&\rTo^{\overline{z}}&M			&\rTo^i		&N\\
+	&\rdTo_z			&\dMono>m	&\ldMono>n	&\\
+	&					&A			&			&
+\end{diagram}
+Then
+\[z=m\overline{z}=(ni)\overline{z}=n(i\overline{z})\]
+So \(i\overline{z}:Z\to N\) witnesses \(z\in_A N\).
+
+Conversely, if \(z\in_A M\) implies \(z\in_A N\), then since \(m\in_A M\) trivially (\(m=m1_A\)), we have \(m\in_A N\). This means there is \(i:M\to N\) with \(m=ni\), so \(M\subseteq N\).
+\end{proof}
+
+\begin{exer}[5]
+Let \(\C\)~be a category, \(A\in\C\), and \(M,N\in\Sub_{\C}(A)\). Then
+\[M\equiv N\iff\forall z:Z\to A\ (z\in_A M\iff z\in_A N)\]
+\end{exer}
+\begin{proof}
+This is immediate from Exercise~4.
+\end{proof}
+
+\begin{rmk}
+The previous two results justify the abuse of subset notation for subobjects through the abuse of set membership notation for generalized elements. 
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
