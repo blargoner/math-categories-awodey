@@ -18,6 +18,7 @@
 \DeclareMathOperator{\snd}{snd}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\Diagrams}{\mathbf{Diagrams}}
 
 \newcommand{\limit}{\varprojlim}
 \newcommand{\colimit}{\varinjlim}
@@ -713,7 +714,7 @@ Let \(\C\)~be a category, \(A\in\C\), and \(M,N\in\Sub_{\C}(A)\). Then
 \[M\equiv N\iff\forall z:Z\to A\ (z\in_A M\iff z\in_A N)\]
 \end{exer}
 \begin{proof}
-This is immediate from Exercise~4.
+Immediate from Exercise~4.
 \end{proof}
 
 \begin{rmk}
@@ -761,9 +762,39 @@ We must show there is a unique \(u:X\to H(\limit_j D_j)\) in~\(\Sets\) with \(x_
 		&\ldTo<{x_i(x)}	&					&\rdTo>{x_j(x)}	&\\
 D_i		&				&\rTo_{D_{\alpha}}	&				&D_j
 \end{diagram}
-Let \(u(x)\)~be the unique \(v:C\to\lim_j D_j\) in~\(\C\) with \(x_j(x)=p_jv\). Then for \(x\in X\),
-\[(H(p_j)u)(x)=H(p_j)(u(x))=H(p_j)(v)=p_jv=x_j(x)\]
+Let \(u(x)\)~be the unique \(C\to\lim_j D_j\) in~\(\C\) with \(x_j(x)=p_ju(x)\). Then for \(x\in X\),
+\[(H(p_j)u)(x)=H(p_j)(u(x))=p_ju(x)=x_j(x)\]
 So \(H(p_j)u=x_j\). Moreover, if \(u':X\to H(\limit_j D_j)\) in~\(\Sets\) satisfies \(x_j=H(p_j)u'\), then for \(x\in X\), \(u'(x):C\to\limit_j D_j\) in~\(\C\) with \(x_j(x)=H(p_j)u'(x)\), so \(u'(x)=u(x)\) by uniqueness of~\(u(x)\). Therefore \(u'=u\), so \(u\)~is unique as needed.
+\end{proof}
+
+\begin{exer}[9]
+Let \(\C\)~be a category with limits of type~\(\J\). There exists a category \(\Diagrams(\J,\C)\) of diagrams of type~\(\J\) in~\(\C\), and a limit functor
+\[\limit_{\J}:\Diagrams(\J,\C)\to\C\]
+In particular, there exists a product functor
+\[\prod_{i\in I}:\Sets^{I}\to\Sets\]
+for \(I\)-indexed families of sets.
+\end{exer}
+\begin{proof}
+The objects in \(\Diagrams(\J,\C)\) are functors \(F:\J\to\C\), and the arrows are natural transformations between those functors.\footnote{In other words, \(\Diagrams(\J,\C)\) is just the functor category~\(\C^{\J}\).} More specifically, an arrow \(\theta:F\to G\) between \(F:\J\to\C\) and \(G:\J\to\C\) is a family of arrows \(\theta_j:Fj\to Gj\) for each \(j\in\J\) such that for \(\alpha:i\to j\in\J\), this square commutes:
+\begin{diagram}
+Fi&\rTo^{\theta_i}&Gi\\
+\dTo<{F\alpha}&&\dTo>{G\alpha}\\
+Fj&\rTo_{\theta_j}&Gj
+\end{diagram}
+The identity~\(1_F\) consists of the identity arrows~\(1_{Fj}\) for \(j\in\J\). If \(\theta:F\to G\) and \(\lambda:G\to H\), then \(\lambda\theta:F\to H\) consists of the composite arrows~\(\lambda_j\theta_j\) for \(j\in\J\). Indeed, the diagrams involved obviously commute, and associativity and unity of composition are inherited from~\(\C\).
+
+For \(F:\J\to\C\), let \(\limit F\)~be the vertex of the limit of~\(F\) in~\(\C\). For \(\theta:F\to G\), let \(f_j:\limit F\to Fj\) and \(g_j:\limit G\to Gj\) in~\(\C\) and observe that \(\theta_jf_j:\limit F\to Gj\) is a cone to~\(G\) in~\(\C\). Let \(\limit \theta\)~be the unique \(u_{\theta}:\limit F\to\limit G\) in~\(\C\) such that \(\theta_jf_j=g_ju_{\theta}\). We claim \(\limit\)~is a functor. Indeed, it clearly maps objects to objects and arrows to arrows and preserves domains and codomains of arrows. It is also clear that \(\limit 1_F=1_{\limit F}\). If \(\theta:F\to G\) and \(\lambda:G\to H\), then \(\limit\lambda\theta\) is the unique \(u_{\lambda\theta}:\limit F\to\limit H\) such that \(\lambda_j\theta_j f_j=h_ju_{\lambda\theta}\). Now \(u_{\lambda}u_{\theta}:\limit F\to\limit H\) and it follows from \(\theta_jf_j=g_ju_{\theta}\) and \(\lambda_jg_j=h_ju_{\lambda}\) that \(\lambda_j\theta_jf_j=h_ju_{\lambda}u_{\theta}\). Therefore \(u_{\lambda\theta}=u_{\lambda}u_{\theta}\) by uniqueness of~\(u_{\lambda\theta}\), that is, \(\limit\lambda\theta=(\limit\lambda)(\limit\theta)\), as desired.
+
+Now viewing the set~\(I\) as a discrete category, an \(I\)-indexed family of sets is just a diagram of type~\(I\) in~\(\Sets\), and in this case the limit is just the product. Hence \(\prod\)~is a functor by the above.
+\end{proof}
+
+\begin{exer}[12]
+In~\(\Pos\), let \([n]=\{0\le\cdots\le n\}\), let \([n]\to[n+1]\) be inclusion, and let the sequence \(S:\omega\to\Pos\) be given by
+\[[0]\to[1]\to\cdots[n]\to[n+1]\to\cdots\]
+Then \(\limit S=[0]\) and \(\colimit S=\omega\).
+\end{exer}
+\begin{proof}
+Immediate from definitions.
 \end{proof}
 
 % References
