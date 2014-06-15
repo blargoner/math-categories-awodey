@@ -19,6 +19,9 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Sub}{Sub}
 
+\newcommand{\limit}{\varprojlim}
+\newcommand{\colimit}{\varinjlim}
+
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
 \newcommand{\comp}[1]{\overline{#1}}
@@ -33,6 +36,7 @@
 \newcommand{\C}{\cat{C}}
 \newcommand{\D}{\cat{D}}
 \newcommand{\E}{\cat{E}}
+\newcommand{\J}{\cat{J}}
 \newcommand{\Cop}{\dual{\C}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Sets}{\cat{Sets}}
@@ -715,6 +719,52 @@ This is immediate from Exercise~4.
 \begin{rmk}
 The previous two results justify the abuse of subset notation for subobjects through the abuse of set membership notation for generalized elements. 
 \end{rmk}
+
+\begin{exer}[6]
+Let \(\C\)~be a category with products and pullbacks. Then \(\C\)~has equalizers.
+\end{exer}
+\begin{proof}
+Given \(f,g:A\to B\), construct this pullback:
+\begin{diagram}
+E		&\rTo^h				&B\\
+\dTo<e	&					&\dTo>{\pair{1_B}{1_B}}\\
+A		&\rTo_{\pair{f}{g}}	&B\times B
+\end{diagram}
+We claim that \(e:E\to A\) is an equalizer of \(f\)~and~\(g\). Indeed, since the diagram commutes,
+\[\pair{fe}{ge}=\pair{f}{g}e=\pair{1_B}{1_B}h=\pair{h}{h}\]
+Therefore \(fe=ge\). And if \(z:Z\to A\) with \(fz=gz\), then this square commutes:
+\begin{diagram}
+Z		&\rTo^{fz=gz}		&B\\
+\dTo<z	&					&\dTo>{\pair{1_B}{1_B}}\\
+A		&\rTo_{\pair{f}{g}}	&B\times B
+\end{diagram}
+Since \(E\)~is a pullback, there exists a unique \(u:Z\to E\) with \(z=eu\).
+\end{proof}
+
+\begin{exer}[7]
+Let \(\C\)~be a locally small category with all small limits and \(C\in\C\). Then the representable functor
+\[\Hom_{\C}(C,-):\C\to\Sets\]
+is continuous.
+\end{exer}
+\begin{proof}
+We prove this directly from the definition of limit, not using products and equalizers.\footnote{Compare the proof of Proposition~5.25.}
+
+Write \(H=\Hom_{\C}(C,-)\). Let \(D:\J\to\C\) be a diagram of type~\(\J\) in~\(\C\), and let \(p_j:\limit_j D_j\to D_j\) be a limit for~\(D\) in~\(\C\). We claim \(H(p_j):H(\limit_j D_j)\to H(D_j)\) is a limit for~\(HD\) in~\(\Sets\). Indeed, clearly it is a cone to~\(HD\) in~\(\Sets\) since \(H\)~is a functor. Suppose \((X,x_j)\)~is a cone to~\(HD\) in~\(\Sets\), so the arrows \(x_j:X\to H(D_j)\) form commutative triangles of the following form for \(\alpha:i\to j\) in~\(\J\):
+\begin{diagram}[nohug]
+		&			&X						&			&\\
+		&\ldTo<{x_i}&						&\rdTo>{x_j}&\\
+H(D_i)	&			&\rTo_{H(D_{\alpha})}	&			&H(D_j)
+\end{diagram}
+We must show there is a unique \(u:X\to H(\limit_j D_j)\) in~\(\Sets\) with \(x_j=H(p_j)u\). To this end, observe that for \(x\in X\), \((C,x_j(x))\)~is a cone to~\(D\) in~\(\C\). Indeed, from the above diagram it follows that for \(j\in\J\), \(x_j(x):C\to D_j\) in~\(\C\) and for \(\alpha:i\to j\in\J\), this diagram commutes:
+\begin{diagram}[nohug]
+		&				&C					&				&\\
+		&\ldTo<{x_i(x)}	&					&\rdTo>{x_j(x)}	&\\
+D_i		&				&\rTo_{D_{\alpha}}	&				&D_j
+\end{diagram}
+Let \(u(x)\)~be the unique \(v:C\to\lim_j D_j\) in~\(\C\) with \(x_j(x)=p_jv\). Then for \(x\in X\),
+\[(H(p_j)u)(x)=H(p_j)(u(x))=H(p_j)(v)=p_jv=x_j(x)\]
+So \(H(p_j)u=x_j\). Moreover, if \(u':X\to H(\limit_j D_j)\) in~\(\Sets\) satisfies \(x_j=H(p_j)u'\), then for \(x\in X\), \(u'(x):C\to\limit_j D_j\) in~\(\C\) with \(x_j(x)=H(p_j)u'(x)\), so \(u'(x)=u(x)\) by uniqueness of~\(u(x)\). Therefore \(u'=u\), so \(u\)~is unique as needed.
+\end{proof}
 
 % References
 \begin{thebibliography}{0}
