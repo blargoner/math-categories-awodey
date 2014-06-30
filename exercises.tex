@@ -5,11 +5,15 @@
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\iso}{\cong}
+\newcommand{\eq}{\sim}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 
+\newcommand{\obj}{{\cdot}}
 \newcommand{\after}{\circ}
-\newcommand{\eq}{\sim}
+\newcommand{\limit}{\varprojlim}
+\newcommand{\colimit}{\varinjlim}
+\newcommand{\eval}{\epsilon}
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -19,9 +23,6 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Sub}{Sub}
 \DeclareMathOperator{\Diagrams}{\mathbf{Diagrams}}
-
-\newcommand{\limit}{\varprojlim}
-\newcommand{\colimit}{\varinjlim}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
@@ -33,6 +34,8 @@
 \newcommand{\arr}[1]{#1^{\rightarrow}}
 \newcommand{\under}[1]{|{#1}|}
 \newcommand{\gen}[1]{\langle{#1}\rangle}
+\newcommand{\curry}[1]{\tilde{#1}}
+\newcommand{\uncurry}[1]{\overline{#1}}
 
 \newcommand{\C}{\cat{C}}
 \newcommand{\D}{\cat{D}}
@@ -47,8 +50,6 @@
 \newcommand{\Pos}{\cat{Pos}}
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
-
-\newcommand{\obj}{{\cdot}}
 
 % Arrows
 \newarrow{Mono} >--->
@@ -795,6 +796,52 @@ Then \(\limit S=[0]\) and \(\colimit S=\omega\).
 \end{exer}
 \begin{proof}
 Immediate from definitions.
+\end{proof}
+
+\section*{Chapter~6}
+\begin{exer}[2]
+Let \(\C\)~be a cartesian closed category and \(A,B,C\in\C\).
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] \((A\times B)^C\iso A^C\times B^C\)
+\item[(b)] \((A^B)^C\iso A^{B\times C}\)
+\end{enumerate}
+\end{exer}
+\begin{proof}\
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] We prove that \(A^C\times B^C\)~is an exponential for \(A\times B\)~and~\(C\), from which the isomorphism follows by uniqueness of exponentials under the universal mapping property.
+
+Let \(\eval_A:A^C\times C\to A\) and \(\eval_B:B^C\times C\to B\) be evaluation arrows, and let
+\begin{align*}
+\pi:(A^C\times B^C)\times(C\times C)&\iso(A^C\times C)\times(B^C\times C)\\
+	\pair{\pair{w}{x}}{\pair{y}{z}}&\mapsto\pair{\pair{w}{y}}{\pair{x}{z}}
+\end{align*}
+for generalized elements \(w,x,y,z\). Observe
+\[\pi:\pair{w}{x}\times\pair{y}{z}\mapsto\pair{w\times y}{x\times z}\]
+Define \(\eval:(A^C\times B^C)\times C\to A\times B\) by
+\[\eval=(\eval_A\times\eval_B)\after\pi\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\]
+We claim \((A^C\times B^C,\eval)\)~is an exponential for \(A\times B\)~and~\(C\); that is, for all \(f:Z\times C\to A\times B\), there is a unique \(\curry{f}:Z\to A^C\times B^C\) such that \(\eval\after(\curry{f}\times1_C)=f\):
+\begin{diagram}[nohug]
+A^C\times B^C	&&(A^C\times B^C)\times C	&\rTo^{\eval}	&A\times B\\
+\uTo<{\curry{f}}	&&\uTo<{\curry{f}\times1_C}		&\ruTo>f		&\\
+Z				&&Z\times C					&				&
+\end{diagram}
+Indeed, suppose \(f:Z\times C\to A\times B\). Let \(f_1=p_1\after f\) and \(f_2=p_2\after f\):
+\begin{diagram}[nohug]
+&&Z\times C&&\\
+&\ldTo<{f_1}&\dTo>f&\rdTo>{f_2}&\\
+A&\lTo^{p_1}&A\times B&\rTo^{p_2}&B
+\end{diagram}
+Then there exist unique \(\curry{f_1}:Z\to A^C\) and \(\curry{f_2}:Z\to B^C\) with \(\eval_A\after(\curry{f_1}\times1_C)=f_1\) and \(\eval_B\after(\curry{f_2}\times1_C)=f_2\). Define \(\curry{f}=\pair{\curry{f_1}}{\curry{f_2}}:Z\to A^C\times B^C\). Then
+\begin{align*}
+\eval\after(\curry{f}\times1_C)&=(\eval_A\times\eval_B)\after\pi\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\after(\pair{\curry{f_1}}{\curry{f_2}}\times1_C)\\
+	&=(\eval_A\times\eval_B)\after\pi\after(\pair{\curry{f_1}}{\curry{f_2}}\times\pair{1_C}{1_C})\\
+	&=(\eval_A\times\eval_B)\after\pair{\curry{f_1}\times1_C}{\curry{f_2}\times1_C}\\
+	&=\pair{\eval_A\after(\curry{f_1}\times1_C)}{\eval_B\after(\curry{f_2}\times1_C)}\\
+	&=\pair{f_1}{f_2}\\
+	&=f
+\end{align*}
+Finally, \(\curry{f}\)~is unique in satisfying this property since \(\curry{f_1}\)~and~\(\curry{f_2}\) are unique. This establishes the claim.
+\end{enumerate}
 \end{proof}
 
 % References
