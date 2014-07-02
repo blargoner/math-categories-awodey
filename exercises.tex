@@ -34,7 +34,7 @@
 \newcommand{\arr}[1]{#1^{\rightarrow}}
 \newcommand{\under}[1]{|{#1}|}
 \newcommand{\gen}[1]{\langle{#1}\rangle}
-\newcommand{\curry}[1]{\tilde{#1}}
+\newcommand{\curry}[1]{\lambda{#1}}
 \newcommand{\uncurry}[1]{\overline{#1}}
 
 \newcommand{\C}{\cat{C}}
@@ -841,6 +841,27 @@ Then there exist unique \(\curry{f_1}:Z\to A^C\) and \(\curry{f_2}:Z\to B^C\) wi
 	&=f
 \end{align*}
 Finally, \(\curry{f}\)~is unique in satisfying this property since \(\curry{f_1}\)~and~\(\curry{f_2}\) are unique. This establishes the claim.
+\item[(b)] We exhibit isomorphisms between \((A^B)^C\)~and~\(A^{B\times C}\) directly. Define \(g:(A^B)^C\to A^{B\times C}\) and \(h:A^{B\times C}\to(A^B)^C\) by
+\[g=\curry{(\uncurry{\eval}\after\alpha)}\qquad h=\curry{\curry{(\eval\after\inv{\alpha})}}\]
+where \(\alpha:Z\times(B\times C)\iso(Z\times C)\times B\).\footnote{We do not distinguish notationally between the different evaluation, transpose, inverse transpose, and isomorphism arrows involved. However, the context makes clear which ones are intended.} We claim that \(g\)~and~\(h\) are mutually inverse, from which it follows that they are isomorphisms.
+
+By the universal mapping property for exponentials applied twice,
+\[h\after g=1_{(A^B)^C}\iff\eval\after((\eval\after((h\after g)\times 1_C))\times 1_B)=\eval\after(\eval\times 1_B)\]
+Observe
+\begin{align*}
+\eval\after((\eval\after((h\after g)\times 1_C))\times 1_B)&=\eval\after((\eval\after(h\times1_C)\after(g\times1_C))\times 1_B)\\
+	&=\eval\after((\uncurry{h}\after(g\times1_C))\times 1_B)\\
+	&=\eval\after(\uncurry{h}\times1_B)\after((g\times1_C)\times1_B)\\
+	&=\uncurry{\uncurry{h}}\after((g\times1_C)\times1_B)\\
+	&=\eval\after\inv{\alpha}\after((g\times1_C)\times1_B)\\
+	&=\eval\after\inv{\alpha}\after\alpha(g\times(1_B\times1_C))\after\inv{\alpha}\\
+	&=\eval\after(g\times1_{B\times C})\after\inv{\alpha}\\
+	&=\uncurry{g}\after\inv{\alpha}\\
+	&=\uncurry{\eval}\after\alpha\after\inv{\alpha}\\
+	&=\uncurry{\eval}\\
+	&=\eval\after(\eval\times1_B)
+\end{align*}
+Therefore \(h\after g=1_{(A^B)^C}\). Similarly \(g\after h=1_{A^{B\times C}}\). So \(g\)~and~\(h\) are mutually inverse as claimed.\qedhere
 \end{enumerate}
 \end{proof}
 
