@@ -14,6 +14,7 @@
 \newcommand{\limit}{\varprojlim}
 \newcommand{\colimit}{\varinjlim}
 \newcommand{\eval}{\epsilon}
+\newcommand{\term}{{!}}
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -799,6 +800,45 @@ Immediate from definitions.
 \end{proof}
 
 \section*{Chapter~6}
+\begin{rmk}
+If \(\C\)~and~\(\D\) are cartesian closed categories, then so is~\(\C\times\D\). Moreover, the terminal object, products, and exponentials (including the evaluation and transpose maps for exponentials) are all computed pointwise.
+\end{rmk}
+\begin{proof}
+Let \(1_{\C}\)~be terminal in~\(\C\) and \(1_{\D}\)~be terminal in~\(\D\). Then for \((C,D)\in\C\times\D\), \((\term_C,\term_D):(C,D)\to(1_{\C},1_{\D})\) is unique, so \(1_{\C\times\D}=(1_{\C},1_{\D})\)~is terminal in~\(\C\times\D\).
+
+Suppose \((A,B),(C,D)\in\C\times\D\). Then \((A\times C,B\times D)\in\C\times\D\) and
+\[(A,B)\lTo^{(p_1,p_1)}(A\times C,B\times D)\rTo^{(p_2,p_2)}(C,D)\]
+For \(f:(X,Y)\to(A,B)\) and \(g:(X,Y)\to(C,D)\), define
+\[\pair{f}{g}=\bigl(\pair{f_1}{g_1},\pair{f_2}{g_2}\bigr):(X,Y)\to(A\times C,B\times D)\]
+Then
+\[(p_1,p_1)\after\pair{f}{g}=(f_1,f_2)=f\quad\text{and}\quad(p_2,p_2)\after\pair{f}{g}=(g_1,g_2)=g\]
+Conversely, for any \(h:(X,Y)\to(A\times C,B\times D)\),
+\begin{align*}
+\pair{(p_1,p_1)\after h}{(p_2,p_2)\after h}&=\pair{(p_1\after h_1,p_1\after h_2)}{(p_2\after h_1,p_2\after h_2)}\\
+	&=\bigl(\pair{p_1\after h_1}{p_2\after h_1},\pair{p_1\after h_2}{p_2\after h_2}\bigr)\\
+	&=(h_1,h_2)\\
+	&=h
+\end{align*}
+Therefore \((A,B)\times(C,D)=(A\times C,B\times D)\) is a product in~\(\C\times\D\).
+
+We claim \((C^A,D^B)\)~is an exponential for \((A,B)\)~and~\((C,D)\) in~\(\C\times\D\). Indeed, let \(\eval_{C^A}:C^A\times A\to C\) and \(\eval_{D^B}:D^B\times B\to D\) be evaluation arrows in \(\C\)~and~\(\D\) respectively and define
+\[\eval=(\eval_{C^A},\eval_{D^B}):(C^A,D^B)\times(A,B)\to(C,D)\]
+For \(f:(X,Y)\times(A,B)\to(C,D)\), \(f_1:X\times A\to C\) and \(f_2:Y\times B\to D\), so \(\curry{f_1}:X\to C^A\) and \(\curry{f_2}:Y\to D^B\). Define
+\[\curry{f}=(\curry{f_1},\curry{f_2}):(X,Y)\to(C^A,D^B)\]
+Then
+\begin{align*}
+\eval\after(\curry{f}\times 1_{(A,B)})&=(\eval_{C^A},\eval_{D^B})\after((\curry{f_1},\curry{f_2})\times(1_A,1_B))\\
+	&=(\eval_{C^A},\eval_{D^B})\after(\curry{f_1}\times1_A,\curry{f_2}\times1_B)\\
+	&=(f_1,f_2)\\
+	&=f
+\end{align*}
+Conversely, for \(h:(X,Y)\to(C^A,D^B)\),
+\[\uncurry{h}=\eval\after(h\times1_{(A,B)})=(\eval_{C^A},\eval_{D^B})\after(h_1\times1_A,h_2\times1_B)=(\uncurry{h_1},\uncurry{h_2})\]
+So
+\[\curry{\uncurry{h}}=\curry{(\uncurry{h_1},\uncurry{h_2})}=(\curry{\uncurry{h_1}},\curry{\uncurry{h_2}})=(h_1,h_2)=h\]
+Therefore \((C,D)^{(A,B)}=(C^A,D^B)\) is an exponential in~\(\C\times\D\) as claimed.
+\end{proof}
+
 \begin{exer}[2]
 Let \(\C\)~be a cartesian closed category and \(A,B,C\in\C\).
 \begin{enumerate}[itemsep=0pt]
@@ -812,13 +852,13 @@ Let \(\C\)~be a cartesian closed category and \(A,B,C\in\C\).
 
 Let \(\eval_A:A^C\times C\to A\) and \(\eval_B:B^C\times C\to B\) be evaluation arrows, and let
 \begin{align*}
-\pi:(A^C\times B^C)\times(C\times C)&\iso(A^C\times C)\times(B^C\times C)\\
+\alpha:(A^C\times B^C)\times(C\times C)&\iso(A^C\times C)\times(B^C\times C)\\
 	\pair{\pair{w}{x}}{\pair{y}{z}}&\mapsto\pair{\pair{w}{y}}{\pair{x}{z}}
 \end{align*}
 for generalized elements \(w,x,y,z\). Observe
-\[\pi:\pair{w}{x}\times\pair{y}{z}\mapsto\pair{w\times y}{x\times z}\]
+\[\alpha:\pair{w}{x}\times\pair{y}{z}\mapsto\pair{w\times y}{x\times z}\]
 Define \(\eval:(A^C\times B^C)\times C\to A\times B\) by
-\[\eval=(\eval_A\times\eval_B)\after\pi\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\]
+\[\eval=(\eval_A\times\eval_B)\after\alpha\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\]
 We claim \((A^C\times B^C,\eval)\)~is an exponential for \(A\times B\)~and~\(C\); that is, for all \(f:Z\times C\to A\times B\), there is a unique \(\curry{f}:Z\to A^C\times B^C\) such that \(\eval\after(\curry{f}\times1_C)=f\):
 \begin{diagram}[nohug]
 A^C\times B^C	&&(A^C\times B^C)\times C	&\rTo^{\eval}	&A\times B\\
@@ -833,8 +873,8 @@ A&\lTo^{p_1}&A\times B&\rTo^{p_2}&B
 \end{diagram}
 Then there exist unique \(\curry{f_1}:Z\to A^C\) and \(\curry{f_2}:Z\to B^C\) with \(\eval_A\after(\curry{f_1}\times1_C)=f_1\) and \(\eval_B\after(\curry{f_2}\times1_C)=f_2\). Define \(\curry{f}=\pair{\curry{f_1}}{\curry{f_2}}:Z\to A^C\times B^C\). Then
 \begin{align*}
-\eval\after(\curry{f}\times1_C)&=(\eval_A\times\eval_B)\after\pi\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\after(\pair{\curry{f_1}}{\curry{f_2}}\times1_C)\\
-	&=(\eval_A\times\eval_B)\after\pi\after(\pair{\curry{f_1}}{\curry{f_2}}\times\pair{1_C}{1_C})\\
+\eval\after(\curry{f}\times1_C)&=(\eval_A\times\eval_B)\after\alpha\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\after(\pair{\curry{f_1}}{\curry{f_2}}\times1_C)\\
+	&=(\eval_A\times\eval_B)\after\alpha\after(\pair{\curry{f_1}}{\curry{f_2}}\times\pair{1_C}{1_C})\\
 	&=(\eval_A\times\eval_B)\after\pair{\curry{f_1}\times1_C}{\curry{f_2}\times1_C}\\
 	&=\pair{\eval_A\after(\curry{f_1}\times1_C)}{\eval_B\after(\curry{f_2}\times1_C)}\\
 	&=\pair{f_1}{f_2}\\
@@ -864,6 +904,107 @@ Observe
 Therefore \(h\after g=1_{(A^B)^C}\). Similarly \(g\after h=1_{A^{B\times C}}\). So \(g\)~and~\(h\) are mutually inverse as claimed.\qedhere
 \end{enumerate}
 \end{proof}
+\begin{rmk}
+In~\(\Sets\), this exercise (circuitously) justifies the familiar exponent laws \((ab)^c=a^cb^c\) and \((a^b)^c=a^{bc}\) for \(a,b,c\in\N\).
+\end{rmk}
+
+\begin{exer}[4]
+\(\Mon\)~is not cartesian closed.
+\end{exer}
+\begin{proof}
+Suppose \(\Mon\)~is cartesian closed. Let \(M\)~and~\(N\) be any monoids with distinct homomorphisms \(f,g:M\to N\) (for example, take \(M=N=(\N,+)\), \(f=0\), and \(g=1\)). Define
+\begin{align*}
+f':1\times M&\to N&g':1\times M&\to N\\
+(0,m)&\mapsto f(m)&(0,m)&\mapsto g(m)
+\end{align*}
+Then clearly \(f'\)~and~\(g'\) are also distinct homomorphisms. By assumption there is an exponential~\(N^M\) and transpose homomorphisms
+\[\curry{f'}:1\to N^M\qquad\text{and}\qquad\curry{g'}:1\to N^M\]
+However since \(N^M\)~is a monoid, there is only one homomorphism \(1\to N^M\) (the identity element must be mapped to the identity element), so we must have \(\curry{f'}=\curry{g'}\). Therefore
+\[f'=\uncurry{\curry{f'}}=\uncurry{\curry{g'}}=g'\]
+---contradicting that \(f'\ne g'\).\footnote{See also Exercise~9.}
+\end{proof}
+
+\begin{exer}[9]
+Let \(\C\)~be a cartesian closed category and \(A,B\in\C\). Then there is a bijective correspondence between arrows \(A\to B\) and arrows \(1\to B^A\).
+\end{exer}
+\begin{proof}
+This follows from
+\[\Hom_{\C}(A,B)\iso\Hom_{\C}(1\times A,B)\iso\Hom_{\C}(1,B^A)\]
+The second isomorphism follows from the definition of the exponential. For the first isomorphism, let
+\[1\lTo^{\term_{1\times A}}1\times A\rTo^p A\]
+be projections, and let \(q=\pair{\term_A}{1_A}:A\to1\times A\). Then \(p\after q=1_A\), and conversely
+\[q\after p=\pair{\term_A}{1_A}\after p=\pair{\term_A\after p}{p}=\pair{\term_{1\times A}}{p}=1_{1\times A}\]
+Now define \(P:\Hom_{\C}(A,B)\to\Hom_{\C}(1\times A,B)\) by \(P(f)=f\after p:1\times A\to B\) for \(f:A\to B\), and define \(Q:\Hom_{\C}(1\times A,B)\to\Hom_{\C}(A,B)\) by \(Q(g)=g\after q:A\to B\) for \(g:1\times A\to B\). Then
+\[(Q\after P)(f)=Q(P(f))=Q(f\after p)=(f\after p)\after q=f\after(p\after q)=f\after1_A=f\]
+and
+\[(P\after Q)(g)=P(Q(g))=P(g\after q)=(g\after q)\after p=g\after(q\after p)=g\after1_{1\times A}=g\]
+Therefore \(Q\after P=1_{\Hom_{\C}(A,B)}\) and \(P\after Q=1_{\Hom_{\C}(1\times A,B)}\), so \(P\)~and~\(Q\) are mutually inverse and hence bijective.
+\end{proof}
+
+\begin{exer}[12]
+Let \(\C\)~be a cartesian closed category and \(C\in\C\). Exponentiation with base object~\(C\) gives a contravariant functor \(C^{(-)}:\dual{\C}\to\C\).
+\end{exer}
+\begin{proof}
+For objects \(A\in\C\), define \(C^{(-)}(A)=C^A\). For arrows \(f:A\to B\) in~\(\C\), define
+\[C^{(-)}(f)=C^f=\curry{(\eval_{C^B}\after(1_{C^B}\times f))}:C^B\to C^A\]
+where \(\eval_{C^B}:C^B\times B\to C\) is evaluation, so the following diagram commutes:
+\begin{diagram}
+C^B\times B				&\rTo^{\eval_{C^B}}		&C\\
+\uTo<{1_{C^B}\times f}	&						&\uTo>{\eval_{C^A}}\\
+C^B\times A				&\rTo_{C^f\times 1_A}	&C^A\times A
+\end{diagram}
+Then \(C^{(-)}\)~maps objects to objects and arrows to arrows and preserves domains and codomains of arrows in~\(\dual{\C}\). Also
+\[C^{1_A}=\curry{(\eval_{C^A}\after(1_{C^A}\times1_A))}=\curry{(\eval_{C^A}\after1_{C^A\times A})}=\curry{\eval_{C^A}}=1_{C^A}\]
+so \(C^{(-)}\)~preserves identities. If \(f:X\to Y\) and \(g:Y\to Z\), then the following diagram commutes (the upper left and lower right inner squares are just the squares above for \(g\)~and~\(f\), respectively, and the other two inner squares are trivial):
+\begin{diagram}
+C^Z\times Z				&\rTo^{\eval_{C^Z}}	&C						&\rTo^{1_C}			&C\\
+\uTo<{1_{C^Z}\times g}	&					&\uTo>{\eval_{C^Y}}		&					&\uTo>{1_C}\\
+C^Z\times Y				&\rTo_{C^g\times1_Y}	&C^Y\times Y			&\rTo_{\eval_{C^Y}}	&C\\
+\uTo<{1_{C^Z}\times f}	&					&\uTo>{1_{C^Y}\times f}	&					&\uTo>{\eval_{C^X}}\\
+C^Z\times X				&\rTo_{C^g\times1_X}	&C^Y\times X			&\rTo_{C^f\times1_X}&C^X\times X
+\end{diagram}
+On the left we have
+\[(1_{C^Z}\times g)\after(1_{C^Z}\times f)=1_{C^Z}\times(g\after f)\]
+On the bottom we have
+\[(C^f\times1_X)\after(C^g\times1_X)=(C^f\after C^g)\times1_X\]
+Commutativity of the diagram therefore implies
+\[\uncurry{C^{g\after f}}=\eval_{C^Z}\after(1_{C^Z}\times(g\after f))=\eval_{C^X}\after((C^f\after C^g)\times1_X)=\uncurry{C^f\after C^g}\]
+It follows that \(C^{g\after f}=C^f\after C^g\) and hence \(C^{(-)}\)~preserves composites in~\(\dual{\C}\). This completes the proof that \(C^{(-)}\)~is a contravariant functor.
+\end{proof}
+
+\begin{exer}[13]
+Let \(\C\)~be a cartesian closed category with coproducts and \(A,B,C\in\C\). Then
+\[(A+B)\times C\iso(A\times C)+(B\times C)\]
+\end{exer}
+\begin{proof}
+We prove that \((A+B)\times C\)~is a coproduct of \(A\times C\)~and~\(B\times C\), from which the isomorphism follows by uniqueness of coproducts under the universal mapping property.
+
+Observe the injections
+\[A\times C\rTo^{i_1\times1_C}(A+B)\times C\lTo^{i_2\times1_C}B\times C\]
+If \(f:A\times C\to Z\) and \(g:B\times C\to Z\), then \(\curry{f}:A\to Z^C\) and \(\curry{g}:B\to Z^C\), so \(\copair{\curry{f}}{\curry{g}}:A+B\to Z^C\). Define
+\[p=\uncurry{\copair{\curry{f}}{\curry{g}}}:(A+B)\times C\to Z\]
+Then
+\begin{align*}
+p\after(i_1\times1_C)&=\uncurry{\copair{\curry{f}}{\curry{g}}}\after(i_1\times1_C)\\
+	&=\eval\after(\copair{\curry{f}}{\curry{g}}\times1_C)\after(i_1\times1_C)\\
+	&=\eval\after((\copair{\curry{f}}{\curry{g}}\after i_1)\times1_C)\\
+	&=\eval\after(\curry{f}\times1_C)\\
+	&=f
+\end{align*}
+Similarly \(p\after(i_2\times1_C)=g\). Moreover, if \(q:(A+B)\times C\to Z\) is arbitrary, then \(\curry{q}:A+B\to Z^C\), so
+\begin{align*}
+\curry{q}&=\copair{\curry{q}\after i_1}{\curry{q}\after i_2}\\
+	&=\copair{\curry{(q\after(i_1\times1_C))}}{\curry{(q\after(i_2\times1_C))}}
+\end{align*}
+because
+\[\eval\after((\curry{q}\after i_k)\times1_C)=\eval\after(\curry{q}\times1_C)\after(i_k\times1_C)=q\after(i_k\times1_C)\]
+It follows that
+\[q=\uncurry{\copair{\curry{(q\after(i_1\times1_C))}}{\curry{(q\after(i_2\times1_C))}}}\]
+from which it is immediate that \(p\)~is unique in satisfying the equations above. Therefore \((A+B)\times C\)~is indeed a coproduct as desired. 
+\end{proof}
+\begin{rmk}
+In~\(\Sets\), this exercise (circuitously) justifies the familiar distributive law \((a+b)c=ac+bc\) for \(a,b,c\in\N\).
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
