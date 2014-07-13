@@ -583,6 +583,38 @@ The kernel of a function is just the set of pairs of elements identified or equa
 \end{rmk}
 
 \section*{Chapter~4}
+\begin{rmk}
+The homomorphism theorem for groups (Theorem~4.10) shows that for a group homomorphism \(h:G\to H\), \(\ker h\)~is universal among the normal subgroups of~\(G\) factorization through which recovers~\(h\). Equivalently, \(G/\ker h\)~is universal among quotients through which \(h\)~is recovered.
+
+In detail, \(K=\ker h\) is a normal subgroup of~\(G\) making the following diagram commute:
+\begin{diagram}[nohug]
+G			&\rTo^h					&H\\
+\dTo<{\pi_K}&\ruTo>{\overline{h_K}}	&\\
+G/K			&						&
+\end{diagram}
+Given any normal subgroup \(N\)~of~\(G\) making the following diagram commute:
+\begin{diagram}[nohug]
+G			&\rTo^h					&H\\
+\dTo<{\pi_N}&\ruTo>{\overline{h_N}}	&\\
+G/N			&						&
+\end{diagram}
+there exists a unique homomorphism \(\pi_{K/N}:G/N\to G/K\) making the following diagram commute:
+\begin{diagram}[nohug]
+G/N				&\rTo^{\overline{h_N}}	&H\\
+\dTo<{\pi_{K/N}}&\ruTo>{\overline{h_K}}	&\\
+G/K				&						&
+\end{diagram}
+Indeed, \(\pi_{K/N}([x]_N)=[x]_K\) is a well defined homomorphism since \(N\subseteq K\), and
+\[(\overline{h_K}\after\pi_{K/N})([x]_N)=\overline{h_K}(\pi_{K/N}([x]_N))=\overline{h_K}([x]_K)=h(x)=\overline{h_N}([x]_N)\]
+Also \(\pi_{K/N}\)~is unique since \(\overline{h_K}\)~is injective. In other words, \(\overline{h_N}\)~factors uniquely through~\(\overline{h_K}\).
+
+Intuitively, as \(N\)~ranges from \(1\)~to~\(K\), \(G/N\)~``collapses'' more and more of the structure of~\(G\) while still allowing recovery of~\(h\). Since \(G/K\)~is ``smallest'' with this property, it is always possible to collapse from~\(G/N\) to \(G/K\) and still recover~\(h\).
+
+Observe \(\pi_{K/N}\)~is surjective and \(\ker\pi_{K/N}=K/N\), from which it follows that
+\[(G/N)/(K/N)\iso G/K\]
+This is just the third isomorphism theorem for groups.
+\end{rmk}
+
 \begin{exer}[1]
 Let \(G\)~be a group. A categorical congruence~\(\eq\) on~\(G\) (viewed as a category\footnote{Recall a group is a category with only one object in which every arrow is an iso.}) is the same thing as an equivalence relation on~\(G\) determined by a normal subgroup \(N\subseteq G\). Moreover, \(G/{\eq}=G/N\).
 \end{exer}
