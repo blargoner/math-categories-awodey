@@ -584,7 +584,7 @@ The kernel of a function is just the set of pairs of elements identified or equa
 
 \section*{Chapter~4}
 \begin{rmk}
-The homomorphism theorem for groups (Theorem~4.10) shows that for a group homomorphism \(h:G\to H\), \(\ker h\)~is universal among the normal subgroups of~\(G\) factorization through which recovers~\(h\). Equivalently, \(G/\ker h\)~is universal among quotients through which \(h\)~is recovered.
+The homomorphism theorem for groups (Theorem~4.10) shows that for a group homomorphism \(h:G\to H\), \(\ker h\)~is universal among the normal subgroups of~\(G\) factorization through which preserves~\(h\). Equivalently, \(G/\ker h\)~is universal among quotients through which \(h\)~is preserved.
 
 In detail, \(K=\ker h\) is a normal subgroup of~\(G\) making the following diagram commute:
 \begin{diagram}[nohug]
@@ -608,7 +608,7 @@ Indeed, \(\pi_{K/N}([x]_N)=[x]_K\) is a well defined homomorphism since \(N\subs
 \[(\overline{h_K}\after\pi_{K/N})([x]_N)=\overline{h_K}(\pi_{K/N}([x]_N))=\overline{h_K}([x]_K)=h(x)=\overline{h_N}([x]_N)\]
 Also \(\pi_{K/N}\)~is unique since \(\overline{h_K}\)~is injective. In other words, \(\overline{h_N}\)~factors uniquely through~\(\overline{h_K}\).
 
-Intuitively, as \(N\)~ranges from \(1\)~to~\(K\), \(G/N\)~``collapses'' more and more of the structure of~\(G\) while still allowing recovery of~\(h\). Since \(G/K\)~is ``smallest'' with this property, it is always possible to collapse from~\(G/N\) to \(G/K\) and still recover~\(h\).
+Intuitively, as \(N\)~ranges from \(1\)~to~\(K\), \(G/N\)~``collapses'' more and more of the structure of~\(G\) while still preserving~\(h\). Since \(G/K\)~is the ``smallest'' with this property, it is always possible to collapse from~\(G/N\) to \(G/K\) and still preserve~\(h\).
 
 Observe \(\pi_{K/N}\)~is surjective and \(\ker\pi_{K/N}=K/N\), from which it follows that
 \[(G/N)/(K/N)\iso G/K\]
