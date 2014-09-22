@@ -1052,6 +1052,48 @@ F(A',B)&\rTo_{F(A',\beta)}&F(A',B')
 \end{diagram}
 \end{rmk}
 
+\begin{exer}[4]
+The forgetful functors
+\[\Grp\rTo^{U}\Mon\rTo^{V}\Sets\]
+have the following properties:
+\begin{center}
+\begin{tabular}{|r|c|c|}
+\hline
+					&\(U\)	&\(V\)\\
+\hline
+Injective on objects		&Yes		&No\\
+Injective on arrows		&Yes		&Yes\\
+Surjective on objects		&No		&Yes\\
+Surjective on arrows		&No		&No\\
+Faithful				&Yes		&Yes\\
+Full					&Yes		&No\\
+\hline
+\end{tabular}
+\end{center}
+\end{exer}
+
+\begin{exer}[7]
+A natural transformation is an isomorphism if and only if each of its components is an isomorphism.
+\end{exer}
+\begin{proof}
+Let \(F,G:\C\to\D\) be functors and \(\vartheta:F\to G\) a natural transformation with components \(\vartheta_C:FC\to GC\) for all \(C\in\C\). We claim \(\vartheta\)~is an iso in~\(\D^{\C}\) if and only if \(\vartheta_C\)~is an iso in~\(\D\) for all \(C\in\C\).
+
+Suppose \(\vartheta\)~is an iso with inverse \(\psi:G\to F\), so \(\psi\after\vartheta=1_F\) and \(\vartheta\after\psi=1_G\). Since composites and identities in~\(\D^{\C}\) are defined componentwise, it is immediate that \(\psi_C\)~is an inverse of~\(\vartheta_C\), so \(\vartheta_C\)~is an iso, for all \(C\in\C\).
+
+Suppose conversely that for all \(C\in\C\), \(\vartheta_C:FC\to GC\)~is an iso, so there is an inverse \(\psi_C:GC\to FC\) with \(\psi_C\after\vartheta_C=1_{FC}\) and \(\vartheta_C\after\psi_C=1_{GC}\). We claim the family~\(\psi\) is a natural transformation from~\(G\) to~\(F\). Indeed, for \(\alpha:B\to C\) in~\(\C\), we know \(\vartheta_C\after F\alpha=G\alpha\after\vartheta_B\):
+\begin{diagram}
+FB			&\rTo^{\vartheta_B}	&GB\\
+\dTo<{F\alpha}	&				&\dTo>{G\alpha}\\
+FC			&\rTo_{\vartheta_C}	&GC
+\end{diagram}
+Multiplying on the left by~\(\psi_C\) and on the right by~\(\psi_B\), we obtain
+\[\psi_C\after G\alpha=F\alpha\after\psi_B\]
+as desired. It is immediate that \(\psi\after\vartheta=1_F\) and \(\vartheta\after\psi=1_G\), so \(\vartheta\)~is an iso.
+\end{proof}
+\begin{rmk}
+If a natural transformation consists of monos, it is a mono, but the converse is not true.
+\end{rmk}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
