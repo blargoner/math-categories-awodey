@@ -1059,14 +1059,14 @@ have the following properties:
 \begin{center}
 \begin{tabular}{|r|c|c|}
 \hline
-					&\(U\)	&\(V\)\\
+						&\(U\)	&\(V\)\\
 \hline
-Injective on objects		&Yes		&No\\
-Injective on arrows		&Yes		&Yes\\
-Surjective on objects		&No		&Yes\\
+Injective on objects		&Yes	&No\\
+Injective on arrows		&Yes	&Yes\\
+Surjective on objects	&No		&Yes\\
 Surjective on arrows		&No		&No\\
-Faithful				&Yes		&Yes\\
-Full					&Yes		&No\\
+Faithful				&Yes	&Yes\\
+Full					&Yes	&No\\
 \hline
 \end{tabular}
 \end{center}
@@ -1082,13 +1082,17 @@ Suppose \(\vartheta\)~is an iso with inverse \(\psi:G\to F\), so \(\psi\after\va
 
 Suppose conversely that for all \(C\in\C\), \(\vartheta_C:FC\to GC\)~is an iso, so there is an inverse \(\psi_C:GC\to FC\) with \(\psi_C\after\vartheta_C=1_{FC}\) and \(\vartheta_C\after\psi_C=1_{GC}\). We claim the family~\(\psi\) is a natural transformation from~\(G\) to~\(F\). Indeed, for \(\alpha:B\to C\) in~\(\C\), we know \(\vartheta_C\after F\alpha=G\alpha\after\vartheta_B\):
 \begin{diagram}
-FB			&\rTo^{\vartheta_B}	&GB\\
-\dTo<{F\alpha}	&				&\dTo>{G\alpha}\\
-FC			&\rTo_{\vartheta_C}	&GC
+FB				&\rTo^{\vartheta_B}		&GB\\
+\dTo<{F\alpha}	&						&\dTo>{G\alpha}\\
+FC				&\rTo_{\vartheta_C}		&GC
 \end{diagram}
-Multiplying on the left by~\(\psi_C\) and on the right by~\(\psi_B\), we obtain
-\[\psi_C\after G\alpha=F\alpha\after\psi_B\]
-as desired. It is immediate that \(\psi\after\vartheta=1_F\) and \(\vartheta\after\psi=1_G\), so \(\vartheta\)~is an iso.
+Applying \(\psi_C\)~on the left and \(\psi_B\)~on the right, we obtain \(\psi_C\after G\alpha=F\alpha\after\psi_B\):
+\begin{diagram}
+GB				&\rTo^{\psi_B}		&FB\\
+\dTo<{G\alpha}	&					&\dTo>{F\alpha}\\
+GC				&\rTo_{\psi_C}		&FC
+\end{diagram}
+So \(\psi\in\D^{\C}\). It is immediate that \(\psi\after\vartheta=1_F\) and \(\vartheta\after\psi=1_G\), so \(\vartheta\)~is an iso.
 \end{proof}
 \begin{rmk}
 If a natural transformation consists of monos, it is a mono, but the converse is not true.
