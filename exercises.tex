@@ -6,6 +6,7 @@
 
 \newcommand{\iso}{\cong}
 \newcommand{\eq}{\sim}
+\newcommand{\eqv}{\simeq}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 
@@ -13,6 +14,7 @@
 \newcommand{\after}{\circ}
 \newcommand{\limit}{\varprojlim}
 \newcommand{\colimit}{\varinjlim}
+\newcommand{\bigunion}{\bigcup}
 \newcommand{\eval}{\epsilon}
 \newcommand{\term}{{!}}
 
@@ -24,6 +26,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Sub}{Sub}
 \DeclareMathOperator{\Diagrams}{\mathbf{Diagrams}}
+\DeclareMathOperator{\pow}{\mathcal{P}}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
@@ -37,6 +40,7 @@
 \newcommand{\gen}[1]{\langle{#1}\rangle}
 \newcommand{\curry}[1]{\lambda{#1}}
 \newcommand{\uncurry}[1]{\overline{#1}}
+\newcommand{\pull}[1]{#1^{*}}
 
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
@@ -1096,6 +1100,145 @@ So \(\psi\in\D^{\C}\). It is immediate that \(\psi\after\vartheta=1_F\) and \(\v
 \end{proof}
 \begin{rmk}
 If a natural transformation consists of monos, it is a mono, but the converse is not true.
+\end{rmk}
+
+\begin{exer}[9]
+The function
+\begin{align*}
+\eta_A:A&\to\pow\pow(A)\\
+a&\mapsto\{\,X\subseteq A\mid a\in X\,\}
+\end{align*}
+is a natural transformation from~\(1_{\Sets}\) to~\(\pow\pow\), where \(\pow\)~is the contravariant powerset functor.
+\end{exer}
+\begin{proof}
+If \(f:A\to B\) is a function, we claim the following diagram commutes:
+\begin{diagram}
+A		&\rTo^{\eta_A}	&\pow\pow(A)\\
+\dTo<f	&				&\dTo>{\pow\pow(f)}\\
+B		&\rTo_{\eta_B}	&\pow\pow(B)
+\end{diagram}
+By definition,
+\begin{align*}
+\pow(f):\pow(B)&\to\pow(A)\\
+Y&\mapsto\inv{f}(Y)=\{\,x\in A\mid f(x)\in Y\,\}
+\end{align*}
+so
+\begin{align*}
+\pow\pow(f):\pow\pow(A)&\to\pow\pow(B)\\
+\mathcal{C}&\mapsto\inv{(\inv{f})}(\mathcal{C})=\{\,Y\subseteq B\mid\inv{f}(Y)\in\mathcal{C}\,\}
+\end{align*}
+Therefore for \(x\in A\),
+\begin{align*}
+(\eta_B\after f)(x)&=\eta_B(f(x))\\
+	&=\{\,Y\subseteq B\mid f(x)\in Y\,\}\\
+	&=\{\,Y\subseteq B\mid x\in\inv{f}(Y)\,\}\\
+	&=\{\,Y\subseteq B\mid \inv{f}(Y)\in\eta_A(x)\,\}\\
+	&=\pow\pow(f)(\eta_A(x))\\
+	&=(\pow\pow(f)\after\eta_A)(x)\qedhere
+\end{align*}
+\end{proof}
+\begin{rmk}
+The function~\(\eta_A\) is actually a natural embedding since if \(x\ne y\), then \(\{x\}\in\eta_A(x)-\eta_A(y)\), so \(\eta_A(x)\ne\eta_A(y)\).
+\end{rmk}
+
+\begin{exer}[10]
+Let \(\C\)~be a locally small category. There exists a functor
+\[\Hom:\dual{\C}\times\C\to\Sets\]
+inducing the familiar representable functors
+\[\Hom(C,-):\C\to\Sets\qquad\Hom(-,C):\dual{\C}\to\Sets\]
+\end{exer}
+\begin{proof}
+By the bifunctor lemma (Lemma~7.14), it is sufficient to prove that the representable functors satisfy the ``interchange law'', that is, for all \(\alpha:A'\to A\) and \(\beta:B\to B'\), the following diagram commutes:
+\begin{diagram}
+\Hom(A,B)				&\rTo^{\Hom(\alpha,B)}	&\Hom(A',B)\\
+\dTo<{\Hom(A,\beta)}		&						&\dTo>{\Hom(A',\beta)}\\
+\Hom(A,B')				&\rTo_{\Hom(\alpha,B')}	&\Hom(A',B')
+\end{diagram}
+Indeed, for \(f:A\to B\),
+\begin{align*}
+(\,\Hom(\alpha,B')\after\Hom(A,\beta)\,)(f)&=\Hom(\alpha,B')(\,\Hom(A,\beta)(f)\,)\\
+	&=\Hom(\alpha,B')(\beta\after f)\\
+	&=\beta\after f\after\alpha\\
+	&=\Hom(A',\beta)(f\after\alpha)\\
+	&=\Hom(A',\beta)(\,\Hom(\alpha,B)(f)\,)\\
+	&=(\,\Hom(A',\beta)\after\Hom(\alpha,B)\,)(f)\qedhere
+\end{align*}
+\end{proof}
+
+\begin{exer}[12]
+If \(\C\eqv\D\) and \(\C\)~has binary products, so does~\(\D\).
+\end{exer}
+\begin{proof}
+By the characterization of equivalence (Proposition~7.26), there exists a functor \(F:\C\to\D\) which is fully faithful and essentially surjective on objects.
+
+If \(X,Y\in\D\), fix \(A,B\in\C\) with \(\vartheta_X:F(A)\iso X\) and \(\vartheta_Y:F(B)\iso Y\). In~\(\C\), there is a product diagram
+\[A\lTo^{p_1}A\times B\rTo^{p_2}B\]
+Applying~\(F\) to this diagram, we obtain
+\[X\lTo^{\vartheta_X}F(A)\lTo^{F(p_1)}F(A\times B)\rTo^{F(p_2)}F(B)\rTo^{\vartheta_Y}Y\]
+We claim this is a product diagram of \(X\)~and~\(Y\) in~\(\D\).
+
+Indeed, for \(Z\in\D\) with \(x:Z\to X\) and \(y:Z\to Y\), fix \(C\in\C\) with \(\vartheta_Z:F(C)\iso Z\). Also fix \(a:C\to A\) and \(b:C\to B\) with \(F(a)=\inv{\vartheta_X}\after x\after\vartheta_Z\) and \(F(b)=\inv{\vartheta_Y}\after y\after\vartheta_Z\). In~\(\C\), there is a unique pair \(p=\pair{a}{b}:C\to A\times B\) with \(p_1\after p=a\) and \(p_2\after p=b\):
+\begin{diagram}[nohug]
+	&			&C			&			&\\
+	&\ldTo<a	&\dTo<p		&\rdTo>b	&\\
+A	&\lTo_{p_1}	&A\times B	&\rTo_{p_2}	&B
+\end{diagram}
+Applying \(F\)~to this diagram, we obtain
+\begin{diagram}[nohug,size=3.5em,tight]
+	&					&Z		&					&				&					&Z		&					&\\
+	&\ldTo<x			&		&\luTo>{\vartheta_Z}	&				&\ruTo^{\vartheta_Z}	&		&\rdTo>y			&\\
+X	&					&		&					&F(C)			&					&		&					&Y\\
+	&\luTo<{\vartheta_X}	&		&\ldTo<{F(a)}		&\dTo<{F(p)}	&\rdTo>{F(b)}		&		&\ruTo>{\vartheta_Y}	&\\
+	&					&F(A)	&\lTo_{F(p_1)}		&F(A\times B)	&\rTo_{F(p_2)}		&F(B)	&					&
+\end{diagram}
+It is immediate from this diagram that \(\pair{x}{y}=F(p)\after\inv{\vartheta_Z}\), which is unique since \(p\)~is unique and \(F\)~is fully faithful.
+\end{proof}
+
+\begin{exer}[17]
+Let \(I\)~be a set. Then
+\[\Sets^I\eqv\Sets/I\]
+and this equivalence is ``natural'' in the sense that for any function \(f:J\to I\), the following diagram commutes, where \(\Sets^f\) is the reindexing functor, and \(\pull{f}\)~is the pullback functor:
+\begin{diagram}
+\Sets^I			&\rTo	&\Sets/I\\
+\dTo<{\Sets^f}	&		&\dTo>{\pull{f}}\\
+\Sets^J			&\rTo	&\Sets/J
+\end{diagram}
+\end{exer}
+\begin{proof}
+Define \(\Phi_I:\Sets^I\to\Sets/I\) as follows:
+\begin{itemize}
+\item Objects: for an indexed family of sets \((A_i)_{i\in I}\), let \(p_i:A_i\to I\) be constant with \(p_i(x)=i\) for all \(x\in A_i\), and define the ``indexing projection''
+\[\Phi_I((A_i)_{i\in I})=[p_i]:\coprod_{i\in I}A_i\to I\]
+where we take \(\coprod_{i\in I}A_i=\bigunion_{i\in I}(A_i\times\{i\})\).
+\item Arrows: for an indexed family of functions \((f_i:A_i\to B_i)_{i\in I}\), define
+\[\Phi_I((f_i:A_i\to B_i)_{i\in I})=[\mu_i\after f_i]:\coprod_{i\in I}A_i\to\coprod_{i\in I}B_i\]
+where \(\mu_i:B_i\to\coprod_{i\in I}B_i\) the \(i\)-th coproduct injection.
+\end{itemize}
+It is immediate that \(\Phi_I\)~is a functor. Define \(\Psi_I:\Sets/I\to\Sets^I\) as follows:
+\begin{itemize}
+\item Objects: for a function \(\alpha:X\to I\), define
+\[\Psi_I(\alpha)=(\inv{\alpha}(i))_{i\in I}\]
+\item Arrows: for functions \(\alpha:X\to I\), \(\beta:Y\to I\), and \(\gamma:X\to Y\) with \(\alpha=\beta\after\gamma\), define
+\[\Psi_I(\gamma)=\bigl(\,\gamma|_{\inv{\alpha}(i)}:\inv{\alpha}(i)\to\inv{\beta}(i)\,\bigr)_{i\in I}\]
+\end{itemize}
+It is also immediate that \(\Psi_I\)~is a functor, \(\Psi_I\after\Phi_I=1_{\Sets^I}\), and \(\Phi_I\after\Psi_I\iso 1_{\Sets/I}\), where for \(\alpha:X\to I\) in~\(\Sets/I\), a natural isomorphism from~\(\alpha\) to~\((\Phi_I\after\Psi_I)(\alpha)\) is given by \(x\mapsto(x,\alpha(x))\). Therefore \(\Sets^I\eqv\Sets/I\).
+
+Now suppose \(f:J\to I\) is a function. Define
+\begin{align*}
+\Sets^f:\Sets^I&\to\Sets^J\\
+(A_i)_{i\in I}&\mapsto(A_{f(j)})_{j\in J}\\
+(f_i:A_i\to B_i)_{i\in I}&\mapsto(f_{f(j)}:A_{f(j)}\to B_{f(j)})_{j\in J}
+\end{align*}
+It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f=\pull{f}\after\Phi_I\), which is equivalent to \(\Sets^f=\Psi_J\after\pull{f}\after\Psi_I\). This follows from the pullback diagram
+\begin{diagram}
+\coprod_{j\in J}A_{f(j)}&\rTo&\coprod_{i\in I}A_i\\
+\dTo<{\pi_J}&&\dTo>{\pi_I}\\
+J&\rTo_f&I
+\end{diagram}
+where \(\pi_J\)~and~\(\pi_I\) are indexing projections and the upper arrow is the reindexing function \((x,j)\mapsto(x,f(j))\).
+\end{proof}
+\begin{rmk}
+We already know that \(\Sets^I\iso\prod_{i\in I}\Sets\) (Example~7.15), so this result shows that \(\Sets/I\eqv\prod_{i\in I}\Sets\). In particular, \(\Sets/2\eqv\Sets\times\Sets\). Since \(\Sets\times\Sets\)~is cartesian closed (by the remark in Chapter~6 above), this implies \(\Sets/2\)~is cartesian closed (by Exercise~12, and similar arguments).
 \end{rmk}
 
 % References
