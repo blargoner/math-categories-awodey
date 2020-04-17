@@ -127,8 +127,8 @@ For \(S\subseteq B\times C\),
 
 For \(A\subseteq X\), write \(\comp{A}=X-A=\{\,x\in X\mid x\not\in A\,\}\). Define \(C:\dual{P(X)}\to P\) by \(C(A)=\comp{A}\) and
 \[C(A\to B)=\comp{A}\to\comp{B}=C(A)\to C(B)\]
-which is well defined since \(A\supseteq B\) if and only if \(\comp{A}\subseteq\comp{B}\). Clearly \(C\)~maps objects to objects and arrows to arrows, and also preserves domains and codomains. Substituting \(A\)~for~\(B\) above shows that \(C\)~preserves identities. For \(X\supseteq A\supseteq B\supseteq C\),
-\[C(A\to B\to C)=\comp{A}\to\comp{B}\to\comp{C}=C(A)\to C(B)\to C(C)\]
+which is well defined since \(A\supseteq B\) if and only if \(\comp{A}\subseteq\comp{B}\). Clearly \(C\)~maps objects to objects and arrows to arrows, and also preserves domains and codomains. Substituting \(A\)~for~\(B\) above shows that \(C\)~preserves identities. For \(X\supseteq A\supseteq B\supseteq D\),
+\[C(A\to B\to D)=\comp{A}\to\comp{B}\to\comp{D}=C(A)\to C(B)\to C(D)\]
 so \(C\)~preserves composites. Therefore \(C\)~is a functor. Since \(C\)~is clearly its own inverse, \(C\)~is an isomorphism.\qedhere
 \end{enumerate}
 \end{proof}
@@ -144,7 +144,7 @@ so \(C\)~preserves composites. Therefore \(C\)~is a functor. Since \(C\)~is clea
 \begin{enumerate}
 \item[(a)] A function \(f:A\to B\) has a (two-sided) inverse if and only if it is bijective. Indeed, suppose \(g:B\to A\) is an inverse of~\(f\). If \(a,a'\in A\) and \(f(a)=f(a')\), then
 \[a=1_A(a)=(g\after f)(a)=g(f(a))=g(f(a'))=(g\after f)(a')=1_A(a')=a'\]
-If \(b\in B\), then \(b=1_B(b)=(f\after g)(b)=f(g(b))\). Conversely, if \(f\)~is bijective, then for each \(b\in B\) we can let~\(g(b)\) to be the unique \(a\in A\) with \(f(a)=b\). Then \(g:B\to A\) is clearly an inverse of~\(f\).
+If \(b\in B\), then \(b=1_B(b)=(f\after g)(b)=f(g(b))\). Conversely, if \(f\)~is bijective, then for each \(b\in B\) we can let~\(g(b)\) be the unique \(a\in A\) with \(f(a)=b\). Then \(g:B\to A\) is clearly an inverse of~\(f\).
 \item[(b)] A monoid homomorphism is, in particular, a function, hence an isomorphism is a bijective homomorphism by~(a). Conversely, if \(f:A\to B\) is a bijective homomorphism, then \(f\)~has an inverse \emph{function} \(g:B\to A\) by~(a). If \(b,b'\in B\), then
 \[bb'=1_B(b)1_B(b')=(f\after g)(b)(f\after g)(b')=f(g(b))f(g(b'))=f(g(b)g(b'))\]
 so
