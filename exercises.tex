@@ -357,10 +357,30 @@ Conversely, if \(U\)~is an ultrafilter in~\(B\) and \(p_U:B\to\cat{2}\) is defin
 \[
 p_U(x)=\begin{cases}
 1&\text{if }x\in U\\
-0&\text{if }x\not\in U
+0&\text{otherwise}
 \end{cases}
 \]
 then \(p\)~is a homomorphism, by reasoning similar to that above. Clearly the maps \(p\mapsto U_p\) and \(U\mapsto p_U\) are mutually inverse.
+\end{proof}
+
+\begin{exer}[13]
+In any category with binary products,
+\[(A\times B)\times C\iso A\times (B\times C)\]
+\end{exer}
+\begin{proof}
+Instead of using the universal property of a ternary product, we use only the universal properties of the binary products. Define
+\[f=\pair{p_A\after p_{A\times B}}{\pair{p_B\after p_{A\times B}}{p_C}}:(A\times B)\times C\to A\times(B\times C)\]
+where the \(p\)'s are the obvious projections, and
+\[g=\pair{\pair{q_A}{q_B\after q_{B\times C}}}{q_C\after q_{B\times C}}:A\times(B\times C)\to(A\times B)\times C\]
+where the \(q\)'s are the obvious projections. Then \(f\) and~\(g\) are inverses, so they are isomorphisms. For example,
+\begin{align*}
+f\after g&=\pair{p_A\after p_{A\times B}}{\pair{p_B\after p_{A\times B}}{p_C}}\after g\\
+	&=\pair{p_A\after p_{A\times B}\after g}{\pair{p_B\after p_{A\times B}\after g}{p_C\after g}}\\
+	&=\pair{p_A\after \pair{q_A}{q_B\after q_{B\times C}}}{\pair{p_B\after \pair{q_A}{q_B\after q_{B\times C}}}{q_C\after q_{B\times C}}}\\
+	&=\pair{q_A}{\pair{q_B\after q_{B\times C}}{q_C\after q_{B\times C}}}\\
+	&=\pair{q_A}{q_{B\times C}}\\
+	&=1_{A\times(B\times C)}\qedhere
+\end{align*}
 \end{proof}
 
 \begin{exer}[15]
