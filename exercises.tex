@@ -10,6 +10,8 @@
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 
+\newcommand{\meet}{\wedge}
+\newcommand{\compl}{\lnot}
 \newcommand{\obj}{{\cdot}}
 \newcommand{\after}{\circ}
 \newcommand{\limit}{\varprojlim}
@@ -341,6 +343,24 @@ An initial object in \(A\text{-}\Mon\) is just a free monoid on~\(A\) in~\(\Mon\
 \end{exer}
 \begin{proof}
 The \(A\)-monoid~\((M,m)\) is initial if and only if for all \(A\)-monoids~\((N,n)\), there is a unique \(A\)-monoid homomorphism \(h:(M,m)\to(N,n)\). This is just to say that \(m:A\to U(M)\) and for all monoids~\(N\) with \(n:A\to U(N)\) there is a unique monoid homomorphism \(h:M\to N\) with \(n=U(h)\after m\). But this is just the universal mapping property for the free monoid on~\(A\) in~\(\Mon\).
+\end{proof}
+
+\begin{exer}[12]
+For a Boolean algebra~\(B\), Boolean homomorphisms \(p:B\to\cat{2}\) correspond exactly to ultrafilters in~\(B\).
+\end{exer}
+\begin{proof}
+If \(p:B\to\cat{2}\) is a homomorphism, then \(U_p=p^{-1}(1)\) is an ultrafilter in~\(B\). Indeed, \(U_p\ne\emptyset\) since \(p(1)=1\), and \(U_p\ne B\) since \(p(0)=0\ne 1\). If \(a\in U_p\) and \(a\le b\), then \(1=p(a)\le p(b)\), so \(p(b)=1\) and \(b\in U_p\). If \(a\in U_p\) and \(b\in U_p\), then
+\[p(a\meet b)=p(a)\meet p(b)=1\meet 1=1\]
+so \(a\meet b\in U_p\). Finally, if \(a\not\in U_p\) then \(p(a)=0\), so \(p(\compl a)=\compl p(a)=1\) and \(\compl a\in U_p\). On the other hand, \(p(a)\meet p(\compl a)=0\), so we cannot have \(a\in U_p\) and \(\compl a\in U_p\).
+
+Conversely, if \(U\)~is an ultrafilter in~\(B\) and \(p_U:B\to\cat{2}\) is defined by
+\[
+p_U(x)=\begin{cases}
+1&\text{if }x\in U\\
+0&\text{if }x\not\in U
+\end{cases}
+\]
+then \(p\)~is a homomorphism, by reasoning similar to that above. Clearly the maps \(p\mapsto U_p\) and \(U\mapsto p_U\) are mutually inverse.
 \end{proof}
 
 \begin{exer}[15]
