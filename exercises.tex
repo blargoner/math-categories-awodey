@@ -633,7 +633,35 @@ The kernel of a function is just the set of pairs of elements identified or equa
 
 \section*{Chapter~4}
 \begin{rmk}
-The homomorphism theorem for groups (Theorem~4.10) shows that for a group homomorphism \(h:G\to H\), \(\ker h\)~is universal among the normal subgroups of~\(G\) factorization through which preserves~\(h\). Equivalently, \(G/\ker h\)~is universal among quotients through which \(h\)~is preserved.
+For a group in a category, the characterizing ``equations''
+\begin{gather*}
+m(m(x,y),z)=m(x,m(y,z))\\
+m(x,u)=x=m(u,x)\\
+m(x,ix)=u=m(ix,x)
+\end{gather*}
+must be understood to \emph{mean} that the following diagrams commute:
+\begin{diagram}
+(Z\times Z)\times Z					&		&\rTo^{\iso}	&		&Z\times(Z\times Z)\\
+\dTo<{(m\after(x\times y))\times z}	&		&				&		&\dTo>{x\times(m\after(y\times z))}\\
+G\times G							&\rTo_m	&G				&\lTo_m	&G\times G
+\end{diagram}
+\begin{diagram}
+Z\times 1		&\lTo^{\pair{1_Z}{!}}_{\iso}&Z		&\rTo^{\pair{!}{1_Z}}_{\iso}	&1\times Z\\
+\dTo<{x\times u}&							&\dTo<x	&								&\dTo>{u\times x}\\
+G\times G		&\rTo_m						&G		&\lTo_m							&G\times G
+\end{diagram}
+\begin{diagram}
+Z\times Z			&\lTo^{\Delta}	&Z			&\rTo^{\Delta}	&Z\times Z\\
+\dTo<{x\times ix}	&				&\dTo<{u!}	&				&\dTo>{ix\times x}\\
+G\times G			&\rTo_m			&G			&\lTo_m			&G\times G
+\end{diagram}
+Note that a ``pair'' like \((x,y)\) in an ``equation'' is interpreted as a product arrow \(x\times y\) in the corresponding diagram.
+
+The defining diagrams for~\(G\) commute if and only if the above diagrams commute for all \(x,y,z:Z\to G\). Indeed, for the forward direction, the above diagrams can be factored through the diagrams for~\(G\); for the reverse direction, taking \(x=y=z=1_G\) in the above diagrams yields the diagrams for~\(G\).
+\end{rmk}
+
+\begin{rmk}
+The homomorphism theorem for groups (Theorem~4.10) shows that for a group homomorphism \(h:G\to H\), \(\ker h\)~is universal among the normal subgroups of~\(G\) factorization through which preserves~\(h\). Equivalently, \(G/\ker h\) is universal among quotients through which \(h\)~is preserved.
 
 In detail, \(K=\ker h\) is a normal subgroup of~\(G\) making the following diagram commute:
 \begin{diagram}[nohug]
