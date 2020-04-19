@@ -505,7 +505,7 @@ and disjunction elimination rule
 Note the introduction rules give proofs \(i_1:\varphi\to\varphi\lor\psi\) and \(i_2:\psi\to\varphi\lor\psi\), and the elimination rule gives a proof \(\copair{p}{q}:\varphi\lor\psi\to\vartheta\) from proofs \(p:\varphi\to\vartheta\) and \(q:\psi\to\vartheta\).
 
 For any proofs \(p:\varphi\to\vartheta\), \(q:\psi\to\vartheta\), and \(r:\varphi\lor\psi\to\vartheta\), identify proofs under the equations
-\[r\after i_1=p\qquad r\after i_2=q\qquad [r\after i_1,r\after i_2]=r\]
+\[\copair{p}{q}\after i_1=p\qquad \copair{p}{q}\after i_2=q\qquad [r\after i_1,r\after i_2]=r\]
 to disregard unnecessary introduction and elimination of disjunction.
 
 Then \(\C\)~has coproducts, and in fact \(\varphi+\psi=\varphi\lor\psi\).
