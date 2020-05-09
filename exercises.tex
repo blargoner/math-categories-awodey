@@ -914,6 +914,25 @@ Immediate from definitions.
 
 \section*{Chapter~6}
 \begin{rmk}
+Let \(\C\)~be a cartesian closed category and \(\eta=\curry{1_{A\times B}}:A\to(A\times B)^B\). For \(f:A\times B\to C\), to see that the diagram
+\begin{diagram}[nohug]
+(A\times B)^B	&\rTo^{f^B}			&C^B\\
+\uTo<{\eta}		&\ruTo>{\curry{f}}	&\\
+A				&					&
+\end{diagram}
+commutes, observe that the diagram
+\begin{diagram}[nohug]
+C^B\times B				&\rTo^{\eval}			&C\\
+\uTo<{f^B\times 1_B}	&						&\uTo>f\\
+(A\times B)^B\times B	&\rTo_{\eval}			&A\times B\\
+\uTo<{\eta\times 1_B}	&\ruTo>{1_{A\times B}}	&\\
+A\times B				&						&
+\end{diagram}
+commutes and
+\[(f^B\times 1_B)\after(\eta\times 1_B)=(f^B\after\eta)\times 1_B\]
+\end{rmk}
+
+\begin{rmk}
 If \(\C\)~and~\(\D\) are cartesian closed categories, then so is~\(\C\times\D\). Moreover, the terminal object, products, and exponentials (including the evaluation and transpose maps for exponentials) are all computed pointwise.
 \end{rmk}
 \begin{proof}
