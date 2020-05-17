@@ -1067,11 +1067,7 @@ The second isomorphism follows from the definition of the exponential. For the f
 \[1\lTo^{\term_{1\times A}}1\times A\rTo^p A\]
 be projections, and let \(q=\pair{\term_A}{1_A}:A\to1\times A\). Then \(p\after q=1_A\), and conversely
 \[q\after p=\pair{\term_A}{1_A}\after p=\pair{\term_A\after p}{p}=\pair{\term_{1\times A}}{p}=1_{1\times A}\]
-Now define \(P:\Hom_{\C}(A,B)\to\Hom_{\C}(1\times A,B)\) by \(P(f)=f\after p:1\times A\to B\) for \(f:A\to B\), and define \(Q:\Hom_{\C}(1\times A,B)\to\Hom_{\C}(A,B)\) by \(Q(g)=g\after q:A\to B\) for \(g:1\times A\to B\). Then
-\[(Q\after P)(f)=Q(P(f))=Q(f\after p)=(f\after p)\after q=f\after(p\after q)=f\after1_A=f\]
-and
-\[(P\after Q)(g)=P(Q(g))=P(g\after q)=(g\after q)\after p=g\after(q\after p)=g\after1_{1\times A}=g\]
-Therefore \(Q\after P=1_{\Hom_{\C}(A,B)}\) and \(P\after Q=1_{\Hom_{\C}(1\times A,B)}\), so \(P\)~and~\(Q\) are mutually inverse and hence bijective.
+so \(A\iso 1\times A\), and the functor \(\Hom_{\C}(-,B)\) preserves this isomorphism.
 \end{proof}
 
 \begin{exer}[12]
