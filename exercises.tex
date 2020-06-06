@@ -11,6 +11,9 @@
 \newcommand{\epi}{\twoheadrightarrow}
 
 \newcommand{\meet}{\wedge}
+\newcommand{\bigmeet}{\bigwedge}
+\newcommand{\join}{\vee}
+\newcommand{\bigjoin}{\bigvee}
 \newcommand{\compl}{\lnot}
 \newcommand{\obj}{{\cdot}}
 \newcommand{\after}{\circ}
@@ -1168,6 +1171,28 @@ This just means that the two paths these functors induce between the objects \(F
 
 \begin{rmk}
 The fact that \(\Par\eqv\Setsp\) can be used to explain the use of sentinel values in computer programming. The points introduced by the equivalence functor \(F:\Par\to\Setsp\) are just sentinel values used to signal where partial functions are undefined.
+\end{rmk}
+
+\begin{rmk}
+If \(B\)~is a finite Boolean algebra and \(b\in B\) with \(b\ne 0\), then there is an atom \(a\in A(B)\) with \(a\le b\).
+\end{rmk}
+\begin{proof}
+By induction on the number of elements less than~\(b\).
+\end{proof}
+
+\begin{rmk}[Lemma~7.33]
+If \(B\)~is a finite Boolean algebra, then
+\begin{enumerate}
+\item[(i)] \(b=\bigjoin\{\,a\in A(B)\mid a\le b\,\}\)
+\item[(ii)] If \(a\in A(B)\) and \(a\le b\join b'\), then \(a\le b\) or \(a\le b'\).
+\end{enumerate}
+\begin{proof}
+For~(i), let \(c=\bigjoin\{\,a\in A(B)\mid a\le b\,\}\). Clearly \(c\le b\). If \(b\not\le c\), then \(b\meet\compl c\ne 0\), so by the previous remark there is \(a\in A(B)\) with \(a\le b\meet\compl c\). Now \(a\le b\) so \(a\le c\), and also \(a\le\compl c\), so \(a\le c\meet\compl c=0\), contradicting that \(a\ne 0\).
+
+For~(ii), if \(a\not\le b\) and \(a\not\le b'\), then \(a\le\compl b\) and \(a\le\compl b'\) (Lemma~7.32), so
+\[a\le\compl b\meet\compl b'=\compl(b\join b')\]
+and hence \(a\not\le b\join b'\).
+\end{proof}
 \end{rmk}
 
 \begin{exer}[4]
