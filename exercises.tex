@@ -325,7 +325,7 @@ In~\(\Sets\), every set is projective.
 If \(f:P\to Y\) and \(g:X\epi Y\), then since \(g\)~is surjective (Exercise~1), \(g\)~has a right inverse \(h:Y\to X\) with \(g\after h=1_Y\). Set \(p=h\after f:P\to X\):
 \begin{diagram}[nohug]
 	&					&X\\
-	&\ruTo^{p=h\after f}	&\dEpi<g\uTo>h\\
+	&\ruTo^{p=h\after f}&\dEpi<g\uTo>h\\
 P	&\rTo_f				&Y
 \end{diagram}
 Then
@@ -892,9 +892,9 @@ for \(I\)-indexed families of sets.
 \begin{proof}
 The objects in \(\Diagrams(\J,\C)\) are functors \(F:\J\to\C\), and the arrows are natural transformations between those functors.\footnote{In other words, \(\Diagrams(\J,\C)\) is just the functor category~\(\C^{\J}\).} More specifically, an arrow \(\theta:F\to G\) between \(F:\J\to\C\) and \(G:\J\to\C\) is a family of arrows \(\theta_j:Fj\to Gj\) for each \(j\in\J\) such that for \(\alpha:i\to j\in\J\), this square commutes:
 \begin{diagram}
-Fi&\rTo^{\theta_i}&Gi\\
-\dTo<{F\alpha}&&\dTo>{G\alpha}\\
-Fj&\rTo_{\theta_j}&Gj
+Fi				&\rTo^{\theta_i}	&Gi\\
+\dTo<{F\alpha}	&					&\dTo>{G\alpha}\\
+Fj				&\rTo_{\theta_j}	&Gj
 \end{diagram}
 The identity~\(1_F\) consists of the identity arrows~\(1_{Fj}\) for \(j\in\J\). If \(\theta:F\to G\) and \(\lambda:G\to H\), then \(\lambda\theta:F\to H\) consists of the composite arrows~\(\lambda_j\theta_j\) for \(j\in\J\). Indeed, the diagrams involved obviously commute, and associativity and unity of composition are inherited from~\(\C\).
 
@@ -994,15 +994,15 @@ Define \(\eval:(A^C\times B^C)\times C\to A\times B\) by
 \[\eval=(\eval_A\times\eval_B)\after\alpha\after(1_{A^C\times B^C}\times\pair{1_C}{1_C})\]
 We claim \((A^C\times B^C,\eval)\)~is an exponential for \(A\times B\)~and~\(C\); that is, for all \(f:Z\times C\to A\times B\), there is a unique \(\curry{f}:Z\to A^C\times B^C\) such that \(\eval\after(\curry{f}\times1_C)=f\):
 \begin{diagram}[nohug]
-A^C\times B^C	&&(A^C\times B^C)\times C	&\rTo^{\eval}	&A\times B\\
+A^C\times B^C		&&(A^C\times B^C)\times C		&\rTo^{\eval}	&A\times B\\
 \uTo<{\curry{f}}	&&\uTo<{\curry{f}\times1_C}		&\ruTo>f		&\\
-Z				&&Z\times C					&				&
+Z					&&Z\times C						&				&
 \end{diagram}
 Indeed, suppose \(f:Z\times C\to A\times B\). Let \(f_1=p_1\after f\) and \(f_2=p_2\after f\):
 \begin{diagram}[nohug]
-&&Z\times C&&\\
-&\ldTo<{f_1}&\dTo>f&\rdTo>{f_2}&\\
-A&\lTo^{p_1}&A\times B&\rTo^{p_2}&B
+	&			&Z\times C	&				&\\
+	&\ldTo<{f_1}&\dTo>f		&\rdTo>{f_2}	&\\
+A	&\lTo^{p_1}	&A\times B	&\rTo^{p_2}		&B
 \end{diagram}
 Then there exist unique \(\curry{f_1}:Z\to A^C\) and \(\curry{f_2}:Z\to B^C\) with \(\eval_A\after(\curry{f_1}\times1_C)=f_1\) and \(\eval_B\after(\curry{f_2}\times1_C)=f_2\). Define \(\curry{f}=\pair{\curry{f_1}}{\curry{f_2}}:Z\to A^C\times B^C\). Then
 \begin{align*}
@@ -1088,9 +1088,9 @@ so \(C^{(-)}\)~preserves identities. If \(f:X\to Y\) and \(g:Y\to Z\), then the 
 \begin{diagram}
 C^Z\times Z				&\rTo^{\eval_{C^Z}}	&C						&\rTo^{1_C}			&C\\
 \uTo<{1_{C^Z}\times g}	&					&\uTo>{\eval_{C^Y}}		&					&\uTo>{1_C}\\
-C^Z\times Y				&\rTo_{C^g\times1_Y}	&C^Y\times Y			&\rTo_{\eval_{C^Y}}	&C\\
+C^Z\times Y				&\rTo_{C^g\times1_Y}&C^Y\times Y			&\rTo_{\eval_{C^Y}}	&C\\
 \uTo<{1_{C^Z}\times f}	&					&\uTo>{1_{C^Y}\times f}	&					&\uTo>{\eval_{C^X}}\\
-C^Z\times X				&\rTo_{C^g\times1_X}	&C^Y\times X			&\rTo_{C^f\times1_X}&C^X\times X
+C^Z\times X				&\rTo_{C^g\times1_X}&C^Y\times X			&\rTo_{C^f\times1_X}&C^X\times X
 \end{diagram}
 On the left we have
 \[(1_{C^Z}\times g)\after(1_{C^Z}\times f)=1_{C^Z}\times(g\after f)\]
@@ -1139,7 +1139,7 @@ In~\(\Sets\), this exercise (circuitously) justifies the familiar distributive l
 \begin{rmk}
 A natural transformation \(\theta:F\to G\) between two functors \(F:\C\to\D\) and \(G:\C\to\D\) looks like this:
 \begin{center}
-\begin{tikzcd}[sep=huge]
+\begin{tikzcd}[sep=huge] % not doing tab alignment on this one
 A \ar[r, "f"] \ar[rd, "g\after f"' name=gf] & B \ar[d, "g" name=g] & & \\
  & C & & \\
  & & GA \ar[r, "Gf" name=Gf] \ar[rd, "G(g\after f)"'] & GB \ar[d, "Gg"] \\
@@ -1157,9 +1157,9 @@ The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a
 
 More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\)~and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(A,\beta)\)~is a natural transformation from \(F(-,B)\)~to~\(F(-,B')\) and \(F(\alpha,B)\)~is a natural transformation from \(F(A,-)\)~to~\(F(A',-)\):\footnote{Technically speaking, \(F(A,\beta)\)~is the \emph{component} of the natural transformation~\(F(-,\beta)\) at~\(A\), and similarly for \(F(\alpha,B)\).}
 \begin{diagram}
-F(A,B)&\rTo^{F(A,\beta)}&F(A,B')\\
-\dTo<{F(\alpha,B)}&&\dTo>{F(\alpha,B')}\\
-F(A',B)&\rTo_{F(A',\beta)}&F(A',B')
+F(A,B)				&\rTo^{F(A,\beta)}	&F(A,B')\\
+\dTo<{F(\alpha,B)}	&					&\dTo>{F(\alpha,B')}\\
+F(A',B)				&\rTo_{F(A',\beta)}	&F(A',B')
 \end{diagram}
 \end{rmk}
 
@@ -1172,10 +1172,10 @@ have the following properties:
 \hline
 						&\(U\)	&\(V\)\\
 \hline
-Injective on objects		&Yes	&No\\
+Injective on objects	&Yes	&No\\
 Injective on arrows		&Yes	&Yes\\
 Surjective on objects	&No		&Yes\\
-Surjective on arrows		&No		&No\\
+Surjective on arrows	&No		&No\\
 Faithful				&Yes	&Yes\\
 Full					&Yes	&No\\
 \hline
@@ -1258,7 +1258,7 @@ inducing the familiar representable functors
 By the bifunctor lemma (Lemma~7.14), it is sufficient to prove that the representable functors satisfy the ``interchange law'', that is, for all \(\alpha:A'\to A\) and \(\beta:B\to B'\), the following diagram commutes:
 \begin{diagram}
 \Hom(A,B)				&\rTo^{\Hom(\alpha,B)}	&\Hom(A',B)\\
-\dTo<{\Hom(A,\beta)}		&						&\dTo>{\Hom(A',\beta)}\\
+\dTo<{\Hom(A,\beta)}	&						&\dTo>{\Hom(A',\beta)}\\
 \Hom(A,B')				&\rTo_{\Hom(\alpha,B')}	&\Hom(A',B')
 \end{diagram}
 Indeed, for \(f:A\to B\),
@@ -1293,9 +1293,9 @@ A	&\lTo_{p_1}	&A\times B	&\rTo_{p_2}	&B
 Applying \(F\)~to this diagram, we obtain
 \begin{diagram}[nohug,size=3.5em,tight]
 	&					&Z		&					&				&					&Z		&					&\\
-	&\ldTo<x			&		&\luTo>{\vartheta_Z}	&				&\ruTo^{\vartheta_Z}	&		&\rdTo>y			&\\
+	&\ldTo<x			&		&\luTo>{\vartheta_Z}&				&\ruTo^{\vartheta_Z}&		&\rdTo>y			&\\
 X	&					&		&					&F(C)			&					&		&					&Y\\
-	&\luTo<{\vartheta_X}	&		&\ldTo<{F(a)}		&\dTo<{F(p)}	&\rdTo>{F(b)}		&		&\ruTo>{\vartheta_Y}	&\\
+	&\luTo<{\vartheta_X}&		&\ldTo<{F(a)}		&\dTo<{F(p)}	&\rdTo>{F(b)}		&		&\ruTo>{\vartheta_Y}&\\
 	&					&F(A)	&\lTo_{F(p_1)}		&F(A\times B)	&\rTo_{F(p_2)}		&F(B)	&					&
 \end{diagram}
 It is immediate from this diagram that \(\pair{x}{y}=F(p)\after\inv{\vartheta_Z}\), which is unique since \(p\)~is unique and \(F\)~is fully faithful.
@@ -1338,9 +1338,9 @@ Now suppose \(f:J\to I\) is a function. Define
 \end{align*}
 It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f=\pull{f}\after\Phi_I\), which is equivalent to \(\Sets^f=\Psi_J\after\pull{f}\after\Psi_I\). This follows from the pullback diagram
 \begin{diagram}
-\coprod_{j\in J}A_{f(j)}&\rTo&\coprod_{i\in I}A_i\\
-\dTo<{\pi_J}&&\dTo>{\pi_I}\\
-J&\rTo_f&I
+\coprod_{j\in J}A_{f(j)}	&\rTo	&\coprod_{i\in I}A_i\\
+\dTo<{\pi_J}				&		&\dTo>{\pi_I}\\
+J							&\rTo_f	&I
 \end{diagram}
 where \(\pi_J\)~and~\(\pi_I\) are indexing projections and the upper arrow is the reindexing function \((x,j)\mapsto(x,f(j))\).
 \end{proof}
