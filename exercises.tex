@@ -1155,12 +1155,13 @@ FA \ar[r, "Ff" name=Ff] \ar[rd, "F(g\after f)"'] \ar[rruu, dashed, bend left, "\
 \begin{rmk}
 The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a functor if and only if it is functorial in each argument and the functors in each argument induce natural transformations between the functors in the other argument (this is the ``interchange law'').
 
-More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\)~and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(A,\beta)\)~is a natural transformation from \(F(-,B)\)~to~\(F(-,B')\) and \(F(\alpha,B)\)~is a natural transformation from \(F(A,-)\)~to~\(F(A',-)\):\footnote{Technically speaking, \(F(A,\beta)\)~is the \emph{component} of the natural transformation~\(F(-,\beta)\) at~\(A\), and similarly for \(F(\alpha,B)\).}
+More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\) and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(-,\beta)\)~is a natural transformation from~\(F(-,B)\) to~\(F(-,B')\) and \(F(\alpha,-)\)~is a natural transformation from~\(F(A,-)\) to~\(F(A',-)\):
 \begin{diagram}
 F(A,B)				&\rTo^{F(A,\beta)}	&F(A,B')\\
 \dTo<{F(\alpha,B)}	&					&\dTo>{F(\alpha,B')}\\
 F(A',B)				&\rTo_{F(A',\beta)}	&F(A',B')
 \end{diagram}
+This just means that the two paths these functors induce between the objects \(F(A,B)\) and~\(F(A',B')\) agree.
 \end{rmk}
 
 \begin{exer}[4]
