@@ -53,6 +53,8 @@
 \newcommand{\Cop}{\dual{\C}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Sets}{\cat{Sets}}
+\newcommand{\Setsp}{\Sets_*}
+\newcommand{\Par}{\cat{Par}}
 \newcommand{\Mon}{\cat{Mon}}
 \newcommand{\Grp}{\cat{Groups}}
 \newcommand{\Pre}{\cat{Pre}}
@@ -1162,6 +1164,10 @@ F(A,B)				&\rTo^{F(A,\beta)}	&F(A,B')\\
 F(A',B)				&\rTo_{F(A',\beta)}	&F(A',B')
 \end{diagram}
 This just means that the two paths these functors induce between the objects \(F(A,B)\) and~\(F(A',B')\) agree.
+\end{rmk}
+
+\begin{rmk}
+The fact that \(\Par\eqv\Setsp\) can be used to explain the use of sentinel values in computer programming. The points introduced by the equivalence functor \(F:\Par\to\Setsp\) are just sentinel values used to signal where partial functions are undefined.
 \end{rmk}
 
 \begin{exer}[4]
