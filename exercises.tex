@@ -1,6 +1,6 @@
 % Notes and exercises on Category Theory
 \documentclass[letterpaper,12pt]{article}
-\usepackage{amsmath,amssymb,amsthm,enumitem,fourier,diagrams}
+\usepackage{amsmath,amssymb,amsthm,enumitem,fourier,diagrams,tikz-cd}
 
 \newcommand{\N}{\mathbb{N}}
 
@@ -1136,6 +1136,22 @@ In~\(\Sets\), this exercise (circuitously) justifies the familiar distributive l
 \end{rmk}
 
 \section*{Chapter~7}
+\begin{rmk}
+A natural transformation \(\theta:F\to G\) between two functors \(F:\C\to\D\) and \(G:\C\to\D\) looks like this:
+\begin{center}
+\begin{tikzcd}[sep=huge]
+A \ar[r, "f"] \ar[rd, "g\after f"' name=gf] & B \ar[d, "g" name=g] & & \\
+ & C & & \\
+ & & GA \ar[r, "Gf" name=Gf] \ar[rd, "G(g\after f)"'] & GB \ar[d, "Gg"] \\
+ & & & GC \\
+FA \ar[r, "Ff" name=Ff] \ar[rd, "F(g\after f)"'] \ar[rruu, dashed, bend left, "\theta_A"] & FB \ar[d, "Fg"] \ar[rruu, dashed, bend left, end anchor=south west, crossing over, "\theta_B"] & & \\
+ & FC \ar[rruu, dashed, bend left, start anchor=north east, "\theta_C"] & &
+ \ar[from=gf, to=Ff, Rightarrow, shorten <=2em, shorten >=5em, bend right=20, "F"{', inner sep=1.25em, yshift=3em}]
+ \ar[from=g, to=Gf, Rightarrow, shorten=3em, bend left=10, "G" inner sep=0.75em]
+\end{tikzcd}
+\end{center}
+\end{rmk}
+
 \begin{rmk}
 The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a functor if and only if it is functorial in each argument and the functors in each argument induce natural transformations between the functors in the other argument (this is the ``interchange law'').
 
