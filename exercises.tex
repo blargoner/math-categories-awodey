@@ -1434,6 +1434,33 @@ where the upper arrow is the reindexing function \((x,j)\mapsto(x,f(j))\).
 We already know that \(\Sets^I\iso\prod_{i\in I}\Sets\) (Example~7.15), so this result shows that \(\Sets/I\eqv\prod_{i\in I}\Sets\). In particular, \(\Sets/2\eqv\Sets\times\Sets\). Since \(\Sets\times\Sets\)~is cartesian closed (by the remark in Chapter~6 above), this implies \(\Sets/2\)~is cartesian closed (by Exercise~12, and similar arguments).
 \end{rmk}
 
+\begin{rmk}
+We have a functor \(\Sets^{(-)}:\Setsop\to\Cat\), which maps a set~\(I\) to the category~\(\Sets^I\) and maps a function \(f:J\to I\) to the functor \(\Sets^f:\Sets^I\to\Sets^J\). Indeed, note for \(g:K\to J\) that
+\[\Sets^{fg}=\Sets^g\after\Sets^f\]
+since
+\begin{align*}
+\Sets^{fg}((A_i)_{i\in I})&=(A_{(fg)(k)})_{k\in K}\\
+	&=(A_{f(gk)})_{k\in K}\\
+	&=\Sets^g((A_{f(j)})_{j\in J})\\
+	&=\Sets^g(\Sets^f((A_i)_{i\in I}))\\
+	&=(\Sets^g\after\Sets^f)((A_i)_{i\in I})
+\end{align*}
+\end{rmk}
+
+\begin{rmk}
+For a category~\(\C\) and functors \(F,G:\C\to\Cat\), say that \(\Phi:F\to G\) is a \emph{natural equivalence}\footnote{This is not a good name, but I don't know what to call this thing.} if it is a family of equivalences of categories
+\[(\Phi_C:FC\eqv GC)_{C\in\C}\tag{1}\]
+such that for all \(f:C\to C'\), there is a natural isomorphism \(\Phi_{C'}\after Ff\iso Gf\after\Phi_C\)---that is, the following diagram commutes up to natural isomorphism:
+\begin{diagram}[eqno=(2)]
+FC			&\rTo^{\Phi_C}		&GC\\
+\dTo<{Ff}	&					&\dTo>{Gf}\\
+FC'			&\rTo_{\Phi_{C'}}	&GC'
+\end{diagram}
+Note this definition generalizes that of natural isomorphism for category-valued functors by allowing equivalence instead of isomorphism in~(1) and allowing natural isomorphism instead of equality in~(2).
+
+The previous exercise shows that there is a natural equivalence between the reindexing functor \(\Sets^{(-)}:\Setsop\to\Cat\) and the pullback functor \((-)^*:\Setsop\to\Cat\).\footnote{See the remark at the beginning of Chapter~5.}
+\end{rmk}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
