@@ -50,12 +50,14 @@
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
 \newcommand{\C}{\cat{C}}
+\newcommand{\Cop}{\dual{\C}}
 \newcommand{\D}{\cat{D}}
 \newcommand{\E}{\cat{E}}
 \newcommand{\J}{\cat{J}}
-\newcommand{\Cop}{\dual{\C}}
 \newcommand{\Rel}{\cat{Rel}}
+\newcommand{\Relop}{\dual{\Rel}}
 \newcommand{\Sets}{\cat{Sets}}
+\newcommand{\Setsop}{\dual{\Sets}}
 \newcommand{\Setsp}{\Sets_*}
 \newcommand{\Par}{\cat{Par}}
 \newcommand{\Mon}{\cat{Mon}}
@@ -100,7 +102,7 @@ In~\(\Rel\), let the objects be sets and the arrows be relations between sets,\f
 \item[(b)] Let \(G:\Sets\to\Rel\) map sets to themselves and functions to their graphs, so \(G(A)=A\) and
 \[G(f:A\to B)=\{\,\pair{x}{f(x)}\mid x\in A\,\}\subseteq A\times B\]
 Then \(G\)~is a functor.
-\item[(c)] Let \(C:\dual{\Rel}\to\Rel\) map sets to themselves and relations to their inverses, so \(C(A)=A\) and
+\item[(c)] Let \(C:\Relop\to\Rel\) map sets to themselves and relations to their inverses, so \(C(A)=A\) and
 \[C(R\subseteq A\times B)=\inv{R}=\{\,\pair{y}{x}\mid\pair{x}{y}\in R\,\}\subseteq B\times A\]
 Then \(C\)~is a functor.
 \end{enumerate}
@@ -115,7 +117,7 @@ Then \(C\)~is a functor.
 \end{align*}
 So \((T\after S)\after R=T\after(S\after R)\). It is immediate that \(R\after 1_A=R=1_B\after R\), where \(1_X\)~denotes the identity relation on~\(X\).
 \item[(b)] By construction, \(G\)~maps objects to objects and arrows to arrows, and \(G(f:A\to B)\)~is an arrow from \(G(A)=A\) to \(G(B)=B\). Clearly \(G(1_A)=1_A=1_{G(A)}\). If \(f:A\to B\) and \(g:B\to C\), then \((g\after f)(x)=z\) if and only if \(f(x)=y\) and \(g(y)=z\), so \(G(g\after f)=G(g)\after G(f)\).
-\item[(c)] Recall for a relation \(R\subseteq A\times B\), \(R\)~is represented as an arrow in~\(\Rel\) by the triple~\((R,A,B)\), and in~\(\dual{\Rel}\) by the triple~\((R,B,A)\), where it is denoted by~\(\star{R}\).\footnote{Importantly, \(R\)~is \emph{not} represented in~\(\dual{\Rel}\) by~\((\inv{R},B,A)\). The arrow is reversed by swapping the domain and codomain, but the underlying relation (set of ordered pairs) is unchanged.} So in~\(\Rel\), \(\dom R=A\) and \(\cod R=B\), whereas in~\(\dual{\Rel}\), \(\dom\star{R}=B=\star{B}\) and \(\cod\star{R}=A=\star{A}\), where \(R\)~and~\(\star{R}\) are here treated as arrows.
+\item[(c)] Recall for a relation \(R\subseteq A\times B\), \(R\)~is represented as an arrow in~\(\Rel\) by the triple~\((R,A,B)\), and in~\(\Relop\) by the triple~\((R,B,A)\), where it is denoted by~\(\star{R}\).\footnote{Importantly, \(R\)~is \emph{not} represented in~\(\Relop\) by~\((\inv{R},B,A)\). The arrow is reversed by swapping the domain and codomain, but the underlying relation (set of ordered pairs) is unchanged.} So in~\(\Rel\), \(\dom R=A\) and \(\cod R=B\), whereas in~\(\Relop\), \(\dom\star{R}=B=\star{B}\) and \(\cod\star{R}=A=\star{A}\), where \(R\)~and~\(\star{R}\) are here treated as arrows.
 
 By construction, \(C\)~maps objects to objects and arrows to arrows. Now \(C((R,B,A))=(\inv{R},B,A)\), so \(C\)~preserves domains and codomains. Also
 \[C(1_{\star{A}})=C(\star{1_A})=\inv{1_A}=1_A=1_{C(\star{A})}\]
@@ -127,7 +129,7 @@ For \(S\subseteq B\times C\),
 
 \begin{exer}[2]\
 \begin{enumerate}[itemsep=0pt]
-\item[(a)] \(\Rel\iso\dual{\Rel}\)
+\item[(a)] \(\Rel\iso\Relop\)
 \item[(c)] For any set~\(X\) with powerset~\(P(X)\), \(P(X)\iso\dual{P(X)}\) as poset categories.
 \end{enumerate}
 \begin{proof}\
@@ -194,7 +196,7 @@ For a (small) category~\(\C\), let \(P(\C)\) consist of the objects from~\(\C\) 
 Then \(P(\C)\)~is a preorder, and \(P:\Cat\to\Pre\) determines a functor with \(P\after C=1_{\Pre}\), where \(C:\Pre\to\Cat\) is the evident inclusion functor.
 \end{exer}
 \begin{proof}
-Reflexivity and transitivity of the order in~\(P(\C)\) follow from the existence of identities and composites in~\(\C\). So \(P\)~maps categories to preorders. For a functor \(F:\C\to\cat{D}\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\C)\), there exists an arrow \(f:A\to B\) in~\(\C\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\cat{D}\), so \(F(A)\le F(B)\) in~\(P(\cat{D})\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\after C=1_{\Pre}\).
+Reflexivity and transitivity of the order in~\(P(\C)\) follow from the existence of identities and composites in~\(\C\). So \(P\)~maps categories to preorders. For a functor \(F:\C\to\D\), let \(P(F)\)~be the restriction of~\(F\) to objects. If \(A\le B\) in~\(P(\C)\), there exists an arrow \(f:A\to B\) in~\(\C\). But then \(F(f):F(A)\to F(B)\) is an arrow in~\(\D\), so \(F(A)\le F(B)\) in~\(P(\D)\). Therefore \(P(F)\)~is monotone, and hence \(P\)~maps functors to preorder homomorphisms. Since \(P\)~just restricts functors to objects, it preserves domains and codomains, identities, and composites, hence it is a functor. It is obvious that \(P\after C=1_{\Pre}\).
 \end{proof}
 \begin{rmk}
 In general \(C\after P\ne 1_{\Cat}\) because \(P\)~loses information about the arrow structure of categories. Specifically, multiple arrows from one object to another will be represented by a single relation between those objects under~\(P\).
@@ -354,7 +356,7 @@ The \(A\)-monoid~\((M,m)\) is initial if and only if for all \(A\)-monoids~\((N,
 For a Boolean algebra~\(B\), Boolean homomorphisms \(p:B\to\cat{2}\) correspond exactly to ultrafilters in~\(B\).
 \end{exer}
 \begin{proof}
-If \(p:B\to\cat{2}\) is a homomorphism, then \(U_p=p^{-1}(1)\) is an ultrafilter in~\(B\). Indeed, \(U_p\ne\emptyset\) since \(p(1)=1\), and \(U_p\ne B\) since \(p(0)=0\ne 1\). If \(a\in U_p\) and \(a\le b\), then \(1=p(a)\le p(b)\), so \(p(b)=1\) and \(b\in U_p\). If \(a\in U_p\) and \(b\in U_p\), then
+If \(p:B\to\cat{2}\) is a homomorphism, then \(U_p=\inv{p}(1)\) is an ultrafilter in~\(B\). Indeed, \(U_p\ne\emptyset\) since \(p(1)=1\), and \(U_p\ne B\) since \(p(0)=0\ne 1\). If \(a\in U_p\) and \(a\le b\), then \(1=p(a)\le p(b)\), so \(p(b)=1\) and \(b\in U_p\). If \(a\in U_p\) and \(b\in U_p\), then
 \[p(a\meet b)=p(a)\meet p(b)=1\meet 1=1\]
 so \(a\meet b\in U_p\). Finally, if \(a\not\in U_p\) then \(p(a)=0\), so \(p(\compl a)=\compl p(a)=1\) and \(\compl a\in U_p\). On the other hand, \(p(a)\meet p(\compl a)=0\), so we cannot have \(a\in U_p\) and \(\compl a\in U_p\).
 
@@ -1076,7 +1078,7 @@ so \(A\iso 1\times A\), and the functor \(\Hom_{\C}(-,B)\) preserves this isomor
 \end{proof}
 
 \begin{exer}[12]
-Let \(\C\)~be a cartesian closed category and \(C\in\C\). Exponentiation with base object~\(C\) gives a contravariant functor \(C^{(-)}:\dual{\C}\to\C\).
+Let \(\C\)~be a cartesian closed category and \(C\in\C\). Exponentiation with base object~\(C\) gives a contravariant functor \(C^{(-)}:\Cop\to\C\).
 \end{exer}
 \begin{proof}
 For objects \(A\in\C\), define \(C^{(-)}(A)=C^A\). For arrows \(f:A\to B\) in~\(\C\), define
@@ -1087,7 +1089,7 @@ C^B\times B				&\rTo^{\eval_{C^B}}		&C\\
 \uTo<{1_{C^B}\times f}	&						&\uTo>{\eval_{C^A}}\\
 C^B\times A				&\rTo_{C^f\times 1_A}	&C^A\times A
 \end{diagram}
-Then \(C^{(-)}\)~maps objects to objects and arrows to arrows and preserves domains and codomains of arrows in~\(\dual{\C}\). Also
+Then \(C^{(-)}\)~maps objects to objects and arrows to arrows and preserves domains and codomains of arrows in~\(\Cop\). Also
 \[C^{1_A}=\curry{(\eval_{C^A}\after(1_{C^A}\times1_A))}=\curry{(\eval_{C^A}\after1_{C^A\times A})}=\curry{\eval_{C^A}}=1_{C^A}\]
 so \(C^{(-)}\)~preserves identities. If \(f:X\to Y\) and \(g:Y\to Z\), then the following diagram commutes (the upper left and lower right inner squares are just the squares above for \(g\)~and~\(f\), respectively, and the other two inner squares are trivial):
 \begin{diagram}
@@ -1103,7 +1105,7 @@ On the bottom we have
 \[(C^f\times1_X)\after(C^g\times1_X)=(C^f\after C^g)\times1_X\]
 Commutativity of the diagram therefore implies
 \[\uncurry{C^{g\after f}}=\eval_{C^Z}\after(1_{C^Z}\times(g\after f))=\eval_{C^X}\after((C^f\after C^g)\times1_X)=\uncurry{C^f\after C^g}\]
-It follows that \(C^{g\after f}=C^f\after C^g\) and hence \(C^{(-)}\)~preserves composites in~\(\dual{\C}\). This completes the proof that \(C^{(-)}\)~is a contravariant functor.
+It follows that \(C^{g\after f}=C^f\after C^g\) and hence \(C^{(-)}\)~preserves composites in~\(\Cop\). This completes the proof that \(C^{(-)}\)~is a contravariant functor.
 \end{proof}
 
 \begin{exer}[13]
@@ -1282,9 +1284,9 @@ The function~\(\eta_A\) is actually a natural embedding since if \(x\ne y\), the
 
 \begin{exer}[10]
 Let \(\C\)~be a locally small category. There exists a functor
-\[\Hom:\dual{\C}\times\C\to\Sets\]
+\[\Hom:\Cop\times\C\to\Sets\]
 inducing the familiar representable functors
-\[\Hom(C,-):\C\to\Sets\qquad\Hom(-,C):\dual{\C}\to\Sets\]
+\[\Hom(C,-):\C\to\Sets\qquad\Hom(-,C):\Cop\to\Sets\]
 \end{exer}
 \begin{proof}
 By the bifunctor lemma (Lemma~7.14), it is sufficient to prove that the representable functors satisfy the ``interchange law'', that is, for all \(\alpha:A'\to A\) and \(\beta:B\to B'\), the following diagram commutes:
