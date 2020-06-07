@@ -48,6 +48,7 @@
 \newcommand{\curry}[1]{\lambda{#1}}
 \newcommand{\uncurry}[1]{\overline{#1}}
 \newcommand{\pull}[1]{#1^{*}}
+\newcommand{\fin}[1]{#1_{\mathrm{fin}}}
 
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
@@ -61,6 +62,7 @@
 \newcommand{\Sets}{\cat{Sets}}
 \newcommand{\Setsop}{\dual{\Sets}}
 \newcommand{\Setsp}{\Sets_*}
+\newcommand{\Setsf}{\fin{\Sets}}
 \newcommand{\Par}{\cat{Par}}
 \newcommand{\Mon}{\cat{Mon}}
 \newcommand{\Grp}{\cat{Groups}}
@@ -69,6 +71,8 @@
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
 \newcommand{\BA}{\cat{BA}}
+\newcommand{\Ord}{\cat{Ord}}
+\newcommand{\Ordf}{\fin{\Ord}}
 
 \newcommand{\powBA}{\pow^{\BA}}
 
@@ -1378,6 +1382,10 @@ X	&					&		&					&F(C)			&					&		&					&Y\\
 \end{diagram}
 It is immediate from this diagram that \(\pair{x}{y}=F(p)\after\inv{\vartheta_Z}\), which is unique since \(p\)~is unique and \(F\)~is fully faithful.
 \end{proof}
+
+\begin{exer}[13]
+The ``size'' of a category is respected by isomorphism but not by equivalence. For example, we know \(\Ordf\eqv\Setsf\), but \(\Ordf\)~is countably infinite while \(\Setsf\)~is not even small.
+\end{exer}
 
 \begin{exer}[17]
 Let \(I\)~be a set. Then
