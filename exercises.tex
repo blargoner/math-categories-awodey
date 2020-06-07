@@ -1252,7 +1252,7 @@ have the following properties:
 \hline
 Injective on objects	&Yes	&No\\
 Injective on arrows		&Yes	&Yes\\
-Surjective on objects	&No		&Yes\\
+Surjective on objects	&No		&No\\
 Surjective on arrows	&No		&No\\
 Faithful				&Yes	&Yes\\
 Full					&Yes	&No\\
@@ -1382,7 +1382,7 @@ It is immediate from this diagram that \(\pair{x}{y}=F(p)\after\inv{\vartheta_Z}
 \begin{exer}[17]
 Let \(I\)~be a set. Then
 \[\Sets^I\eqv\Sets/I\]
-and this equivalence is ``natural'' in the sense that for any function \(f:J\to I\), the following diagram commutes, where \(\Sets^f\) is the reindexing functor, and \(\pull{f}\)~is the pullback functor:
+and this equivalence is ``natural'' in the sense that for any function \(f:J\to I\), the following diagram commutes up to natural isomorphism, where \(\Sets^f\) is the reindexing functor, and \(\pull{f}\)~is the pullback functor:
 \begin{diagram}
 \Sets^I			&\rTo	&\Sets/I\\
 \dTo<{\Sets^f}	&		&\dTo>{\pull{f}}\\
@@ -1393,11 +1393,11 @@ and this equivalence is ``natural'' in the sense that for any function \(f:J\to 
 Define \(\Phi_I:\Sets^I\to\Sets/I\) as follows:
 \begin{itemize}
 \item Objects: for an indexed family of sets \((A_i)_{i\in I}\), let \(p_i:A_i\to I\) be constant with \(p_i(x)=i\) for all \(x\in A_i\), and define the ``indexing projection''
-\[\Phi_I((A_i)_{i\in I})=[p_i]:\coprod_{i\in I}A_i\to I\]
+\[\Phi_I((A_i)_{i\in I})=\pi_I=[p_i]:\coprod_{i\in I}A_i\to I\]
 where we take \(\coprod_{i\in I}A_i=\bigunion_{i\in I}(A_i\times\{i\})\).
 \item Arrows: for an indexed family of functions \((f_i:A_i\to B_i)_{i\in I}\), define
 \[\Phi_I((f_i:A_i\to B_i)_{i\in I})=[\mu_i\after f_i]:\coprod_{i\in I}A_i\to\coprod_{i\in I}B_i\]
-where \(\mu_i:B_i\to\coprod_{i\in I}B_i\) the \(i\)-th coproduct injection.
+where \(\mu_i:B_i\to\coprod_{i\in I}B_i\) is the \(i\)-th coproduct injection.
 \end{itemize}
 It is immediate that \(\Phi_I\)~is a functor. Define \(\Psi_I:\Sets/I\to\Sets^I\) as follows:
 \begin{itemize}
@@ -1414,13 +1414,13 @@ Now suppose \(f:J\to I\) is a function. Define
 (A_i)_{i\in I}&\mapsto(A_{f(j)})_{j\in J}\\
 (f_i:A_i\to B_i)_{i\in I}&\mapsto(f_{f(j)}:A_{f(j)}\to B_{f(j)})_{j\in J}
 \end{align*}
-It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f=\pull{f}\after\Phi_I\), which is equivalent to \(\Sets^f=\Psi_J\after\pull{f}\after\Psi_I\). This follows from the pullback diagram
+It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f=\pull{f}\after\Phi_I\), which is equivalent up to natural isomorphism to \(\Sets^f=\Psi_J\after\pull{f}\after\Phi_I\). The latter follows from the pullback diagram
 \begin{diagram}
 \coprod_{j\in J}A_{f(j)}	&\rTo	&\coprod_{i\in I}A_i\\
 \dTo<{\pi_J}				&		&\dTo>{\pi_I}\\
 J							&\rTo_f	&I
 \end{diagram}
-where \(\pi_J\)~and~\(\pi_I\) are indexing projections and the upper arrow is the reindexing function \((x,j)\mapsto(x,f(j))\).
+where the upper arrow is the reindexing function \((x,j)\mapsto(x,f(j))\).
 \end{proof}
 \begin{rmk}
 We already know that \(\Sets^I\iso\prod_{i\in I}\Sets\) (Example~7.15), so this result shows that \(\Sets/I\eqv\prod_{i\in I}\Sets\). In particular, \(\Sets/2\eqv\Sets\times\Sets\). Since \(\Sets\times\Sets\)~is cartesian closed (by the remark in Chapter~6 above), this implies \(\Sets/2\)~is cartesian closed (by Exercise~12, and similar arguments).
