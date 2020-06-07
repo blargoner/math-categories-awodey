@@ -32,6 +32,8 @@
 \DeclareMathOperator{\Sub}{Sub}
 \DeclareMathOperator{\Diagrams}{\mathbf{Diagrams}}
 \DeclareMathOperator{\pow}{\mathcal{P}}
+\DeclareMathOperator{\ult}{Ult}
+\DeclareMathOperator{\up}{\uparrow}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
@@ -66,6 +68,9 @@
 \newcommand{\Pos}{\cat{Pos}}
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
+\newcommand{\BA}{\cat{BA}}
+
+\newcommand{\powBA}{\pow^{\BA}}
 
 % Arrows
 \newarrow{Mono} >--->
@@ -1196,6 +1201,44 @@ For~(ii), if \(a\not\le b\) and \(a\not\le b'\), then \(a\le\compl b\) and \(a\l
 and hence \(a\not\le b\join b'\).
 \end{proof}
 \end{rmk}
+
+\begin{exer}[1]
+Let \(\mathcal{F}=\powBA\after\dual{\ult}:\BA\to\Setsop\to\BA\). For a Boolean algebra~\(B\), define \(\phi_B:B\to\mathcal{F}(B)\) by
+\[\phi_B(b)=\{\,V\in\ult(B)\mid b\in V\,\}\]
+Then \(\phi_B\)~is a Boolean homomorphism, and for any Boolean homomorphism \(h:A\to B\), the following diagram commutes:
+\begin{diagram}
+A		&\rTo^{\phi_A}	&\mathcal{F}(A)\\
+\dTo<h	&				&\dTo>{\mathcal{F}(h)}\\
+B		&\rTo_{\phi_B	}&\mathcal{F}(B)
+\end{diagram}
+\end{exer}
+\begin{proof}
+It is immediate from ultrafilter properties that \(\phi_B\)~is a homomorphism. For \(a\in A\), we have
+\begin{align*}
+(\mathcal{F}(h)\after\phi_A)(a)&=\mathcal{F}(h)(\phi_A(a))\\
+	&=(\powBA(\dual{\ult}(h)))(\phi_A(a))\\
+	&=\inv{\dual{\ult}(h)}\{\,U\in\ult(A)\mid a\in U\,\}\\
+	&=\{\,V\in\ult(B)\mid h(a)\in V\,\}\\
+	&=\phi_B(h(a))\\
+	&=(\phi_B\after h)(a)\qedhere
+\end{align*}
+\end{proof}
+
+\begin{exer}[2]
+The homomorphism~\(\phi_B\) from the previous exercise is injective.
+\end{exer}
+\begin{proof}
+If \(a,b\in B\) and \(a\ne b\), then we may assume \(a\not\le b\), so \(a\meet\compl b\ne 0\). Now \(\up(a\meet\compl b)\)~is a proper filter, which is contained in an ultrafilter~\(V\) by the ultrafilter theorem. It follows that \(a\in V\) but \(b\not\in V\), so \(\phi_B(a)\ne\phi_B(b)\).
+\end{proof}
+
+\begin{exer}[3]
+The homomorphism~\(\phi_B\) from the previous exercise is bijective if \(B\)~is finite.
+\end{exer}
+\begin{proof}
+By Lemmas 7.32 and~7.33, the mapping \(\psi_B:\mathcal{F}(B)\to B\) defined by
+\[\psi_B(S)=\bigjoin\{\,\bigmeet_{b\in V}b\mid V\in S\,\}\]
+is left inverse to~\(\phi_B\).
+\end{proof}
 
 \begin{exer}[4]
 The forgetful functors
