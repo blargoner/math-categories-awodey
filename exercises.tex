@@ -1215,12 +1215,13 @@ B		&\rTo_{\phi_B	}&\mathcal{F}(B)
 \begin{proof}
 It is immediate from ultrafilter properties that \(\phi_B\)~is a homomorphism. For \(a\in A\), we have
 \begin{align*}
-(\mathcal{F}(h)\after\phi_A)(a)&=\mathcal{F}(h)(\phi_A(a))\\
-	&=(\powBA(\dual{\ult}(h)))(\phi_A(a))\\
-	&=\inv{\dual{\ult}(h)}\{\,U\in\ult(A)\mid a\in U\,\}\\
+(\phi_B\after h)(a)&=\phi_B(h(a))\\
 	&=\{\,V\in\ult(B)\mid h(a)\in V\,\}\\
-	&=\phi_B(h(a))\\
-	&=(\phi_B\after h)(a)\qedhere
+	&=\{\,V\in\ult(B)\mid a\in\inv{h}(V)\in\ult(A)\,\}\\
+	&=\inv{\dual{\ult}(h)}\{\,U\in\ult(A)\mid a\in U\,\}\\
+	&=(\powBA(\dual{\ult}(h)))(\phi_A(a))\\
+	&=\mathcal{F}(h)(\phi_A(a))\\
+	&=(\mathcal{F}(h)\after\phi_A)(a)\qedhere
 \end{align*}
 \end{proof}
 
