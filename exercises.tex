@@ -1,6 +1,7 @@
 % Notes and exercises on Category Theory
 \documentclass[letterpaper,12pt]{article}
 \usepackage{amsmath,amssymb,amsthm,enumitem,fourier,diagrams,tikz-cd}
+\usepackage[hidelinks]{hyperref}
 
 \newcommand{\N}{\mathbb{N}}
 
@@ -1448,17 +1449,19 @@ since
 \end{rmk}
 
 \begin{rmk}
-For a category~\(\C\) and functors \(F,G:\C\to\Cat\), say that \(\Phi:F\to G\) is a \emph{natural equivalence}\footnote{This is not a good name, but I don't know what to call this thing.} if it is a family of equivalences of categories
+For a category~\(\C\) and functors \(F,G:\C\to\Cat\), say that \(\Phi:F\to G\) is a \emph{natural equivalence of categories}\footnote{A better concept for describing this phenomenon is that of \emph{pseudonatural equivalence} in 2-categories. See \url{https://math.stackexchange.com/q/3713074}.} if it is a family of equivalences of categories
 \[(\Phi_C:FC\eqv GC)_{C\in\C}\tag{1}\]
-such that for all \(f:C\to C'\), there is a natural isomorphism \(\Phi_{C'}\after Ff\iso Gf\after\Phi_C\)---that is, the following diagram commutes up to natural isomorphism:
-\begin{diagram}[eqno=(2)]
+such that for all \(f:C\to C'\), there is a natural isomorphism
+\[\Phi_{C'}\after Ff\iso Gf\after\Phi_C\tag{2}\]
+---that is, the following diagram commutes up to natural isomorphism:
+\begin{diagram}
 FC			&\rTo^{\Phi_C}		&GC\\
 \dTo<{Ff}	&					&\dTo>{Gf}\\
 FC'			&\rTo_{\Phi_{C'}}	&GC'
 \end{diagram}
 Note this definition generalizes that of natural isomorphism for category-valued functors by allowing equivalence instead of isomorphism in~(1) and allowing natural isomorphism instead of equality in~(2).
 
-The previous exercise shows that there is a natural equivalence between the reindexing functor \(\Sets^{(-)}:\Setsop\to\Cat\) and the pullback functor \((-)^*:\Setsop\to\Cat\).\footnote{See the remark at the beginning of Chapter~5 above.}
+The previous exercise shows that there is a natural equivalence of this sort between the reindexing functor \(\Sets^{(-)}:\Setsop\to\Cat\) and the pullback functor \((-)^*:\Setsop\to\Cat\).\footnote{See the remark at the beginning of Chapter~5 above.}
 \end{rmk}
 
 % References
