@@ -1170,6 +1170,43 @@ FA \ar[r, "Ff" name=Ff] \ar[rd, "F(g\after f)"'] \ar[rruu, dashed, bend left, "\
 \end{rmk}
 
 \begin{rmk}
+For functors
+\begin{diagram}
+\B&\rTo^R&\C&\pile{\rTo^F\\\rTo_G}&\D&\rTo^S&\E
+\end{diagram}
+if \(F\iso G\), then \(SFR\iso SGR\).
+\end{rmk}
+\begin{proof}
+If \(\varphi:F\to G\) is a natural transformation, define \(\psi:SFR\to SGR\) by
+\[\psi_B=S(\varphi_{RB}):SFRB\to SGRB\]
+If \(f:B\to B'\in\B\), then applying~\(S\) to the commutative diagram
+\begin{diagram}
+FRB			&\rTo^{\varphi_{RB}}	&GRB\\
+\dTo<{FRf}	&						&\dTo>{GRf}\\
+FRB'		&\rTo_{\varphi_{RB'}}	&GRB'
+\end{diagram}
+yields the commutative diagram
+\begin{diagram}
+SFRB		&\rTo^{\psi_B}		&SGRB\\
+\dTo<{SFRf}	&					&\dTo>{SGRf}\\
+SFRB'		&\rTo_{\psi_{B'}}	&SGRB'
+\end{diagram}
+so \(\psi\)~is a natural transformation. If \(\varphi\)~is a natural isomorphism, then so is~\(\psi\) by Lemma~7.11.
+\end{proof}
+
+\begin{rmk}
+If \(F_1\iso G_1\) and \(F_2\iso G_2\), then by the previous remark \(F_1F_2\iso G_1G_2\).
+\end{rmk}
+
+\begin{rmk}
+The previous remarks are useful in establishing natural isomorphisms. For example, in a locally small category with products, it follows from
+\[A\times(B\times C)\iso(A\times B)\times C\]
+being natural in \(A,B,C\) that
+\[\Hom(A\times(B\times C),X)\iso\Hom((A\times B)\times C,X)\]
+is also natural in \(A,B,C\).
+\end{rmk}
+
+\begin{rmk}
 The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a functor if and only if it is functorial in each argument and the functors in each argument induce natural transformations between the functors in the other argument (this is the ``interchange law'').
 
 More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\) and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(-,\beta)\)~is a natural transformation from~\(F(-,B)\) to~\(F(-,B')\) and \(F(\alpha,-)\)~is a natural transformation from~\(F(A,-)\) to~\(F(A',-)\):
@@ -1198,6 +1235,7 @@ If \(B\)~is a finite Boolean algebra, then
 \item[(i)] \(b=\bigjoin\{\,a\in A(B)\mid a\le b\,\}\)
 \item[(ii)] If \(a\in A(B)\) and \(a\le b\join b'\), then \(a\le b\) or \(a\le b'\).
 \end{enumerate}
+\end{rmk}
 \begin{proof}
 For~(i), let \(c=\bigjoin\{\,a\in A(B)\mid a\le b\,\}\). Clearly \(c\le b\). If \(b\not\le c\), then \(b\meet\compl c\ne 0\), so by the previous remark there is \(a\in A(B)\) with \(a\le b\meet\compl c\). Now \(a\le b\) so \(a\le c\), and also \(a\le\compl c\), so \(a\le c\meet\compl c=0\), contradicting that \(a\ne 0\).
 
@@ -1205,7 +1243,6 @@ For~(ii), if \(a\not\le b\) and \(a\not\le b'\), then \(a\le\compl b\) and \(a\l
 \[a\le\compl b\meet\compl b'=\compl(b\join b')\]
 and hence \(a\not\le b\join b'\).
 \end{proof}
-\end{rmk}
 
 \begin{exer}[1]
 Let \(\mathcal{F}=\powBA\after\dual{\ult}:\BA\to\Setsop\to\BA\). For a Boolean algebra~\(B\), define \(\phi_B:B\to\mathcal{F}(B)\) by
