@@ -35,6 +35,7 @@
 \DeclareMathOperator{\pow}{\mathcal{P}}
 \DeclareMathOperator{\ult}{Ult}
 \DeclareMathOperator{\up}{\uparrow}
+\DeclareMathOperator{\ev}{ev}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
@@ -64,6 +65,7 @@
 \newcommand{\Setsop}{\dual{\Sets}}
 \newcommand{\Setsp}{\Sets_*}
 \newcommand{\Setsf}{\fin{\Sets}}
+\newcommand{\SetsCop}{\Sets^{\Cop}}
 \newcommand{\Par}{\cat{Par}}
 \newcommand{\Mon}{\cat{Mon}}
 \newcommand{\Grp}{\cat{Groups}}
@@ -919,6 +921,9 @@ For \(F:\J\to\C\), let \(\limit F\)~be the vertex of the limit of~\(F\) in~\(\C\
 
 Now viewing the set~\(I\) as a discrete category, an \(I\)-indexed family of sets is just a diagram of type~\(I\) in~\(\Sets\), and in this case the limit is just the product. Hence \(\prod\)~is a functor by the above.
 \end{proof}
+\begin{rmk}
+It follows that if \(F,G:\J\to\C\) and \(F\iso G\), then \(\limit_{\J}F\iso\limit_{\J}G\).
+\end{rmk}
 
 \begin{exer}[12]
 In~\(\Pos\), let \([n]=\{0\le\cdots\le n\}\), let \([n]\to[n+1]\) be inclusion, and let the sequence \(S:\omega\to\Pos\) be given by
@@ -1499,6 +1504,58 @@ FC'			&\rTo_{\Phi_{C'}}	&GC'
 Note this definition generalizes that of natural isomorphism for category-valued functors by allowing equivalence instead of isomorphism in~(1) and allowing natural isomorphism instead of equality in~(2).
 
 The previous exercise shows that there is a natural equivalence of this sort between the reindexing functor \(\Sets^{(-)}:\Setsop\to\Cat\) and the pullback functor \((-)^*:\Setsop\to\Cat\).\footnote{See the remark at the beginning of Chapter~5 above.}
+\end{rmk}
+
+\section*{Chapter~8}
+\begin{rmk}
+In the proof of Proposition~8.7, the functors
+\[\Hom(yC,F_{(-)})=\Hom(yC,-)\after F:J\to\SetsCop\to\Sets\]
+and
+\[F_{(-)}C=\ev_C\after F:J\to\SetsCop\to\Sets\]
+are isomorphic since \(\Hom(yC,-)\iso\ev_C\) (Yoneda) and composition preserves isomorphism.\footnote{See the remark at the beginning of Chapter~7 above.} It follows that
+\[\limit_{j\in J}\Hom(yC,F_j)\iso\limit_{j\in J}F_jC\]
+since the limit operation is functorial.\footnote{See Exercise~9 in Chapter~5 above.}
+
+In the rest of this remark, we use the notation \(U(-)\) to denote the arrow into a limit uniquely determined by a cone. To define the action of~\(\limit F_j\) on arrows in~\(\C\), first observe that for \(\alpha:j\to j'\) in~\(J\) and \(f:D\to C\) in~\(\C\), the following diagram commutes by definition of the limit and naturality of~\(F_{\alpha}\):
+\begin{diagram}[nohug,eqno=(1)]
+			&				&\limit F_jC		&					&\\
+			&\ldTo<{p_{j,C}}&					&\rdTo>{p_{j',C}}	&\\
+F_jC		&				&\rTo^{F_{\alpha}C}	&					&F_{j'}C\\
+\dTo<{F_jf}	&				&					&					&\dTo>{F_{j'}f}\\
+F_jD		&				&\rTo_{F_{\alpha}D}	&					&F_{j'}D
+\end{diagram}
+It follows that the functions \(F_jf\after p_{j,C}:\limit F_jC\to F_jD\) form a cone to~\(F_{(-)}D\), so the following diagram commutes:
+\begin{diagram}[eqno=(2)]
+\limit F_jC		&\rDashto^{U(F_jf\after p_{j,C})}	&\limit F_jD\\
+\dTo<{p_{j,C}}	&									&\dTo>{p_{j,D}}\\
+F_jC			&\rTo_{F_jf}						&F_jD
+\end{diagram}
+We therefore define
+\[(\limit F_j)(f)=U(F_jf\after p_{j,C})\]
+It follows that
+\[(\limit F_j)(1_C)=1_{\limit F_jC}\]
+and for \(g:E\to D\) in~\(\C\),
+\begin{align*}
+(\limit F_j)(f\after g)&=U(F_j(f\after g)\after p_{j,C})\\
+	&=U(F_jg\after F_jf\after p_{j,C})\\
+	&=U(F_jg\after p_{j,D})\after U(F_jf\after p_{j,C})\\
+	&=(\limit F_j)(g)\after(\limit F_j)(f)
+\end{align*}
+so \(\limit F_j\)~is a (contravariant) functor.
+
+To see that \(\limit F_j\)~is indeed the limit of the~\(F_j\), first observe that the functions \(p_{j,C}:\limit F_jC\to F_jC\) form natural transformations \(p_j:\limit F_j\to F_j\) by~(2), and these~\(p_j\) form a cone to~\(F\) by~(1). If \(q_j:G\to F_j\) is also a cone to~\(F\), then the following diagram commutes:
+\begin{diagram}[nohug,eqno=(3)]
+GC				&\rTo^{Gf}	&GD				&					&\\
+\dTo<{q_{j,C}}	&			&\dTo>{q_{j,D}}	&\rdTo>{q_{j',D}}	&\\
+F_jC			&\rTo_{F_jf}&F_jD			&\rTo_{F_{\alpha}D}	&F_{j'}D
+\end{diagram}
+In particular for each object~\(C\) the~\(q_{j,C}\) form a cone from~\(GC\) to~\(F_{(-)}C\), and for \(\theta_C=U(q_{j,C})\) the following diagram commutes:
+\begin{diagram}[nohug,eqno=(4)]
+GC				&\rTo^{Gf}				&GD					&				&\\
+\dTo<{\theta_C}	&						&\dTo>{\theta_D}	&\rdTo>{q_{j,D}}&\\
+\limit F_jC		&\rTo_{(\limit F_j)(f)}	&\limit F_jD		&\rTo_{p_{j,D}}	&F_jD
+\end{diagram}
+This implies \(\theta:G\to\limit F_j\) is natural and \(p_j\after\theta=q_j\), so \(\limit F_j\)~is universal.
 \end{rmk}
 
 % References
