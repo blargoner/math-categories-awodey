@@ -1558,6 +1558,40 @@ GC				&\rTo^{Gf}				&GD					&				&\\
 This implies \(\theta:G\to\limit F_j\) is natural and \(p_j\after\theta=q_j\), so \(\limit F_j\)~is universal.
 \end{rmk}
 
+\begin{rmk}
+In the proof of Proposition~8.10, note that for an arrow \(h:C'\to C\) in~\(\C\) and a functor \(F:\Cop\to\Sets\), the diagram
+\begin{diagram}[nohug,eqno=(1)]
+yC'	&			&\rTo^{yh}	&			&yC\\
+	&\rdTo<{x'}	&			&\ldTo>{x}	&\\
+	&			&F			&			&
+\end{diagram}
+commutes if and only if \(F(h)(x)=x'\)---that is, if and only if \(h:(x',C')\to(x,C)\) is an arrow in~\(\int_{\C}F\)---by commutativity of
+\begin{diagram}
+\Hom(yC,F)			&\rTo^{\iso}&FC\\
+\dTo<{\Hom(yh,F)}	&			&\dTo>{Fh}\\
+\Hom(yC',F)			&\rTo_{\iso}&FC'
+\end{diagram}
+Taking \(F=P\) in~(1) shows that \(P\)~is a cocone.
+
+For \(\vartheta:P\to Q\), to see that the naturality diagram
+\begin{diagram}
+PC			&\rTo^{\vartheta_C}		&QC\\
+\dTo<{Ph}	&						&\dTo>{Qh}\\
+PC'			&\rTo_{\vartheta_{C'}}	&QC'
+\end{diagram}
+commutes, observe that for \(x\in PC\) and \(x'=P(h)(x)\),
+\[(Qh\after\vartheta_C)(x)=Q(h)(\vartheta_{(x,C)})=\vartheta_{(x',C')}=\vartheta_{C'}(x')=(\vartheta_{C'}\after Ph)(x)\]
+where the second equality follows by taking \(F=Q\) in~(1).
+
+Now for any \(\eta:P\to Q\), we have commutativity of
+\begin{diagram}[eqno=(2)]
+\Hom(yC,P)			&\rTo^{\iso}&PC\\
+\dTo<{\Hom(yC,\eta)}&			&\dTo>{\eta_C}\\
+\Hom(yC,Q)			&\rTo_{\iso}&QC
+\end{diagram}
+Taking \(\eta=\theta\) in~(2) shows that \(\vartheta\after x=\vartheta_{(x,C)}\). If \(\varphi:P\to Q\) satisfies \(\varphi\after x=\vartheta_{(x,C)}\), then taking \(\eta=\varphi\) in~(2) shows that \(\varphi=\vartheta\).
+\end{rmk}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
