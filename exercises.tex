@@ -1592,6 +1592,22 @@ Now for any \(\eta:P\to Q\), we have commutativity of
 Taking \(\eta=\vartheta\) in~(2) shows that \(\vartheta\after x=\vartheta_{(x,C)}\). If \(\varphi:P\to Q\) satisfies \(\varphi\after x=\vartheta_{(x,C)}\), then taking \(\eta=\varphi\) in~(2) shows that \(\varphi=\vartheta\).
 \end{rmk}
 
+\begin{rmk}
+If \(P,Q\in\SetsCop\) and \(\vartheta:P\to Q\), then there is a functor
+\[I(\vartheta):\int_{\C}P\to\int_{\C}Q\]
+defined by \(I(\vartheta)(x,C)=(\vartheta_Cx,C)\). Indeed, if \(h:(x',C')\to(x,C)\) is an arrow in~\(\int_{\C}P\), then commutativity of
+\begin{diagram}
+PC			&\rTo^{\vartheta_C}		&QC\\
+\dTo<{Ph}	&						&\dTo>{Qh}\\
+PC'			&\rTo_{\vartheta_{C'}}	&QC'
+\end{diagram}
+implies
+\[Q(h)(\vartheta_C x)=\vartheta_{C'}(P(h)(x))=\vartheta_{C'}x'\]
+so \(I(\vartheta)(h)=h:(\vartheta_{C'}x',C')\to(\vartheta_C x,C)\) is an arrow in~\(\int_{\C}Q\). Clearly \(I(\vartheta)\)~preserves identities and composites.
+
+Moreover, if \(\C\)~is small then \(I:\SetsCop\to\Cat\) is a functor, where \(I(P)=\int_{\C}P\). In other words, \emph{integrating over a (small) category is functorial}.
+\end{rmk}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
