@@ -1603,9 +1603,15 @@ PC'			&\rTo_{\vartheta_{C'}}	&QC'
 \end{diagram}
 implies
 \[Q(h)(\vartheta_C x)=\vartheta_{C'}(P(h)(x))=\vartheta_{C'}x'\]
-so \(I(\vartheta)(h)=h:(\vartheta_{C'}x',C')\to(\vartheta_C x,C)\) is an arrow in~\(\int_{\C}Q\). Clearly \(I(\vartheta)\)~preserves identities and composites.
+so \(I(\vartheta)(h)=h:(\vartheta_{C'}x',C')\to(\vartheta_C x,C)\) is an arrow in~\(\int_{\C}Q\). Clearly \(I(\vartheta)\)~preserves identities and composites, so it is a functor. Note it preserves the underlying objects and arrows in~\(\C\).
 
 Moreover, if \(\C\)~is small then \(I:\SetsCop\to\Cat\) is a functor, where \(I(P)=\int_{\C}P\). In other words, \emph{integrating over a (small) category is functorial}.
+\end{rmk}
+
+\begin{rmk}
+In the proof of Proposition~8.11, to define the action of~\(F_!\) on an arrow \(\vartheta:P\to Q\) we use the previous remark. Write \(P\iso\colimit_{j\in J}A_j\) and \(Q\iso\colimit_{k\in K}B_k\) where \(J=\int_{\C}P\) and \(K=\int_{\C}Q\) and \(A:J\to\C\) and \(B:K\to\C\) are the projections. Since \(I(\vartheta):J\to K\) preserves the underlying objects and arrows in~\(\C\), it follows that \(\colimit_{k\in K}FB_k\) is a cocone to~\(FA_{(-)}\) in~\(\mathcal{E}\), and so there is a unique arrow
+\[F_!\,\vartheta:\colimit_{j\in J}FA_j\to\colimit_{k\in K}FB_k\]
+induced by the universal property of~\(\colimit_{j\in J}FA_j\). Clearly \(F_!\)~preserves identities and composites, so it is a functor.
 \end{rmk}
 
 % References
