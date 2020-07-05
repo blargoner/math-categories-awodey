@@ -936,6 +936,43 @@ Immediate from definitions.
 
 \section*{Chapter~6}
 \begin{rmk}
+Let \(\C\)~be a category with binary products and let \(B,C\in\C\). An object \(C^B\in\C\) is an exponential for \(B\) and~\(C\) if and only if there is an isomorphism
+\[\Hom_{\C}(A\times B,C)\iso\Hom_{\C}(A,C^B)\tag{1}\]
+for all \(A\in\C\) which is natural in~\(A\).\footnote{The concept of naturality is defined in Chapter~7.}
+\end{rmk}
+\begin{proof}
+If \(C^B\)~is an exponential, let \(\eval:C^B\times B\to C\) be the evaluation arrow. We know that transposition relative to~\(\eval\) induces the isomorphism~(1). Moreover, if \(f:A\times B\to C\) and \(g:A'\to A\), then this diagram commutes:
+\begin{diagram}[nohug]
+C^B\times B					&\rTo^{\eval}					&C\\
+\uTo<{\curry{f}\times 1_B}	&								&\uTo>{1_C}\\
+A\times B					&\rTo_f							&C\\
+\uTo<{g\times 1_B}			&\ruTo>{f\after(g\times 1_B)}	&\\
+A'\times B					&								&
+\end{diagram}
+Since
+\[(\curry{f}\times 1_B)\after(g\times 1_B)=(\curry{f}\after g)\times 1_B\]
+it follows that
+\[\curry{(f\after(g\times 1_B))}=\curry{f}\after g\]
+so this diagram commutes:
+\begin{diagram}
+\Hom(A\times B,C)			&\rTo^{\iso}&\Hom(A,C^B)\\
+\dTo<{\Hom(g\times 1_B,C)}	&			&\dTo>{\Hom(g,C^B)}\\
+\Hom(A'\times B,C)			&\rTo_{\iso}&\Hom(A',C^B)
+\end{diagram}
+This establishes naturality of~(1) in~\(A\).
+
+Conversely, if (1)~holds naturally in~\(A\), first take \(A=C^B\) and let \(\eval:C^B\times B\to C\) be the arrow corresponding to~\(1_{C^B}\). If \(f:A\times B\to C\) for some~\(A\), let \(\curry{f}:A\to C^B\) be the arrow corresponding to~\(f\) in~(1). Then commutativity of
+\begin{diagram}
+\Hom(C^B\times B,C)					&\rTo^{\iso}&\Hom(C^B,C^B)\\
+\dTo<{\Hom(\curry{f}\times 1_B,C)}	&			&\dTo>{\Hom(\curry{f},C^B)}\\
+\Hom(A\times B,C)					&\rTo_{\iso}&\Hom(A,C^B)
+\end{diagram}
+implies
+\[\eval\after(\curry{f}\times 1_B)=f\]
+It follows that \(C^B\) (with~\(\eval\)) is an exponential.
+\end{proof}
+
+\begin{rmk}
 Let \(\C\)~be a cartesian closed category and \(\eta=\curry{1_{A\times B}}:A\to(A\times B)^B\). For \(f:A\times B\to C\), to see that the diagram
 \begin{diagram}[nohug]
 (A\times B)^B	&\rTo^{f^B}			&C^B\\
