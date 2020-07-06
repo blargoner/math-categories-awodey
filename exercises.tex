@@ -909,7 +909,7 @@ In particular, there exists a product functor
 for \(I\)-indexed families of sets.
 \end{exer}
 \begin{proof}
-The objects in \(\Diagrams(\J,\C)\) are functors \(F:\J\to\C\), and the arrows are natural transformations between those functors.\footnote{In other words, \(\Diagrams(\J,\C)\) is just the functor category~\(\C^{\J}\).} More specifically, an arrow \(\theta:F\to G\) between \(F:\J\to\C\) and \(G:\J\to\C\) is a family of arrows \(\theta_j:Fj\to Gj\) for each \(j\in\J\) such that for \(\alpha:i\to j\in\J\), this square commutes:
+The objects in \(\Diagrams(\J,\C)\) are functors \(F:\J\to\C\), and the arrows are natural transformations between those functors.\footnote{In other words, \(\Diagrams(\J,\C)\) is just the functor category~\(\C^{\J}\). See Chapter~7.} More specifically, an arrow \(\theta:F\to G\) between \(F:\J\to\C\) and \(G:\J\to\C\) is a family of arrows \(\theta_j:Fj\to Gj\) for each \(j\in\J\) such that for \(\alpha:i\to j\in\J\), this square commutes:
 \begin{diagram}
 Fi				&\rTo^{\theta_i}	&Gi\\
 \dTo<{F\alpha}	&					&\dTo>{G\alpha}\\
@@ -936,9 +936,9 @@ Immediate from definitions.
 
 \section*{Chapter~6}
 \begin{rmk}
-Let \(\C\)~be a category with binary products and let \(B,C\in\C\). An object \(C^B\in\C\) is an exponential for \(B\) and~\(C\) if and only if there is an isomorphism
+Let \(\C\)~be a locally small category with binary products and \(B,C\in\C\). An object \(C^B\in\C\) is an exponential for \(B\) and~\(C\) if and only if
 \[\Hom_{\C}(A\times B,C)\iso\Hom_{\C}(A,C^B)\tag{1}\]
-for all \(A\in\C\) which is natural in~\(A\).\footnote{The concept of naturality is defined in Chapter~7.}
+for all \(A\in\C\) and the isomorphism is natural in~\(A\).\footnote{The concept of naturality is defined in Chapter~7.}
 \end{rmk}
 \begin{proof}
 If \(C^B\)~is an exponential, let \(\eval:C^B\times B\to C\) be the evaluation arrow. We know that transposition relative to~\(\eval\) induces the isomorphism~(1). Moreover, if \(f:A\times B\to C\) and \(g:A'\to A\), then this diagram commutes:
