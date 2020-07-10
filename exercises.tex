@@ -973,6 +973,12 @@ It follows that \(C^B\) (with~\(\eval\)) is an exponential.
 \end{proof}
 
 \begin{rmk}
+Let \(\C\)~be a locally small category with binary products and \(B\in\C\). If \(E:\C\to\C\) is a functor, then \(E\iso(-)^B\) if and only if
+\[\Hom_{\C}(A\times B,C)\iso\Hom_{\C}(A,EC)\]
+for all \(A,C\in\C\) and the isomorphism is natural in both \(A\) and~\(C\).
+\end{rmk}
+
+\begin{rmk}
 Let \(\C\)~be a cartesian closed category and \(\eta=\curry{1_{A\times B}}:A\to(A\times B)^B\). For \(f:A\times B\to C\), to see that the diagram
 \begin{diagram}[nohug]
 (A\times B)^B	&\rTo^{f^B}			&C^B\\
