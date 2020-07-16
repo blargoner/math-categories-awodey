@@ -1663,6 +1663,92 @@ In the proof of Proposition~8.11, to define the action of~\(F_!\) on an arrow \(
 induced by the universal property of~\(\colimit_{j\in J}FA_j\). Clearly \(F_!\)~preserves identities and composites, so it is a functor.
 \end{rmk}
 
+\begin{exer}[1]
+If \(F:\C\to\D\) is fully faithful, then \(C\iso C'\) iff \(FC\iso FC'\).
+\end{exer}
+\begin{proof}
+The forward direction holds since functors preserve isos. For the reverse direction, if \(x:FC\to FC'\) and \(y:FC'\to FC\) are inverses, then since \(F\)~is full there are \(f:C\to C'\) and \(g:C'\to C\) with \(Ff=x\) and \(Fg=y\). Now
+\[F(g\after f)=F(g)\after F(f)=y\after x=1_{FC}=F(1_C)\]
+so \(g\after f=1_C\) since \(F\)~is faithful. Similarly \(f\after g=1_{C'}\), so \(f\) and~\(g\) are inverses.
+\end{proof}
+
+\begin{exer}[2]
+The representable functors generate~\(\SetsCop\).
+\end{exer}
+\begin{proof}
+If \(P,Q\in\SetsCop\) and \(\varphi,\psi:P\to Q\) satisfy \(\varphi\after\vartheta=\psi\after\vartheta\) for all \(\vartheta:yC\to P\), then
+\[\Hom(yC,\varphi)=\Hom(yC,\psi)\]
+so we have a commutative diagram by the Yoneda lemma:
+\begin{diagram}
+\Hom(yC,P)	&\rTo^{\iso}&PC\\
+\dTo		&			&\dTo<{\varphi_C}\dTo>{\psi_C}\\
+\Hom(yC,Q)	&\rTo_{\iso}&QC
+\end{diagram}
+It follows that \(\varphi_C=\psi_C\) for all~\(C\), so \(\varphi=\psi\).
+\end{proof}
+
+\begin{exer}[3]
+If \(\C\)~is a locally small cartesian closed category, then
+\[(A\times B)^C\iso A^C\times B^C\tag{1}\]
+and if \(\C\)~also has binary coproducts, then
+\[A^{(B+C)}\iso A^B\times A^C\tag{2}\]
+\end{exer}
+\begin{proof}
+By the Yoneda principle. For~(1), we have
+\begin{align*}
+\Hom(X,(A\times B)^C)&\iso\Hom(X\times C,A\times B)\\
+	&\iso\Hom(X\times C,A)\times\Hom(X\times C,B)\\
+	&\iso\Hom(X,A^C)\times\Hom(X,B^C)\\
+	&\iso\Hom(X,A^C\times B^C)
+\end{align*}
+For~(2), we have
+\begin{align*}
+\Hom(X,A^{(B+C)})&\iso\Hom(X\times(B+C),A)\\
+	&\iso\Hom(X\times B+X\times C,A)\\
+	&\iso\Hom(X\times B,A)\times\Hom(X\times C,A)\\
+	&\iso\Hom(X,A^B)\times\Hom(X,A^C)\\
+	&\iso\Hom(X,A^B\times A^C)
+\end{align*}
+All isos are natural in~\(X\).
+\end{proof}
+
+\begin{exer}[7]
+The Yoneda embedding \(y:\C\to\SetsCop\) preserves binary products and exponentials.
+\end{exer}
+\begin{proof}
+For products, we have
+\begin{align*}
+y(A\times B)(C)&=\Hom(C,A\times B)\\
+	&\iso\Hom(C,A)\times\Hom(C,B)\\
+	&=yA(C)\times yB(C)\\
+	&=(yA\times yB)(C)
+\end{align*}
+and the iso is natural in~\(C\). For exponentials, we have
+\begin{align*}
+y(B^A)(C)&=\Hom(C,B^A)\\
+	&\iso\Hom(C\times A,B)\\
+	&=yB(C\times A)\\
+	&\iso\Hom(y(C\times A),yB)\\
+	&\iso\Hom(yC\times yA,yB)\\
+	&=yB^{\,yA}(C)
+\end{align*}
+and the isos are natural in~\(C\).
+\end{proof}
+
+\begin{exer}[10]
+The \(\lambda\)-calculus is complete with respect to diagram categories.
+\end{exer}
+\begin{proof}
+Anything provable in the \(\lambda\)-calculus is true in every cartesian closed model, hence in every diagram model since they are cartesian closed. On the other hand, if something is not provable it is not true in some cartesian closed model, hence not true in some containing diagram model.
+\end{proof}
+
+\begin{exer}[11]
+The slice category~\(\Sets/X\) is cartesian closed.
+\end{exer}
+\begin{proof}
+\(\Sets/X\eqv\Sets^X\) and \(\Sets^X\) is cartesian closed.
+\end{proof}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
