@@ -1749,6 +1749,26 @@ The slice category~\(\Sets/X\) is cartesian closed.
 \(\Sets/X\eqv\Sets^X\) and \(\Sets^X\) is cartesian closed.
 \end{proof}
 
+\section*{Chapter~9}
+\begin{exer}[1]
+For functors \(F:\C\to\D\) and \(U:\D\to\C\), given an isomorphism
+\[\phi:\Hom_{\D}(FC,D)\iso\Hom_{\C}(C,UD)\]
+natural in \(C\) and~\(D\), the family \(\eta_C:C\to UFC\) defined by \(\eta_C=\phi(1_{FC})\) is a natural transformation \(\eta:1_{\C}\to UF\).
+\end{exer}
+\begin{proof}
+For \(h:C'\to C\), the following diagram commutes by naturality:
+\begin{diagram}
+\Hom(FC,FC)		&\rTo^{\phi}_{\iso}	&\Hom(C,UFC)\\
+\dTo<{(Fh)^*}	&					&\dTo>{h^*}\\
+\Hom(FC',FC)	&\rTo_{\phi}^{\iso}	&\Hom(C',UFC)\\
+\uTo<{(Fh)_*}	&					&\uTo>{(UFh)_*}\\
+\Hom(FC',FC')	&\rTo_{\phi}^{\iso}	&\Hom(C',UFC')
+\end{diagram}
+Chasing \(1_{FC}\) and~\(1_{FC'}\) around the diagram, we see that
+\[\eta_C\after h=UFh\after\eta_{C'}\]
+so \(\eta\)~is natural.
+\end{proof}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
