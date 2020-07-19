@@ -57,6 +57,7 @@
 \newcommand{\C}{\cat{C}}
 \newcommand{\Cop}{\dual{\C}}
 \newcommand{\D}{\cat{D}}
+\newcommand{\Dop}{\dual{\D}}
 \newcommand{\E}{\cat{E}}
 \newcommand{\J}{\cat{J}}
 \newcommand{\Rel}{\cat{Rel}}
@@ -1750,6 +1751,12 @@ The slice category~\(\Sets/X\) is cartesian closed.
 \end{proof}
 
 \section*{Chapter~9}
+\begin{rmk}
+In the proof of Corollary~9.5, view \(F:\Cop\to\Dop\) and \(U:\Dop\to\Cop\), so
+\[\psi=\inv{\phi}:\Hom_{\Cop}(UD,C)\iso\Hom_{\Dop}(D,FC)\]
+is natural in \(C\) and~\(D\). Apply Proposition~9.4 to obtain the unit \(\epsilon:1_{\Dop}\to FU\) for~\(\Dop\), which is just the desired counit \(\epsilon:FU\to 1_{\D}\) for~\(\D\).
+\end{rmk}
+
 \begin{exer}[1]
 For functors \(F:\C\to\D\) and \(U:\D\to\C\), given an isomorphism
 \[\phi:\Hom_{\D}(FC,D)\iso\Hom_{\C}(C,UD)\]
