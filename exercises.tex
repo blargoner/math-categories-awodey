@@ -10,6 +10,7 @@
 \newcommand{\eqv}{\simeq}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\adj}{\dashv}
 
 \newcommand{\meet}{\wedge}
 \newcommand{\bigmeet}{\bigwedge}
@@ -1751,6 +1752,20 @@ The slice category~\(\Sets/X\) is cartesian closed.
 \end{proof}
 
 \section*{Chapter~9}
+\begin{rmk}
+To see that a pseudo-inverse \(U:\D\eqv\C\) is an adjoint, recall that \(U\)~is fully faithful and essentially surjective on objects.\footnote{See Proposition~7.26.} For each object \(C\in\C\) we can choose an object \(FC\in\D\) and an isomorphism \(\eta_C:C\iso UFC\). For an arrow \(f:C\to C'\) in~\(\C\), let \(Ff:FC\to FC'\) be the unique arrow in~\(\D\) making this diagram commute:
+\begin{diagram}
+C					&\rTo^f		&C'\\
+\dTo<{\eta_C}>{\iso}&			&\dTo>{\eta_{C'}}<{\iso}\\
+UFC					&\rTo_{UFf}	&UFC'
+\end{diagram}
+Then \(F:\C\to\D\) is a functor and \(\eta:1_{\C}\iso UF\) is a natural isomorphism. For \(D\in\D\) and \(C'=UD\), \(g=\inv{U}(\inv{\eta_{C'}}\after UFf)\) is unique with \(f=Ug\after\eta_C\), so \(\eta\)~is the unit of an adjunction \(F\adj U\).
+\end{rmk}
+
+\begin{rmk}
+If \(E:\C\to\D\) and \(F:\D\to\C\) exhibit an equivalence \(\C\eqv\D\), it is not true in general that the natural isomorphisms \(1_{\C}\iso FE\) and \(EF\iso 1_{\D}\) are unit and counit of an adjunction.
+\end{rmk}
+
 \begin{rmk}
 In the proof of Corollary~9.5, view \(F:\Cop\to\Dop\) and \(U:\Dop\to\Cop\), so
 \[\psi=\inv{\phi}:\Hom_{\Cop}(UD,C)\iso\Hom_{\Dop}(D,FC)\]
