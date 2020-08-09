@@ -11,6 +11,7 @@
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\adj}{\dashv}
+\newcommand{\adjrule}{\frac}
 
 \newcommand{\meet}{\wedge}
 \newcommand{\bigmeet}{\bigwedge}
@@ -39,7 +40,9 @@
 \DeclareMathOperator{\ev}{ev}
 
 \newcommand{\pair}[2]{\langle{#1},{#2}\rangle}
+\newcommand{\pairing}[1]{\langle#1\rangle}
 \newcommand{\copair}[2]{[{#1},{#2}]}
+\newcommand{\copairing}[1]{[#1]}
 \newcommand{\comp}[1]{\overline{#1}}
 \newcommand{\inv}[1]{#1^{-1}}
 \renewcommand{\star}[1]{#1^{*}}
@@ -1784,6 +1787,18 @@ Taking \(C=UD\) and chasing \(1_{UD}\) around the diagram, we see that
 so \(\varphi\)~is natural in~\(D\), and \(U\iso V\).
 
 Alternately, note that the diagram just represents commutativity at~\(C\) of the image of the naturality square for~\(\varphi\) under the (faithful) Yoneda embedding.
+\end{rmk}
+
+\begin{rmk}
+Let \(\alpha:J\to I\) be a function between sets and \(\alpha^*:\Sets^I\to\Sets^J\) the induced reindexing functor. To see that
+\[\textstyle\sum_{\alpha}\adj\alpha^*\adj\prod_{\alpha}\]
+first observe that there is a bijective correspondence between families
+\[\adjrule{\varphi_i:\sum_{\alpha j=i}B_j\to X_i}{\psi_j:B_j\to X_{\alpha j}}\]
+given in the downward direction by \(\psi_j=\varphi_{\alpha j}\after i_j\), where \(i_j:B_j\to\sum_{\alpha k=\alpha j}B_k\) is the canonical injection, and in the upward direction by \(\varphi_i=\copairing{\,\psi_j\mid j\in\inv{\alpha}(i)\,}\).
+
+Dually, there is a bijective correspondence between families
+\[\adjrule{\psi_j:X_{\alpha j}\to B_j}{\varphi_i:X_i\to\prod_{\alpha j=i}B_j}\]
+given in the downward direction by \(\varphi_i=\pairing{\,\psi_j\mid j\in\inv{\alpha}(i)\,}\) and in the upward direction by \(\psi_j=p_j\after\varphi_{\alpha j}\) where \(p_j\)~is the canonical projection.
 \end{rmk}
 
 \begin{exer}[1]
