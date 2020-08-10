@@ -63,6 +63,7 @@
 \newcommand{\D}{\cat{D}}
 \newcommand{\Dop}{\dual{\D}}
 \newcommand{\E}{\cat{E}}
+\newcommand{\Ee}{\mathcal{E}}
 \newcommand{\J}{\cat{J}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Relop}{\dual{\Rel}}
@@ -1669,7 +1670,7 @@ Moreover, if \(\C\)~is small then \(I:\SetsCop\to\Cat\) is a functor, where \(I(
 \end{rmk}
 
 \begin{rmk}
-In the proof of Proposition~8.11, to define the action of~\(F_!\) on an arrow \(\vartheta:P\to Q\) we use the previous remark. Write \(P\iso\colimit_{j\in J}A_j\) and \(Q\iso\colimit_{k\in K}B_k\) where \(J=\int_{\C}P\) and \(K=\int_{\C}Q\) and \(A:J\to\C\) and \(B:K\to\C\) are the projections. Since \(I(\vartheta):J\to K\) preserves the underlying objects and arrows in~\(\C\), it follows that \(\colimit_{k\in K}FB_k\) is a cocone to~\(FA_{(-)}\) in~\(\mathcal{E}\), and so there is a unique arrow
+In the proof of Proposition~8.11, to define the action of~\(F_!\) on an arrow \(\vartheta:P\to Q\) we use the previous remark. Write \(P\iso\colimit_{j\in J}A_j\) and \(Q\iso\colimit_{k\in K}B_k\) where \(J=\int_{\C}P\) and \(K=\int_{\C}Q\) and \(A:J\to\C\) and \(B:K\to\C\) are the projections. Since \(I(\vartheta):J\to K\) preserves the underlying objects and arrows in~\(\C\), it follows that \(\colimit_{k\in K}FB_k\) is a cocone to~\(FA_{(-)}\) in~\(\Ee\), and so there is a unique arrow
 \[F_!\,\vartheta:\colimit_{j\in J}FA_j\to\colimit_{k\in K}FB_k\]
 induced by the universal property of~\(\colimit_{j\in J}FA_j\). Clearly \(F_!\)~preserves identities and composites, so it is a functor.
 \end{rmk}
@@ -1830,6 +1831,39 @@ given in the downward direction by \(\psi_j=\varphi_{\alpha j}\after i_j\), wher
 Dually, there is a bijective correspondence between families
 \[\adjrule{\psi_j:X_{\alpha j}\to B_j}{\varphi_i:X_i\to\prod_{\alpha j=i}B_j}\]
 given in the downward direction by \(\varphi_i=\pairing{\,\psi_j\mid j\in\inv{\alpha}(i)\,}\) and in the upward direction by \(\psi_j=p_j\after\varphi_{\alpha j}\) where \(p_j\)~is the canonical projection.
+\end{rmk}
+
+\begin{rmk}
+In the first half of the proof of Proposition~9.20, let \(f=B:B\to 1\) and identify \(\Ee/1\) and~\(\Ee\). Then we have
+\begin{diagram}
+B	&&\Ee/B\\
+\dTo&&\dTo>{\sum_B}\ \uTo>{B^*}\ \dTo>{\prod_B}\\
+1	&&\Ee
+\end{diagram}
+Since \(\sum_B\adj B^*\), it follows that \(B^*\)~is pullback over the terminal object, which is multiplication by~\(B\) (over~\(B\)):
+\[B^*A=(\pi:A\times B\to B)\]
+Therefore \(\sum_BB^*A=A\times B\). Now since \(B^*\adj\prod_B\), there are natural isomorphisms
+\begin{align*}
+\Hom(C,\textstyle\prod_BB^*A)&\iso\Hom(B^*C,B^*A)\\
+	&\iso\Hom(\textstyle\sum_BB^*C,A)\\
+	&\iso\Hom(C\times B,A)
+\end{align*}
+It follows that \(\prod_BB^*A=A^B\) (contrary to what the book says).
+
+In the second half of the proof, note that
+\begin{diagram}[nohug]
+Y\times F	&\rTo^f		&X\\
+			&\rdTo<{\pi}&\dTo>p\\
+			&			&F
+\end{diagram}
+commutes if and only if
+\begin{diagram}
+Y	&\rTo^{\curry f}	&X^F\\
+\dTo&					&\dTo>{p^F}\\
+1	&\rTo_{\curry 1_F}	&F^F
+\end{diagram}
+commutes, so there is a natural isomorphism
+\[\Hom(F^*Y,p)\iso\Hom(Y,\textstyle\prod_F(p))\]
 \end{rmk}
 
 \begin{exer}[1]
