@@ -1762,6 +1762,18 @@ The slice category~\(\Sets/X\) is cartesian closed.
 
 \section*{Chapter~9}
 \begin{rmk}
+For functors
+\begin{diagram}
+\C&\pile{\rTo^F\\\lTo_U}&\D&\pile{\rTo^G\\\lTo_V}&\E
+\end{diagram}
+if \(F\adj U\) and \(G\adj V\), then \(GF\adj UV\).
+\end{rmk}
+\begin{proof}
+For \(C\in\C\) and \(E\in\E\), we have natural isomorphisms
+\[\Hom(GFC,E)\iso\Hom(FC,VE)\iso\Hom(C,UVE)\qedhere\]
+\end{proof}
+
+\begin{rmk}
 To see that a pseudo-inverse \(U:\D\eqv\C\) is an adjoint, recall that \(U\)~is fully faithful and essentially surjective on objects.\footnote{See Proposition~7.26.} For each object \(C\in\C\) we can choose an object \(FC\in\D\) and an isomorphism \(\eta_C:C\iso UFC\). For an arrow \(f:C\to C'\) in~\(\C\), let \(Ff:FC\to FC'\) be the unique arrow in~\(\D\) making this diagram commute:
 \begin{diagram}
 C					&\rTo^f		&C'\\
@@ -1772,8 +1784,21 @@ Then \(F:\C\to\D\) is a functor and \(\eta:1_{\C}\iso UF\) is a natural isomorph
 \end{rmk}
 
 \begin{rmk}
-If \(E:\C\to\D\) and \(F:\D\to\C\) exhibit an equivalence \(\C\eqv\D\), it is not true in general that the natural isomorphisms \(1_{\C}\iso FE\) and \(EF\iso 1_{\D}\) are unit and counit of an adjunction.
+If \(E:\C\to\D\) and \(F:\D\to\C\) exhibit an equivalence \(\C\eqv\D\), it is not true in general that the natural isomorphisms \(1_{\C}\iso FE\) and \(EF\iso 1_{\D}\) are the unit and counit of an adjunction. However, the previous remark shows that we can tweak \(E\) or~\(F\) to make this true.
 \end{rmk}
+
+\begin{rmk}
+Equivalence of categories preserves adjoints. If \(F\adj U\) in the following diagram, then \(F'\adj U'\):
+\begin{diagram}
+\C			&\pile{\rTo^F\\\lTo_U}				&\D\\
+\dTo>{\eqv}	&									&\dTo<{\eqv}\\
+\C'			&\pile{\rDashto^{F'}\\\lDashto_{U'}}&\D'
+\end{diagram}
+In particular, isomorphism of categories preserves adjoints.
+\end{rmk}
+\begin{proof}
+By the previous remark, we may assume without loss of generality that the equivalences are \emph{adjoint} equivalences. The result then follows from the prior remark about composites of adjoints.
+\end{proof}
 
 \begin{rmk}
 In the proof of Corollary~9.5, view \(F:\Cop\to\Dop\) and \(U:\Dop\to\Cop\), so
