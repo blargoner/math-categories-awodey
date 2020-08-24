@@ -1662,7 +1662,7 @@ Taking \(\eta=\vartheta\) in~(2) shows that \(\vartheta\after x=\vartheta_{(x,C)
 
 \begin{rmk}
 If \(P,Q\in\SetsCop\) and \(\vartheta:P\to Q\), then there is a functor
-\[I(\vartheta):\int_{\C}P\to\int_{\C}Q\]
+\[\textstyle I(\vartheta):\int_{\C}P\to\int_{\C}Q\]
 defined by \(I(\vartheta)(x,C)=(\vartheta_Cx,C)\). Indeed, if \(h:(x',C')\to(x,C)\) is an arrow in~\(\int_{\C}P\), then commutativity of
 \begin{diagram}
 PC			&\rTo^{\vartheta_C}		&QC\\
@@ -1680,6 +1680,10 @@ Moreover, if \(\C\)~is small then \(I:\SetsCop\to\Cat\) is a functor, where \(I(
 In the proof of Proposition~8.11, to define the action of~\(F_!\) on an arrow \(\vartheta:P\to Q\) we use the previous remark. Write \(P\iso\colimit_{j\in J}A_j\) and \(Q\iso\colimit_{k\in K}B_k\) where \(J=\int_{\C}P\) and \(K=\int_{\C}Q\) and \(A:J\to\C\) and \(B:K\to\C\) are the projections. Since \(I(\vartheta):J\to K\) preserves the underlying objects and arrows in~\(\C\), it follows that \(\colimit_{k\in K}FB_k\) is a cocone to~\(FA_{(-)}\) in~\(\Ee\), and so there is a unique arrow
 \[F_!\,\vartheta:\colimit_{j\in J}FA_j\to\colimit_{k\in K}FB_k\]
 induced by the universal property of~\(\colimit_{j\in J}FA_j\). Clearly \(F_!\)~preserves identities and composites, so it is a functor.
+\end{rmk}
+
+\begin{rmk}
+For \(C\in\C\), the category of elements \(\int_{\C}yC\) has the terminal object \((1_C,C)\). Indeed, for any object~\((x',C')\), we have \(x':C'\to C\) and \(yC(x')(1_C)=x'\), so \(x':(x',C')\to(1_C,C)\) and \(x'\)~is the only arrow with this property.
 \end{rmk}
 
 \begin{exer}[1]
