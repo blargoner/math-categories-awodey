@@ -807,6 +807,13 @@ Let \(P:\D\to\D/{\eq}\) be the projection functor \(f\mapsto[f]\). Then \(PF\)~a
 The pullback functor \(\Cop\to\Cat\) (Proposition 5.10) is closely related to the slice functor \(\C/(-):\C\to\Cat\) (Section 1.6). They both map an object~\(C\) to the slice category~\(\C/C\). The former maps an arrow to a functor taking the ``inverse image'' (pullback) under that arrow, while the latter maps an arrow to a functor taking the image (composite) under that arrow.
 \end{rmk}
 
+\begin{rmk}
+If \(\J\)~is an index category with initial object \(i\in\J\), then for any diagram \(D:\J\to\C\),
+\[\limit_{j\in\J}D_j=D_i\]
+Dually if \(i\in\J\) is a terminal object, then
+\[\colimit_{j\in\J}D_j=D_i\]
+\end{rmk}
+
 \begin{exer}[1]
 Let \(\C\)~be a category and \(X\in\C\). A pullback in~\(\C\) over~\(X\) is just a product in~\(\C/X\).
 \end{exer}
