@@ -1018,6 +1018,16 @@ This result shows that the transpose of~\(f\) can be obtained by applying~\(f\) 
 \end{rmk}
 
 \begin{rmk}
+If \(p:A\to I\) is a function and \(A_i=\inv{p}(i)\), then the following diagram is a pullback:
+\begin{diagram}
+\prod_{i\in I}A_i	&\rTo	&A^I\\
+\dTo				&		&\dTo>{p^I}\\
+1					&\rTo	&I^I
+\end{diagram}
+In other words, \emph{multiplication over~\(I\) is the pullback of exponentiation by~\(I\)}. This idea allows us to define products in categories with pullbacks and exponentials.
+\end{rmk}
+
+\begin{rmk}
 If \(\C\)~and~\(\D\) are cartesian closed categories, then so is~\(\C\times\D\). Moreover, the terminal object, products, and exponentials (including the evaluation and transpose maps for exponentials) are all computed pointwise.
 \end{rmk}
 \begin{proof}
@@ -1861,7 +1871,7 @@ Therefore \(\sum_BB^*A=A\times B\). Now since \(B^*\adj\prod_B\), there are natu
 \end{align*}
 It follows that \(\prod_BB^*A=A^B\) (contrary to what the book says).
 
-In the second half of the proof, note that
+In the second half of the proof, we use the idea that multiplication over~\(F\) is the pullback of exponentiation by~\(F\).\footnote{See the remark in Chapter~6 above.} Observe that
 \begin{diagram}[nohug]
 Y\times F	&\rTo^f		&X\\
 			&\rdTo<{\pi}&\dTo>p\\
@@ -1873,7 +1883,15 @@ Y	&\rTo^{\curry f}	&X^F\\
 \dTo&					&\dTo>{p^F}\\
 1	&\rTo_{\curry 1_F}	&F^F
 \end{diagram}
-commutes, so there is a natural isomorphism
+commutes, by considering this diagram:
+\begin{diagram}[nohug]
+F^F\times F			&							&\rTo^{\eval_F}	&			&F\\
+\uTo<{p^F\times 1_F}&							&				&			&\uTo>{1_F}\\
+X^F\times F			&\rTo^{\eval_X}				&X				&\rTo^p		&F\\
+					&\luTo<{\curry{f}\times 1_F}&\uTo>f			&\ruTo>{\pi}&\\
+					&							&Y\times F		&			&
+\end{diagram}
+It follows that there is a natural isomorphism
 \[\Hom(F^*Y,p)\iso\Hom(Y,\textstyle\prod_F(p))\]
 \end{rmk}
 
