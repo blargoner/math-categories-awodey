@@ -55,6 +55,7 @@
 \newcommand{\uncurry}[1]{\overline{#1}}
 \newcommand{\pull}[1]{#1^{*}}
 \newcommand{\fin}[1]{#1_{\mathrm{fin}}}
+\newcommand{\comma}[2]{(#1|#2)}
 
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
@@ -65,6 +66,7 @@
 \newcommand{\E}{\cat{E}}
 \newcommand{\Ee}{\mathcal{E}}
 \newcommand{\J}{\cat{J}}
+\newcommand{\X}{\cat{X}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Relop}{\dual{\Rel}}
 \newcommand{\Sets}{\cat{Sets}}
@@ -1893,6 +1895,18 @@ X^F\times F			&\rTo^{\eval_X}				&X				&\rTo^p		&F\\
 \end{diagram}
 It follows that there is a natural isomorphism
 \[\Hom(F^*Y,p)\iso\Hom(Y,\textstyle\prod_F(p))\]
+\end{rmk}
+
+\begin{rmk}
+In the proof of Freyd's adjoint functor theorem (9.29), to see that the existence of an initial object
+\[(FX,\eta_X:FX\to UFX)\]
+in the comma category \(\comma{X}{U}\) for each object \(X\in\X\) implies the existence of a left adjoint \(F\adj U\), first define \(F:\X\to\C\) on an arrow \(f:X\to Y\) to be the unique arrow \(Ff:FX\to FY\) with \(\eta_Y\after f=UFf\after\eta_X\):
+\begin{diagram}
+X		&\rTo^{\eta_X}	&UFX		&&FX\\
+\dTo<f	&				&\dTo>{UFf}	&&\dDashto>{Ff}\\
+Y		&\rTo_{\eta_Y}	&UFY		&&FY
+\end{diagram}
+It is then immediate that \(F\)~is a functor, \(\eta:1_{\X}\to UF\) is a natural transformation, and \(\eta\)~is the unit of the adjunction \(F\adj U\).
 \end{rmk}
 
 \begin{exer}[1]
