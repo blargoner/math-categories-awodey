@@ -112,7 +112,7 @@
 \maketitle
 
 \section*{Introduction}
-This document contains notes and exercises from~\cite{awodey10}.
+This document contains notes and exercises from~\cite{awodey}.
 
 \section*{Chapter 1}
 \begin{rmk}
@@ -1898,7 +1898,9 @@ It follows that there is a natural isomorphism
 \end{rmk}
 
 \begin{rmk}
-In the proof of Freyd's adjoint functor theorem (9.29), to see that the existence of an initial object
+The proof of Freyd's adjoint functor theorem (9.29) uses the idea that a free object can be constructed as a subobject of a big enough product of ``representative'' objects. For example, the free group on a set~\(X\) can be constructed as a subgroup of a big direct product of groups~\(G\) for which there are functions \(X\to U(G)\); the only difficulty lies in showing that the representative groups form a set, as opposed to a proper class.\footnote{See \cite{bergman} and~\cite{lang}.} This is just the ``solution set'' in the adjoint functor theorem.
+
+In the proof of the theorem, to see that the existence of an initial object
 \[(FX,\eta_X:FX\to UFX)\]
 in the comma category \(\comma{X}{U}\) for each object \(X\in\X\) implies the existence of a left adjoint \(F\adj U\), first define \(F:\X\to\C\) on an arrow \(f:X\to Y\) to be the unique arrow \(Ff:FX\to FY\) with \(\eta_Y\after f=UFf\after\eta_X\):
 \begin{diagram}
@@ -1930,6 +1932,8 @@ so \(\eta\)~is natural.
 
 % References
 \begin{thebibliography}{0}
-\bibitem{awodey10} Awodey, Steve. \textit{Category Theory, 2nd~ed.} Oxford, 2010.
+\bibitem{awodey} Awodey, S. \textit{Category Theory}, 2nd~ed. Oxford, 2010.
+\bibitem{bergman} Bergman, G. \textit{An Invitation to General Algebra and Universal Constructions}, 2nd~ed. Springer, 2015.
+\bibitem{lang} Lang, S. \textit{Algebra}, 3rd~ed. Springer, 2002.
 \end{thebibliography}
 \end{document}
