@@ -56,6 +56,7 @@
 \newcommand{\pull}[1]{#1^{*}}
 \newcommand{\fin}[1]{#1_{\mathrm{fin}}}
 \newcommand{\comma}[2]{(#1|#2)}
+\newcommand{\tr}[1]{\overline{#1}}
 
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
@@ -1827,7 +1828,7 @@ By the previous remark, we may assume without loss of generality that the equiva
 \begin{rmk}
 In the proof of Corollary~9.5, view \(F:\Cop\to\Dop\) and \(U:\Dop\to\Cop\), so
 \[\psi=\inv{\phi}:\Hom_{\Cop}(UD,C)\iso\Hom_{\Dop}(D,FC)\]
-is natural in \(C\) and~\(D\). Apply Proposition~9.4 to obtain the unit \(\epsilon:1_{\Dop}\to FU\) for~\(\Dop\), which is just the desired counit \(\epsilon:FU\to 1_{\D}\) for~\(\D\).
+is natural in \(C\) and~\(D\). Apply Proposition~9.4 to obtain the unit \(\epsilon:1_{\Dop}\to FU\) for~\(\Dop\), which is just the desired counit \(\epsilon:FU\to 1_{\D}\) for~\(\D\). This argument shows that taking opposites reverses an adjunction.
 \end{rmk}
 
 \begin{rmk}
@@ -1930,7 +1931,57 @@ Chasing \(1_{FC}\) and~\(1_{FC'}\) around the diagram, we see that
 so \(\eta\)~is natural.
 \end{proof}
 
+\begin{exer}[2]
+If \(M\)~is a monoid, then the counit \(\epsilon:FUM\to M\) is surjective.
+\end{exer}
+\begin{proof}
+For any element \(a\in M\), consider the point \(a:1\to UM\). By the universal property of the unit \(\eta:1\to UF1\), there is \(\tr{a}:F1\to M\) with \(a=U(\tr{a})\after\eta\), and by the universal property of the counit~\(\epsilon\) there is \(\tr{\tr{a}}:1\to UM\) with \(\tr{a}=\epsilon\after F(\tr{\tr{a}})\):
+\begin{diagram}[nohug]
+UF1			&\rTo^{U(\tr{a})}	&UM	&&F1&\rTo^{F(\tr{\tr{a}})}	&FUM\\
+\uTo<{\eta}	&\ruTo>a			&	&&	&\rdTo<{\tr{a}}			&\dTo>{\epsilon}\\
+1			&					&	&&	&						&M
+\end{diagram}
+Now
+\[a=\tr{a}(*)=\epsilon(F(\tr{\tr{a}})(*))\]
+Since \(a\)~was arbitrary, it follows that \(\epsilon\)~is surjective.
+\end{proof}
+
+\begin{exer}[3]
+The unit of the adjunction \((-)\times A\adj(-)^A\) is just the transposed pairing operation~\(\eta\) discussed in Chapter~6 above.
+\end{exer}
+
+\begin{exer}[6]
+If \(P:\Cat\to\Pre\) is the preorder functor and \(C:\Pre\to\Cat\) the inclusion functor,\footnote{See Exercise~8 in Chapter~1 above.} then \(P\adj C\).
+\end{exer}
+\begin{proof}
+The identity \(1_{\Pre}=PC\) gives the counit \(1_Q:PC(Q)\to Q\). Indeed, for any monotone map \(f:P(\C)\to Q\), there is obviously a unique functor \(\tr{f}:\C\to C(Q)\) making the following diagram commute:
+\begin{diagram}[nohug]
+P(\C)	&\rTo^{P(\tr{f})}	&PC(Q)\\
+		&\rdTo<f			&\dTo>{1_Q}\\
+		&					&Q
+\end{diagram}
+Therefore \(P\adj C\).
+\end{proof}
+
+\begin{exer}[9]
+The contravariant powerset functor \(\pow:\Setsop\to\Sets\) is adjoint to itself---more precisely, right adjoint to \(\dual{\pow}:\Sets\to\Setsop\).
+\end{exer}
+\begin{proof}
+Since \(\pow\iso2^{(-)}\), we have
+\begin{align*}
+\Hom_{\Setsop}(\dual{\pow}(X),Y)&\iso\Hom_{\Sets}(Y,\pow(X))\\
+	&\iso\Hom_{\Sets}(Y,2^X)\\
+	&\iso\Hom_{\Sets}(X\times Y,2)\\
+	&\iso\Hom_{\Sets}(X,2^Y)\\
+	&\iso\Hom_{\Sets}(X,\pow(Y))\qedhere
+\end{align*}
+\end{proof}
+\begin{rmk}
+The ordinal \(1=\{0\}\) is terminal in~\(\Sets\) and hence initial in~\(\Setsop\), but \(\pow(1)=\{0,1\}=2\) is not initial in~\(\Sets\) (there is no function \(2\to0\)), so \(\pow\)~is not a left adjoint (and for the same reason \(\dual{\pow}\)~is not a right adjoint).
+\end{rmk}
+
 % References
+\newpage
 \begin{thebibliography}{0}
 \bibitem{awodey} Awodey, S. \textit{Category Theory}, 2nd~ed. Oxford, 2010.
 \bibitem{bergman} Bergman, G. \textit{An Invitation to General Algebra and Universal Constructions}, 2nd~ed. Springer, 2015.
