@@ -5,6 +5,8 @@
 
 \newcommand{\N}{\mathbb{N}}
 
+\newcommand{\true}{\top}
+
 \newcommand{\iso}{\cong}
 \newcommand{\eq}{\sim}
 \newcommand{\eqv}{\simeq}
@@ -12,6 +14,7 @@
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\adj}{\dashv}
 \newcommand{\adjrule}{\frac}
+\newcommand{\limplies}{\Rightarrow}
 
 \newcommand{\meet}{\wedge}
 \newcommand{\bigmeet}{\bigwedge}
@@ -67,6 +70,7 @@
 \newcommand{\E}{\cat{E}}
 \newcommand{\Ee}{\mathcal{E}}
 \newcommand{\J}{\cat{J}}
+\renewcommand{\P}{\cat{P}}
 \newcommand{\X}{\cat{X}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Relop}{\dual{\Rel}}
@@ -1982,6 +1986,23 @@ Since \(\pow\iso2^{(-)}\), we have
 \end{proof}
 \begin{rmk}
 The ordinal \(1=\{0\}\) is terminal in~\(\Sets\) and hence initial in~\(\Setsop\), but \(\pow(1)=\{0,1\}=2\) is not initial in~\(\Sets\) (there is no function \(2\to0\)), so \(\pow\)~is not a left adjoint (and for the same reason \(\dual{\pow}\)~is not a right adjoint).
+\end{rmk}
+
+\begin{exer}[12]
+Let \(\P\)~be the category of propositions under entailment and \(p\in\P\). There is an adjunction
+\[(-)\land p\adj p\limplies(-)\tag{1}\]
+The counit of this adjunction is \emph{modus ponens}:
+\[(p\limplies a)\land p\to a\]
+Moreover, \((-)\land p\) has a left adjoint if and only if \(p\)~is a tautology, in which case
+\[1_{\P}\adj(-)\land p\tag{2}\]
+\end{exer}
+\begin{proof}
+For~(1), the operations are obviously functorial and \(a\land p\to b\) if and only if \(a\to(p\limplies b)\). For~(2), if \((-)\land p\) is a right adjoint then we must have
+\[\true\to\true\land p\to p\to\true\]
+so \(p\)~is a tautology, and in that case (2)~is obvious.
+\end{proof}
+\begin{rmk}
+In general if \(\C\)~is a category with all finite products, then \(1_{\C}\adj(-)\times 1\).
 \end{rmk}
 
 % References
