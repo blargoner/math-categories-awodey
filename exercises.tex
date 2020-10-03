@@ -1598,6 +1598,12 @@ The previous exercise shows that there is a natural equivalence of this sort bet
 
 \section*{Chapter~8}
 \begin{rmk}
+If \(I\)~is a set and \(y:I\to\Sets^I\) is the Yoneda embedding, then
+\[y(i)=(\delta_{ij})_{j\in I}\]
+where \(\delta_{ii}=1\) and \(\delta_{ij}=0\) for \(i\ne j\).
+\end{rmk}
+
+\begin{rmk}
 In the proof of Proposition~8.7, the functors
 \[\Hom(yC,F_{(-)})=\Hom(yC,-)\after F:J\to\SetsCop\to\Sets\]
 and
@@ -1683,8 +1689,16 @@ Taking \(\eta=\vartheta\) in~(2) shows that \(\vartheta\after x=\vartheta_{(x,C)
 \end{rmk}
 
 \begin{rmk}
+For a set~\(I\) and an \(I\)-indexed family \(A=(A_i)_{i\in I}\) of sets,
+\[\int_I A=\{\,(x,i)\mid x\in A_i\,\}=\coprod_{i\in I}A_i\]
+and the canonical projection \(\pi:\int_I A\to I\) with \(\pi(x,i)=i\) is just the indexing projection of the family. By Proposition~8.10 and a prior remark above,
+\[A\iso\colimit_{x\in A_i}(\delta_{ij})_{j\in I}\]
+Intuitively, if you take a copy of the ``singleton family'' \((\delta_{ij})_{j\in I}\) for each \(x\in A_i\), and put all the copies together, you get a family that looks just like~\(A\).
+\end{rmk}
+
+\begin{rmk}
 If \(P,Q\in\SetsCop\) and \(\vartheta:P\to Q\), then there is a functor
-\[\textstyle I(\vartheta):\int_{\C}P\to\int_{\C}Q\]
+\[I(\vartheta):\int_{\C}P\to\int_{\C}Q\]
 defined by \(I(\vartheta)(x,C)=(\vartheta_Cx,C)\). Indeed, if \(h:(x',C')\to(x,C)\) is an arrow in~\(\int_{\C}P\), then commutativity of
 \begin{diagram}
 PC			&\rTo^{\vartheta_C}		&QC\\
