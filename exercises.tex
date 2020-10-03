@@ -13,6 +13,7 @@
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\adj}{\dashv}
+\newcommand{\radj}{\vdash}
 \newcommand{\adjrule}{\frac}
 \newcommand{\limplies}{\Rightarrow}
 
@@ -1799,11 +1800,38 @@ For functors
 \begin{diagram}
 \C&\pile{\rTo^F\\\lTo_U}&\D&\pile{\rTo^G\\\lTo_V}&\E
 \end{diagram}
-if \(F\adj U\) and \(G\adj V\), then \(GF\adj UV\).
+if \(F\adj U\) and \(G\adj V\), then \(GF\adj UV\). In other words, \emph{composites of adjoints are adjoints}.
 \end{rmk}
 \begin{proof}
 For \(C\in\C\) and \(E\in\E\), we have natural isomorphisms
 \[\Hom(GFC,E)\iso\Hom(FC,VE)\iso\Hom(C,UVE)\qedhere\]
+\end{proof}
+
+\begin{rmk}
+For functors
+\begin{diagram}
+F,G:\C&\pile{\rTo\\\lTo}&\D:U
+\end{diagram}
+if \(G\iso F\adj U\), then \(G\adj U\). In other words, \emph{a functor isomorphic to an adjoint is an adjoint}.
+\end{rmk}
+\begin{proof}
+For \(C\in\C\) and \(D\in\D\), we have natural isomorphisms
+\[\Hom(GC,D)\iso\Hom(FC,D)\iso\Hom(C,UD)\qedhere\]
+\end{proof}
+
+\begin{rmk}
+For functors
+\begin{diagram}[p=0.5\PileSpacing]
+\A					&\pile{\rTo^{F_1}\\\lTo_{U_1}}	&\B\\
+\uTo<{U_3}\dTo>{F_3}&								&\uTo<{U_2}\dTo>{F_2}\\
+\C					&\pile{\rTo{F_4}\\\lTo_{U_4}}	&\D
+\end{diagram}
+if \(F_i\adj U_i\) for all~\(i\), then \(F_4F_3\iso F_2F_1\) if and only if \(U_3U_4\iso U_1U_2\). In other words, \emph{a square of left adjoints commutes up to iso if and only if the corresponding square of right adjoints does so}.
+\end{rmk}
+\begin{proof}
+For the forward direction, we have
+\[U_3U_4\radj F_4F_3\iso F_2F_1\adj U_1U_2\]
+so \(U_3U_4\iso U_1U_2\) by uniqueness of adjoints. The reverse direction follows by duality.
 \end{proof}
 
 \begin{rmk}
