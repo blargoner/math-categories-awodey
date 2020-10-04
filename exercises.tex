@@ -32,6 +32,7 @@
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\fdom}{\mathbf{dom}}
 \DeclareMathOperator{\fst}{fst}
 \DeclareMathOperator{\snd}{snd}
@@ -2046,6 +2047,34 @@ so \(p\)~is a tautology, and in that case (2)~is obvious.
 \begin{rmk}
 In general if \(\C\)~is a category with all finite products, then \(1_{\C}\adj(-)\times 1\).
 \end{rmk}
+
+\begin{exer}[13]
+For a set~\(I\), the Yoneda embedding \(y:I\to\Sets^I\) is given by\footnote{See the remark in Chapter~8 above.}
+\[y(i)=(\delta_{ij})_{j\in I}\]
+If \(f:J\to I\) is a function, then the following diagram commutes up to natural isomorphism:
+\begin{diagram}
+\Sets^J		&\rTo^{\sum_f}	&\Sets^I\\
+\uTo<{y_J}	&				&\uTo>{y_I}\\
+J			&\rTo_f			&I
+\end{diagram}
+Indeed, for \(i\in I\) and \(j\in J\),
+\[\textstyle y_I(f(j))_i=\delta_{i f(j)}=\sum_{f(k)=i}\delta_{jk}=(\,\sum_f((\delta_{jk})_{k\in J}))_i=(\,\sum_f(y_J(j)))_i\]
+The composite
+\[I\xrightarrow{y}\Sets^I\eqv\Sets/I\]
+sends \(i\in I\) to the point \(i:1\to I\). The above diagram becomes
+\begin{diagram}
+\Sets/J	&\rTo^{f_L}	&\Sets/I\\
+\uTo	&			&\uTo\\
+J		&\rTo_f		&I
+\end{diagram}
+Now let \(i:\pow(I)\to\Sets/I\) map \(U\subseteq I\) to the inclusion \(i(U):U\to I\) and map a subset relation \(U\subseteq V\subseteq I\) to the inclusion \(i(U\subseteq V):U\to V\) over~\(I\). Clearly \(i\)~is a functor. Let \(\sigma:\Sets/I\to\pow(I)\) map a function \(f:X\to I\) to its image~\(\im f\) and map a commutative triangle
+\begin{diagram}[nohug]
+X&\rTo&Y\\
+&\rdTo<f&\dTo>g\\
+&&I
+\end{diagram}
+to the subset relation \(\im f\subseteq\im g\). Then \(\sigma\)~is clearly a functor, and \(\sigma\adj i\) since for \(f:X\to I\) and \(U\subseteq I\), we have \(\im f\subseteq U\) if and only if \(f\)~factors through the inclusion~\(i(U)\).
+\end{exer}
 
 % References
 \newpage
