@@ -30,6 +30,7 @@
 \newcommand{\bigunion}{\bigcup}
 \newcommand{\eval}{\epsilon}
 \newcommand{\term}{{!}}
+\newcommand{\mult}{\cdot}
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -1989,6 +1990,25 @@ Writing \(s=(-)+1\) and \(\uncurry{f}=+\), these are just the equations of addit
 (m+1)+n&=(m+n)+1
 \end{align*}
 Therefore \(\uncurry{f}:N\times N\to N\) is the desired addition operation.
+
+In a similar way, we can define a multiplication operation \(\mult:N\times N\to N\). Let \(t=\curry{(+\after\pair{\eval}{\pi})}\) where \(\eval:N^N\times N\to N\) is evaluation and \(\pi:N^N\times N\to N\) is projection. Let \(z:1\to N^N\) be the transpose of the composite \(1\times N\xto{!}1\xto{0}N\). Then there is \(g:N\to N^N\) unique making this diagram commute:
+\begin{diagram}[nohug]
+1	&\rTo^0		&N			&\rTo^s	&N\\
+	&\rdTo_z	&\dDashto>g	&		&\dDashto>g\\
+	&			&N^N		&\rTo_t	&N^N
+\end{diagram}
+Transposing yields these commutative diagrams:
+\begin{diagram}[nohug]
+1\times N	&\rTo^{0\times 1_N}	&N\times N			&&N\times N	&\rTo^{s\times 1_N}			&N\times N\\
+\dTo<!		&					&\dTo>{\uncurry{g}}	&&			&\rdTo<{\uncurry{g}+\pi_2}	&\dTo>{\uncurry{g}}\\
+1			&\rTo_0				&N					&&			&							&N
+\end{diagram}
+Writing \(\uncurry{g}=\mult\)\ , these yield the equations of multiplication:
+\begin{align*}
+0\mult n&=0\\
+(m+1)\mult n&=m\mult n+n
+\end{align*}
+Therefore \(\uncurry{g}:N\times N\to N\) is the desired multiplication operation.
 \end{rmk}
 
 \begin{exer}[1]
