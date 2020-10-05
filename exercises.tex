@@ -1966,51 +1966,6 @@ Y		&\rTo_{\eta_Y}	&UFY		&&FY
 It is then immediate that \(F\)~is a functor, \(\eta:1_{\X}\to UF\) is a natural transformation, and \(\eta\)~is the unit of the adjunction \(F\adj U\).
 \end{rmk}
 
-\begin{rmk}
-If \(\C\)~is a cartesian closed category and \(1\xto{0}N\xto{s}N\) is a natural numbers object in~\(\C\), then it is possible to define an addition operation \(+:N\times N\to N\). We use the idea that \((-)+m\) is given by~\(s^m\). Let \(\id:1\to N^N\) be the transpose of the projection \(1\times N\iso N\). Then there is \(f:N\to N^N\) unique making this diagram commute:
-\begin{diagram}[nohug]
-1	&\rTo^0			&N			&\rTo^s		&N\\
-	&\rdTo_{\id}	&\dDashto>f	&			&\dDashto>f\\
-	&				&N^N		&\rTo_{s^N}	&N^N
-\end{diagram}
-Transposing yields this commutative diagram:
-\begin{diagram}
-1\times N	&\rTo^{0\times 1_N}	&N\times N			&\rTo^{s\times 1_N}	&N\times N\\
-\dTo<{\iso}	&					&\dTo>{\uncurry{f}}	&					&\dTo>{\uncurry{f}}\\
-N			&\rTo_{1_N}			&N					&\rTo_s				&N
-\end{diagram}
-This yields the equations
-\begin{align*}
-\uncurry{f}(0,n)&=n\\
-\uncurry{f}(sm,n)&=s\uncurry{f}(m,n)
-\end{align*}
-Writing \(s=(-)+1\) and \(\uncurry{f}=+\), these are just the equations of addition:
-\begin{align*}
-0+n&=n\\
-(m+1)+n&=(m+n)+1
-\end{align*}
-Therefore \(\uncurry{f}:N\times N\to N\) is the desired addition operation.
-
-In a similar way, we can define a multiplication operation \(\mult:N\times N\to N\). Let \(t=\curry{(+\after\pair{\eval}{\pi})}\) where \(\eval:N^N\times N\to N\) is evaluation and \(\pi:N^N\times N\to N\) is projection. Let \(z:1\to N^N\) be the transpose of the composite \(1\times N\xto{!}1\xto{0}N\). Then there is \(g:N\to N^N\) unique making this diagram commute:
-\begin{diagram}[nohug]
-1	&\rTo^0		&N			&\rTo^s	&N\\
-	&\rdTo_z	&\dDashto>g	&		&\dDashto>g\\
-	&			&N^N		&\rTo_t	&N^N
-\end{diagram}
-Transposing yields these commutative diagrams:
-\begin{diagram}[nohug]
-1\times N	&\rTo^{0\times 1_N}	&N\times N			&&N\times N	&\rTo^{s\times 1_N}			&N\times N\\
-\dTo<!		&					&\dTo>{\uncurry{g}}	&&			&\rdTo<{\uncurry{g}+\pi_2}	&\dTo>{\uncurry{g}}\\
-1			&\rTo_0				&N					&&			&							&N
-\end{diagram}
-Writing \(\uncurry{g}=\mult\)\ , these yield the equations of multiplication:
-\begin{align*}
-0\mult n&=0\\
-(m+1)\mult n&=m\mult n+n
-\end{align*}
-Therefore \(\uncurry{g}:N\times N\to N\) is the desired multiplication operation.
-\end{rmk}
-
 \begin{exer}[1]
 For functors \(F:\C\to\D\) and \(U:\D\to\C\), given an isomorphism
 \[\phi:\Hom_{\D}(FC,D)\iso\Hom_{\C}(C,UD)\]
@@ -2122,6 +2077,79 @@ X&\rTo&Y\\
 &&I
 \end{diagram}
 to the subset relation \(\im f\subseteq\im g\). Then \(\sigma\)~is clearly a functor, and \(\sigma\adj i\) since for \(f:X\to I\) and \(U\subseteq I\), we have \(\im f\subseteq U\) if and only if \(f\)~factors through the inclusion~\(i(U)\).
+\end{exer}
+
+\begin{exer}[13]
+If \(\C\)~is a cartesian closed category and \(1\xto{0}N\xto{s}N\) is a natural numbers object in~\(\C\), then we can define an addition operation \(+:N\times N\to N\). We use the idea that \((-)+m\) is given by~\(s^m\). Let \(\id:1\to N^N\) be the transpose of the projection \(1\times N\iso N\). Then there is \(f:N\to N^N\) unique making this diagram commute:
+\begin{diagram}[nohug]
+1	&\rTo^0			&N			&\rTo^s		&N\\
+	&\rdTo_{\id}	&\dDashto>f	&			&\dDashto>f\\
+	&				&N^N		&\rTo_{s^N}	&N^N
+\end{diagram}
+Transposing yields this commutative diagram:
+\begin{diagram}
+1\times N	&\rTo^{0\times 1_N}	&N\times N			&\rTo^{s\times 1_N}	&N\times N\\
+\dTo<{\iso}	&					&\dTo>{\uncurry{f}}	&					&\dTo>{\uncurry{f}}\\
+N			&\rTo_{1_N}			&N					&\rTo_s				&N
+\end{diagram}
+This yields the equations
+\begin{align*}
+\uncurry{f}(0,n)&=n\\
+\uncurry{f}(sm,n)&=s\uncurry{f}(m,n)
+\end{align*}
+Writing \(s=(-)+1\) and \(\uncurry{f}=+\), these are just the equations of addition:
+\begin{align*}
+0+n&=n\\
+(m+1)+n&=(m+n)+1
+\end{align*}
+Therefore \(\uncurry{f}:N\times N\to N\) is the desired addition operation.
+
+In a similar way, we can define a multiplication operation \(\mult:N\times N\to N\). Let \(t=\curry{(+\after\pair{\eval}{\pi})}\) where \(\eval:N^N\times N\to N\) is evaluation and \(\pi:N^N\times N\to N\) is projection. Let \(z:1\to N^N\) be the transpose of the composite \(1\times N\xto{!}1\xto{0}N\). Then there is \(g:N\to N^N\) unique making this diagram commute:
+\begin{diagram}[nohug]
+1	&\rTo^0		&N			&\rTo^s	&N\\
+	&\rdTo_z	&\dDashto>g	&		&\dDashto>g\\
+	&			&N^N		&\rTo_t	&N^N
+\end{diagram}
+Transposing yields these commutative diagrams:
+\begin{diagram}[nohug]
+1\times N	&\rTo^{0\times 1_N}	&N\times N			&&N\times N	&\rTo^{s\times 1_N}			&N\times N\\
+\dTo<!		&					&\dTo>{\uncurry{g}}	&&			&\rdTo<{\uncurry{g}+\pi_2}	&\dTo>{\uncurry{g}}\\
+1			&\rTo_0				&N					&&			&							&N
+\end{diagram}
+Writing \(\uncurry{g}=\mult\)\ , these yield the equations of multiplication:
+\begin{align*}
+0\mult n&=0\\
+(m+1)\mult n&=m\mult n+n
+\end{align*}
+Therefore \(\uncurry{g}:N\times N\to N\) is the desired multiplication operation.
+
+Continuing this way, we can define an exponentiation operation \(N\times N\to N\). Let \(e=\curry{(\mult\after\pair{\eval}{\pi})}\), let \(u:1\to N^N\) be the transpose of the composite
+\[1\times N\xto{!}1\xto{0}N\xto{s}N\]
+and let \(h:N\to N^N\) be the unique arrow making this diagram commute:
+\begin{diagram}[nohug]
+1	&\rTo^0		&N			&\rTo^s	&N\\
+	&\rdTo_u	&\dDashto>h	&		&\dDashto>h\\
+	&			&N^N		&\rTo_e	&N^N
+\end{diagram}
+Writing \(\uncurry{h}(m,n)=n^m\), it follows that
+\begin{align*}
+n^0&=1\\
+n^{m+1}&=n^m\mult n
+\end{align*}
+so \(\uncurry{h}:N\times N\to N\) is the desired exponentiation operation.
+
+Finally, we can define a factorial operation \(N\to N\) by letting \(p:N\to N\times N\) be the unique arrow making this diagram commute:
+\begin{diagram}[nohug]
+1	&\rTo^0				&N			&\rTo^s						&N\\
+	&\rdTo_{\pair{1}{1}}&\dDashto>p	&							&\dDashto>p\\
+	&					&N\times N	&\rTo_{\pair{\mult}{s\pi_2}}&N\times N
+\end{diagram}
+This yields the equations
+\begin{align*}
+p(0)&=(0!\,,1)\\
+p(n+1)&=((n+1)!\,,n+2)
+\end{align*}
+so \(\pi_1p:N\to N\) is the desired factorial operation.
 \end{exer}
 
 % References
