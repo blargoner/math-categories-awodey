@@ -2079,7 +2079,7 @@ X&\rTo&Y\\
 to the subset relation \(\im f\subseteq\im g\). Then \(\sigma\)~is clearly a functor, and \(\sigma\adj i\) since for \(f:X\to I\) and \(U\subseteq I\), we have \(\im f\subseteq U\) if and only if \(f\)~factors through the inclusion~\(i(U)\).
 \end{exer}
 
-\begin{exer}[13]
+\begin{exer}[17]
 If \(\C\)~is a cartesian closed category and \(1\xto{0}N\xto{s}N\) is a natural numbers object in~\(\C\), then we can define an addition operation \(+:N\times N\to N\). We use the idea that \((-)+m\) is given by~\(s^m\). Let \(\id:1\to N^N\) be the transpose of the projection \(1\times N\iso N\). Then there is \(f:N\to N^N\) unique making this diagram commute:
 \begin{diagram}[nohug]
 1	&\rTo^0			&N			&\rTo^s		&N\\
@@ -2151,6 +2151,45 @@ p(n+1)&=((n+1)!\,,n+2)
 \end{align*}
 so \(\pi_1p:N\to N\) is the desired factorial operation.
 \end{exer}
+
+\begin{exer}[18]
+In~\(\Sets\), a structure \(1\xto{0}N\xto{s}N\) is a natural numbers object if and only if
+\begin{diagram}[eqno=(1)]
+1&\rTo^0&N&\lTo^s&N
+\end{diagram}
+is a coproduct diagram (so \(N\iso1+N\)) and
+\begin{diagram}[eqno=(2)]
+N&\pile{\rTo^s\\\rTo_{1_N}}&N&\rTo^!&1
+\end{diagram}
+is a coequalizer diagram.
+\end{exer}
+\begin{proof}
+For the forward direction, we may assume without loss of generality that \(N=\N\), \(0\)~is zero and \(s(n)=n+1\) is the successor function. For any \(x\in X\) and \(f:\N\to X\), define \(h:\N\to X\) by
+\[h(n)=\begin{cases}
+x&\text{if }n=0\\
+f(n-1)&\text{if }n\ne0
+\end{cases}\]
+Then clearly \(h\)~is unique making this diagram commute:
+\begin{diagram}[nohug]
+1&\rTo^0&\N&\lTo^s&\N\\
+&\rdTo<x&\dDashto>h&\ldTo>f\\
+&&X&&
+\end{diagram}
+Therefore (1)~is a coproduct diagram. If \(fs=f=f\,1_{\N}\), then \(f(n+1)=f(n)\) for all \(n\in\N\), so \(f(n)=f(0)\) for all \(n\in\N\) by induction on~\(\N\). It follows that \(f(0)\)~is unique making this diagram commute:
+\begin{diagram}[nohug]
+\N	&\pile{\rTo^s\\\rTo_{1_{\N}}}	&\N	&\rTo^!		&1\\
+	&								&	&\rdTo<f	&\dDashto>{f(0)}\\
+	&								&	&			&X
+\end{diagram}
+Therefore (2)~is a coequalizer diagram.
+
+Conversely, if (1)~is a coproduct diagram then it follows that \(s:N\to N\setminus\{0\}\) is a bijection. Define
+\[S=\{\,x\in N\mid x=s^n(0)\text{ for some }n\in\N\,\}\]
+and let \(\chi:N\to2\) be the characteristic function of~\(S\) in~\(N\). Then \(\chi(0)=1\) since \(0=s^0(0)\), and \(\chi s=\chi=\chi 1_N\), so if (2)~is a coequalizer diagram then \(\chi(x)=1\) for all \(x\in N\) and \(S=N\). It follows that \(n\mapsto s^n(0)\) is an iso \(\N\iso N\) and \(N\)~is a natural numbers object.
+\end{proof}
+\begin{rmk}
+The coproduct diagram~(1) expresses that \(N\)~is a Hilbert Hotel (it can always accommodate a new guest), and the coequalizer diagram~(2) expresses that \(N\)~supports induction.
+\end{rmk}
 
 % References
 \newpage
