@@ -1551,7 +1551,7 @@ It is immediate that \(\Phi_I\)~is a functor. Define \(\Psi_I:\Sets/I\to\Sets^I\
 \item Arrows: for functions \(\alpha:X\to I\), \(\beta:Y\to I\), and \(\gamma:X\to Y\) with \(\alpha=\beta\after\gamma\), define
 \[\Psi_I(\gamma)=\bigl(\,\gamma|_{\inv{\alpha}(i)}:\inv{\alpha}(i)\to\inv{\beta}(i)\,\bigr)_{i\in I}\]
 \end{itemize}
-It is also immediate that \(\Psi_I\)~is a functor, \(\Psi_I\after\Phi_I=1_{\Sets^I}\), and \(\Phi_I\after\Psi_I\iso 1_{\Sets/I}\), where for \(\alpha:X\to I\) in~\(\Sets/I\), a natural isomorphism from~\(\alpha\) to~\((\Phi_I\after\Psi_I)(\alpha)\) is given by \(x\mapsto(x,\alpha(x))\). Therefore \(\Sets^I\eqv\Sets/I\).
+It is also immediate that \(\Psi_I\)~is a functor, \(\Psi_I\after\Phi_I\iso1_{\Sets^I}\), and \(\Phi_I\after\Psi_I\iso 1_{\Sets/I}\), where for \(\alpha:X\to I\) in~\(\Sets/I\), a natural isomorphism from~\(\alpha\) to~\((\Phi_I\after\Psi_I)(\alpha)\) is given by \(x\mapsto(x,\alpha(x))\). Therefore \(\Sets^I\eqv\Sets/I\).
 
 Now suppose \(f:J\to I\) is a function. Define
 \begin{align*}
@@ -1602,7 +1602,7 @@ The previous exercise shows that there is a natural equivalence of this sort bet
 
 \section*{Chapter~8}
 \begin{rmk}
-If \(I\)~is a set and \(y:I\to\Sets^I\) is the Yoneda embedding, then
+For a set~\(I\), the Yoneda embedding \(y:I\to\Sets^I\) is given by
 \[y(i)=(\delta_{ij})_{j\in I}\]
 where \(\delta_{ii}=1\) and \(\delta_{ij}=0\) for \(i\ne j\).
 \end{rmk}
@@ -1950,6 +1950,14 @@ X^F\times F			&\rTo^{\eval_X}				&X				&\rTo^p		&F\\
 \end{diagram}
 It follows that there is a natural isomorphism
 \[\Hom(F^*Y,p)\iso\Hom(Y,\textstyle\prod_F(p))\]
+\end{rmk}
+
+\begin{rmk}
+For a set~\(I\) and an \(I\)-indexed family \(A=(A_i)_{i\in I}\) of sets with \(J=\int_I A=\coprod_{i\in I}A_i\),\footnote{See the remark in Chapter~8 above.} there is clearly an equivalence
+\[\Sets^I/A\eqv\Sets^J\]
+which in one direction takes an \(I\)-indexed family \((f_i:B_i\to A_i)_{i\in I}\) of functions to the \(J\)-indexed family of sets whose \((x,i)\)-th set is \(\inv{f_i}(x)\), and in the other direction takes a \(J\)-indexed family \((S_{(x,i)})_{x\in A_i}\) of sets to the \(I\)-indexed family
+\[\bigl(\,\pi_i:\coprod_{x\in A_i}S_{(x,i)}\to A_i\,\bigr)_{i\in I}\]
+of indexing projections. This is just a special case of Lemma~9.23.
 \end{rmk}
 
 \begin{rmk}
