@@ -2199,6 +2199,32 @@ and let \(\chi:N\to2\) be the characteristic function of~\(S\) in~\(N\). Then \(
 The coproduct diagram~(1) expresses that \(N\)~is a Hilbert Hotel (it can always accommodate a new guest), and the coequalizer diagram~(2) expresses that \(N\)~supports induction.
 \end{rmk}
 
+\begin{exer}[19]
+The underlying graph functor\footnote{See Exercise~1 in Chapter~1 above.} \(\Gamma:\Sets\to\Rel\) has a right adjoint \(\Phi:\Rel\to\Sets\).
+\end{exer}
+\begin{proof}
+We use the idea that a relation \(R\subseteq A\times B\) is fully encoded in the function \(f_R:A\to\pow(B)\) with \(f(a)=\{\,b\in B\mid a\mathrel{R}b\,\}\).
+
+Define \(\Phi(A)=\pow(A)\) and \(\Phi(R\subseteq A\times B):\pow(A)\to\pow(B)\) by
+\[X\mapsto\{\,b\in B\mid x\mathrel{R}b\text{ for some }x\in X\,\}\]
+Then \(\Phi\)~is clearly a functor. Let \({\ni_A}\subseteq\pow(A)\times A\) denote the (reverse) membership relation on~\(A\). Then \(\ni\)~is a natural transformation \(\Gamma\Phi\to 1_{\Rel}\) since the following diagram commutes:
+\begin{diagram}
+\pow(A)				&\rTo^{\ni_A}	&A\\
+\dTo<{\Gamma\Phi(R)}&				&\dTo>R\\
+\pow(B)				&\rTo_{\ni_B}	&B
+\end{diagram}
+Moreover, \(f_R\)~is unique making the following diagram commute:
+\begin{diagram}[nohug]
+A	&\rTo^{\Gamma f_R}	&\pow(B)\\
+	&\rdTo<R			&\dTo>{\ni_B}\\
+	&					&B
+\end{diagram}
+Therefore \(\ni\)~is the counit of an adjunction \(\Gamma\adj\Phi\).
+\end{proof}
+\begin{rmk}
+\(\Gamma\)~is not a right adjoint since \(1=\Gamma 1\) is terminal in~\(\Sets\) but not in~\(\Rel\), and \(\Phi\)~is not a left adjoint since \(0\)~is initial in~\(\Rel\) but \(\pow(0)=1\) is not initial in~\(\Sets\).
+\end{rmk}
+
 % References
 \newpage
 \begin{thebibliography}{0}
