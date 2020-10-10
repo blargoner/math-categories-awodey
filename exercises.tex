@@ -1267,10 +1267,10 @@ For functors
 \begin{diagram}
 \B&\rTo^R&\C&\pile{\rTo^F\\\rTo_G}&\D&\rTo^S&\E
 \end{diagram}
-if \(F\iso G\), then \(SFR\iso SGR\).
+if \(\varphi:F\to G\) is a natural transformation, then \(S\varphi_R:SFR\to SGR\) is a natural transformation. In other words, \emph{composing natural transformations with functors produces natural transformations}.
 \end{rmk}
 \begin{proof}
-If \(\varphi:F\to G\) is a natural transformation, define \(\psi:SFR\to SGR\) by
+The transformation \(\psi=S\varphi_R:SFR\to SGR\) is defined by
 \[\psi_B=S(\varphi_{RB}):SFRB\to SGRB\]
 If \(f:B\to B'\in\B\), then applying~\(S\) to the commutative diagram
 \begin{diagram}
@@ -1284,12 +1284,15 @@ SFRB		&\rTo^{\psi_B}		&SGRB\\
 \dTo<{SFRf}	&					&\dTo>{SGRf}\\
 SFRB'		&\rTo_{\psi_{B'}}	&SGRB'
 \end{diagram}
-so \(\psi\)~is a natural transformation. If \(\varphi\)~is a natural isomorphism, then so is~\(\psi\) by Lemma~7.11.
+so \(\psi\)~is a natural transformation.
 \end{proof}
 
 \begin{rmk}
-If \(F_1\iso G_1\) and \(F_2\iso G_2\), then by the previous remark \(F_1F_2\iso G_1G_2\). In other words, \emph{composites of isomorphic functors are isomorphic}.
+If \(F_1\iso G_1\) and \(F_2\iso G_2\), then \(F_1F_2\iso G_1G_2\). In other words, \emph{composites of isomorphic functors are isomorphic}.
 \end{rmk}
+\begin{proof}
+By the previous remark and Lemma~7.11.
+\end{proof}
 
 \begin{rmk}
 The previous remarks are useful in establishing natural isomorphisms. For example, in a locally small category with products, it follows from
