@@ -2243,6 +2243,42 @@ Therefore \(\ni\)~is the counit of an adjunction \(\Gamma\adj\Phi\). The unit \(
 \(\Gamma\)~is not a right adjoint since \(1=\Gamma 1\) is terminal in~\(\Sets\) but not in~\(\Rel\), and \(\Phi\)~is not a left adjoint since \(0\)~is initial in~\(\Rel\) but \(\pow(0)=1\) is not initial in~\(\Sets\).
 \end{rmk}
 
+\section*{Chapter~10}
+\begin{exer}[6]
+The triple \((\pow,\{-\},\bigunion)\) is a monad on~\(\Sets\), where \(\pow:\Sets\to\Sets\) is the covariant powerset functor, \(\{-\}_X:X\mapsto\pow(X)\) is the singleton function \(x\mapsto\{x\}\), and \(\bigunion_X:\pow(\pow(X))\to\pow(X)\) is the union function \(\alpha\mapsto\bigunion\alpha\).
+\end{exer}
+\begin{proof}
+We know that \(\pow\)~is a functor. If \(f:X\to Y\) is a function, then the square
+\begin{diagram}
+X		&\rTo^{\{-\}_X}	&\pow(X)\\
+\dTo<f	&				&\dTo>{\pow(f)}\\
+Y		&\rTo_{\{-\}_Y}	&\pow(Y)
+\end{diagram}
+commutes since it just computes \(x\mapsto\{f(x)\}\). Therefore \(\{-\}:1\to\pow\) is a natural transformation. Similarly the square
+\begin{diagram}
+\pow^2(X)		&\rTo^{\bigunion_X}	&\pow(X)\\
+\dTo<{\pow^2(f)}&					&\dTo>{\pow(f)}\\
+\pow^2(Y)		&\rTo_{\bigunion_Y}	&\pow(Y)
+\end{diagram}
+commutes since it just computes \(\alpha\mapsto\bigunion_{A\in\alpha}f(A)\).\footnote{Here \(\bigunion_{A\in\alpha}f(A)\) means \(\bigunion\{\,f(A)\mid A\in\alpha\,\}\).} Therefore \(\bigunion:\pow^2\to\pow\) is also a natural transformation. The associativity diagram
+\begin{diagram}
+\pow^3(X)					&\rTo^{\pow(\bigunion_X)}	&\pow^2(X)\\
+\dTo<{\bigunion_{\pow(X)}}	&							&\dTo>{\bigunion_X}\\
+\pow^2(X)					&\rTo_{\bigunion_X}			&\pow(X)
+\end{diagram}
+commutes since for \(\beta\in\pow^3(X)\),
+\[\bigunion\bigunion\beta=\bigunion_{\alpha\in\beta}\bigunion\alpha\]
+Finally, the unit diagram
+\begin{diagram}[nohug]
+\pow(X)	&\rTo^{\pow(\{-\}_X)}	&\pow^2(X)			&\lTo^{\{-\}_{\pow(X)}}	&\pow(X)\\
+		&\rdTo<1				&\dTo>{\bigunion_X}	&\ldTo>1				&\\
+		&						&\pow(X)			&						&
+\end{diagram}
+commutes since for \(\alpha\in\pow(X)\),
+\[\bigunion_{A\in\alpha}\{A\}=\alpha=\bigunion\{\alpha\}\]
+Therefore we have a monad.
+\end{proof}
+
 % References
 \newpage
 \begin{thebibliography}{0}
