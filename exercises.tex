@@ -31,6 +31,7 @@
 \newcommand{\eval}{\epsilon}
 \newcommand{\term}{{!}}
 \newcommand{\mult}{\cdot}
+\newcommand{\mprod}{\otimes}
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -1295,7 +1296,7 @@ By the previous remark and Lemma~7.11.
 \end{proof}
 
 \begin{rmk}
-The previous remarks are useful in establishing natural isomorphisms. For example, in a locally small category with products, it follows from
+The previous remark is useful in establishing natural isomorphisms. For example, in a locally small category with products, it follows from
 \[A\times(B\times C)\iso(A\times B)\times C\]
 being natural in \(A,B,C\) that
 \[\Hom(A\times(B\times C),X)\iso\Hom((A\times B)\times C,X)\]
@@ -1318,6 +1319,20 @@ F(A,B)				&\rTo^{F(A,\beta)}	&F(A,B')\\
 F(A',B)				&\rTo_{F(A',\beta)}	&F(A',B')
 \end{diagram}
 This just means that the two paths these functors induce between the objects \(F(A,B)\) and~\(F(A',B')\) agree.
+\end{rmk}
+
+\begin{rmk}
+In the monoidal category \(\C^{\C}\) under composition, the product of two natural transformations \(\alpha:G\to G'\) and \(\beta:F\to F'\) is given by
+\[\alpha\mprod\beta=\alpha_{F'}\after G\beta=G'\beta\after\alpha_F:GF\to G'F'\]
+In particular, \(1_G\mprod\beta=G\beta\) and \(\alpha\mprod 1_F=\alpha_F\).
+
+A monoid in this category is (by definition) a triple \((T,\mu,\eta)\) where \(T:\C\to\C\) is an endofunctor and \(\mu:T^2\to T\) and \(\eta:1\to T\) are natural transformations making these diagrams commute:
+\begin{diagram}[nohug]
+T^3					&\rTo^{1_T\mprod\mu}&T^2		&&T	&\rTo^{\eta\mprod1_T}	&T^2		&\lTo^{1_T\mprod\eta}	&T\\
+\dTo<{\mu\mprod1_T}	&					&\dTo>{\mu}	&&	&\rdTo<{1_T}			&\dTo>{\mu}	&\ldTo>{1_T}			&\\
+T^2					&\rTo_{\mu}			&T			&&	&						&T			&						&
+\end{diagram}
+This is precisely a monad on~\(\C\).\footnote{See Chapter~10.}
 \end{rmk}
 
 \begin{rmk}
