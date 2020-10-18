@@ -2244,6 +2244,10 @@ Therefore \(\ni\)~is the counit of an adjunction \(\Gamma\adj\Phi\). The unit \(
 \end{rmk}
 
 \section*{Chapter~10}
+\begin{rmk}
+In the proof of Proposition~10.6, when viewing \(T\)~as an endofunctor of~\(\C^T\), we take \(T(A,\alpha)=(TA,\mu_A)\)---completely disregarding~\(\alpha\)! For an arrow \(h:(A,\alpha)\to(B,\beta)\) in~\(\C^T\) with underlying arrow \(h:A\to B\) in~\(\C\), we see that the arrow \(Th:TA\to TB\) in~\(\C\) yields an arrow \(Th:(TA,\mu_A)\to(TB,\mu_B)\) in~\(\C^T\). This is functorial since the identities and composites in~\(\C^T\) are just inherited from those in~\(\C\), and \(T\)~is an endofunctor of~\(\C\).
+\end{rmk}
+
 \begin{exer}[6]
 The triple \((\pow,\{-\},\bigunion)\) is a monad on~\(\Sets\), where \(\pow:\Sets\to\Sets\) is the covariant powerset functor, \(\{-\}_X:X\mapsto\pow(X)\) is the singleton function \(x\mapsto\{x\}\), and \(\bigunion_X:\pow(\pow(X))\to\pow(X)\) is the union function \(\alpha\mapsto\bigunion\alpha\).
 \end{exer}
