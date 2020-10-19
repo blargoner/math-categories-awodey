@@ -1326,13 +1326,21 @@ In the monoidal category \(\C^{\C}\) under composition, the product of two natur
 \[\alpha\mprod\beta=\alpha_{F'}\after G\beta=G'\beta\after\alpha_F:GF\to G'F'\]
 In particular, \(1_G\mprod\beta=G\beta\) and \(\alpha\mprod 1_F=\alpha_F\).
 
-A monoid in this category is (by definition) a triple \((T,\mu,\eta)\) where \(T:\C\to\C\) is an endofunctor and \(\mu:T^2\to T\) and \(\eta:1\to T\) are natural transformations making these diagrams commute:
+A monoid in this category is (by definition) a triple \((T,\mu,\eta)\) where \(T:\C\to\C\) is an endofunctor and \(\mu:T^2\to T\) and \(\eta:1\to T\) are natural transformations making these ``associativity'' and ``unit'' diagrams commute:
 \begin{diagram}[nohug]
 T^3					&\rTo^{1_T\mprod\mu}&T^2		&&T	&\rTo^{\eta\mprod1_T}	&T^2		&\lTo^{1_T\mprod\eta}	&T\\
 \dTo<{\mu\mprod1_T}	&					&\dTo>{\mu}	&&	&\rdTo<{1_T}			&\dTo>{\mu}	&\ldTo>{1_T}			&\\
 T^2					&\rTo_{\mu}			&T			&&	&						&T			&						&
 \end{diagram}
 This is precisely a monad on~\(\C\).\footnote{See Chapter~10.}
+
+A monoid homomorphism \(h:(S,\mu^S,\eta^S)\to(T,\mu^T,\eta^T)\) in this category is a natural transformation \(h:S\to T\) which respects multiplication and units by making these diagrams commute:
+\begin{diagram}[nohug]
+S^2			&\rTo^{h\mprod h}	&T^2			&&S				&\rTo^h			&T\\
+\dTo<{\mu^S}&					&\dTo>{\mu^T}	&&\uTo<{\eta^S}	&\ruTo>{\eta^T}	&\\
+S			&\rTo_h				&T				&&1				&				&
+\end{diagram}
+This is a monad homomorphism on~\(\C\).
 \end{rmk}
 
 \begin{rmk}
@@ -2244,6 +2252,24 @@ Therefore \(\ni\)~is the counit of an adjunction \(\Gamma\adj\Phi\). The unit \(
 \end{rmk}
 
 \section*{Chapter~10}
+\begin{rmk}
+Let \(S:\Sets\to\Sets\) be the monad sending a set~\(X\) to the strings over~\(X\), and \(P:\Sets\to\Sets\) the covariant powerset monad sending \(X\) to the subsets of~\(X\).\footnote{See Examples 10.5 and~10.7.} Define \(h_X:SX\to PX\) by sending a string to the elements in the string:
+\[h_X[x_1,\ldots,x_n]=\{x_1,\ldots,x_n\}\]
+Then \(h_X\)~is natural in~\(X\) since for any \(f:X\to Y\), this diagram commutes:
+\begin{diagram}
+X		&\rTo^{[-]_X}	&SX			&\rTo^{h_X}	&PX\\
+\dTo<f	&				&\dTo<{Sf}	&			&\dTo>{Pf}\\
+Y		&\rTo_{[-]_Y}	&SY			&\rTo_{h_Y}	&PY
+\end{diagram}
+It is also easy to see that \(h:S\to P\) respects multiplication and units by making these diagrams commute:
+\begin{diagram}[nohug]
+S^2			&\rTo^{h\mprod h}	&P^2				&&S			&\rTo^h			&P\\
+\dTo<{\sum}	&					&\dTo>{\bigunion}	&&\uTo<{[-]}&\ruTo>{\{-\}}	&\\
+S			&\rTo_h				&P					&&1			&				&
+\end{diagram}
+Therefore \(h\)~is a monad homomorphism.\footnote{See the remark in Chapter~7 above.} This reflects the intuition that (some) structure is preserved when we switch from concatenating strings to taking unions of the sets of elements in those strings.
+\end{rmk}
+
 \begin{rmk}
 In the proof of Proposition~10.6, when viewing \(T\)~as an endofunctor of~\(\C^T\), we take \(T(A,\alpha)=(TA,\mu_A)\)---completely disregarding~\(\alpha\)! For an arrow \(h:(A,\alpha)\to(B,\beta)\) in~\(\C^T\) with underlying arrow \(h:A\to B\) in~\(\C\), we see that the arrow \(Th:TA\to TB\) in~\(\C\) yields an arrow \(Th:(TA,\mu_A)\to(TB,\mu_B)\) in~\(\C^T\). This is functorial since the identities and composites in~\(\C^T\) are just inherited from those in~\(\C\), and \(T\)~is an endofunctor of~\(\C\).
 \end{rmk}
