@@ -2274,6 +2274,31 @@ Therefore \(h\)~is a monad homomorphism.\footnote{See the remark in Chapter~7 ab
 In the proof of Proposition~10.6, when viewing \(T\)~as an endofunctor of~\(\C^T\), we take \(T(A,\alpha)=(TA,\mu_A)\)---completely disregarding~\(\alpha\)! For an arrow \(h:(A,\alpha)\to(B,\beta)\) in~\(\C^T\) with underlying arrow \(h:A\to B\) in~\(\C\), we see that the arrow \(Th:TA\to TB\) in~\(\C\) yields an arrow \(Th:(TA,\mu_A)\to(TB,\mu_B)\) in~\(\C^T\). This is functorial since the identities and composites in~\(\C^T\) are just inherited from those in~\(\C\), and \(T\)~is an endofunctor of~\(\C\).
 \end{rmk}
 
+\begin{exer}[1]
+The natural numbers \((\N,0,s)\), where \(s:\N\to\N\) is the successor function \(s(n)=n+1\), form an initial algebra for the ``successor endofunctor`` \(S:\Sets\to\Sets\) with \(S(X)=X+1\).
+\end{exer}
+\begin{proof}
+We know that \((\N,0,s)\) is a natural numbers object in~\(\Sets\),\footnote{See Chapter~9.} which is the same thing as an initial \(S\)-algebra.
+\end{proof}
+\begin{rmk}
+This result is reminiscent of the fact that \(\omega\)~is the least fixed point of the operation \(1+(-)\) on the ordinals.
+\end{rmk}
+
+\begin{exer}[3]
+If \(T:\C\to\C\) is an endofunctor and \(i:TI\to I\) is an initial \(T\)-algebra, then \(i\)~is an isomorphism.
+\end{exer}
+\begin{proof}
+Consider \(Ti:T(TI)\to TI\). Since \(i\)~is initial, there is \(h:I\to TI\) making this diagram commute:
+\begin{diagram}
+TI		&\rTo^{Th}	&T^2I		&\rTo^{Ti}	&TI\\
+\dTo<i	&			&\dTo>{Ti}	&			&\dTo>i\\
+I		&\rTo_h		&TI			&\rTo_i		&I
+\end{diagram}
+Again since \(i\)~is initial, we must have \(ih=1_I\), which also implies
+\[hi=Ti\after Th=T(ih)=T(1_I)=1_{TI}\]
+so \(i\)~is an isomorphism.
+\end{proof}
+
 \begin{exer}[6]
 The triple \((\pow,\{-\},\bigunion)\) is a monad on~\(\Sets\), where \(\pow:\Sets\to\Sets\) is the covariant powerset functor, \(\{-\}_X:X\mapsto\pow(X)\) is the singleton function \(x\mapsto\{x\}\), and \(\bigunion_X:\pow(\pow(X))\to\pow(X)\) is the union function \(\alpha\mapsto\bigunion\alpha\).
 \end{exer}
