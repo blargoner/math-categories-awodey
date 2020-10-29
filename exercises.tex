@@ -958,7 +958,11 @@ For \(F:\J\to\C\), let \(\limit F\)~be the vertex of the limit of~\(F\) in~\(\C\
 Now viewing the set~\(I\) as a discrete category, an \(I\)-indexed family of sets is just a diagram of type~\(I\) in~\(\Sets\), and in this case the limit is just the product. Hence \(\prod\)~is a functor by the above.
 \end{proof}
 \begin{rmk}
-It follows that if \(F,G:\J\to\C\) and \(F\iso G\), then \(\limit_{\J}F\iso\limit_{\J}G\).
+It follows that if \(F,G:\J\to\C\) and \(F\iso G\), then \(\limit F\iso\limit G\).
+\end{rmk}
+
+\begin{rmk}
+If \(F:\J\to\C\), and \(f_j:L\to Fj\) and \(f_j':L'\to Fj\) are both limits of~\(F\) in~\(\C\), then \(f=(f_j)\)~is a natural transformation from the constant functor \(\Delta(L):\J\to\C\) to~\(F\), and \(\limit f:L\to L'\) is the isomorphism with \(f_j=f_j'\after\limit f\).
 \end{rmk}
 
 \begin{exer}[12]
@@ -2272,6 +2276,32 @@ Therefore \(h\)~is a monad homomorphism.\footnote{See the remark in Chapter~7 ab
 
 \begin{rmk}
 In the proof of Proposition~10.6, when viewing \(T\)~as an endofunctor of~\(\C^T\), we take \(T(A,\alpha)=(TA,\mu_A)\)---completely disregarding~\(\alpha\)! For an arrow \(h:(A,\alpha)\to(B,\beta)\) in~\(\C^T\) with underlying arrow \(h:A\to B\) in~\(\C\), we see that the arrow \(Th:TA\to TB\) in~\(\C\) yields an arrow \(Th:(TA,\mu_A)\to(TB,\mu_B)\) in~\(\C^T\). This is functorial since the identities and composites in~\(\C^T\) are just inherited from those in~\(\C\), and \(T\)~is an endofunctor of~\(\C\).
+\end{rmk}
+
+\begin{rmk}
+In the proof of Proposition~10.12, let \(i_n:P^n0\to I\) be the colimit and \(\varphi=\colimit_n i_n:PI\to I\) the isomorphism with \(\varphi\after Pi_n=i_{n+1}\).\footnote{See Exercise~9 in Chapter~5 above.} If \(\alpha:PX\to X\) is a \(P\)-algebra and \(h:I\to X\) makes the diagram
+\begin{diagram}
+PI				&\rTo^{Ph}		&PX\\
+\dTo<{\varphi}	&				&\dTo>{\alpha}\\
+I				&\rTo_h			&X
+\end{diagram}
+commute, then \(h\)~is uniquely determined by the arrows \(h\after i_n\). But \(h\after i_0:0\to X\) and
+\begin{align*}
+h\after i_{n+1}&=h\after\varphi\after Pi_n\\
+	&=\alpha\after Ph\after Pi_n\\
+	&=\alpha\after P(h\after i_n)
+\end{align*}
+so these arrows are uniquely determined by induction on~\(n\).
+
+To construct~\(h\), let \(h_0:0\to X\) and \(h_{n+1}=\alpha\after Ph_n\). It follows by induction on~\(n\) that \(h_n:P^n0\to X\) is a cocone, so we have \(h=\colimit_n h_n:I\to X\). Then
+\begin{align*}
+h\after\varphi\after Pi_n&=h\after i_{n+1}\\
+	&=h_{n+1}\\
+	&=\alpha\after Ph_n\\
+	&=\alpha\after P(h\after i_n)\\
+	&=\alpha\after Ph\after Pi_n
+\end{align*}
+so \(h\after\varphi=\alpha\after Ph\), since this arrow is uniquely determined by its composites with the arrows~\(Pi_n\). This shows that \(\varphi:PI\to I\) is an initial \(P\)-algebra.
 \end{rmk}
 
 \begin{exer}[1]
