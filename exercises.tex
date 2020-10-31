@@ -2329,6 +2329,38 @@ Again since \(i\)~is initial, we must have \(ih=1_I\), which also implies
 so \(i\)~is an isomorphism.
 \end{proof}
 
+\begin{exer}[5]
+For adjoint functors \(F:\C\to\D\) and \(U:\D\to\C\) with unit \(\eta:1_{\C}\to UF\) and counit \(\epsilon:FU\to 1_{\D}\), let \(T=UF\) be the associated monad with unit~\(\eta\) and multiplication \(\mu=U\epsilon_F\). There is a comparison functor \(\Phi:\D\to\C^T\) which maps an object \(D\) to the \(T\)-algebra \(U\epsilon_D:T(UD)\to UD\) and maps an arrow \(f:D\to E\) to the arrow \(Uf:UD\to UE\). Moreover, \(\Phi\)~commutes with the forgetful functors \(U\) and \(U^T:\C^T\to\C\):
+\begin{diagram}[nohug]
+\D	&\rTo^{\Phi}&\C^T\\
+	&\rdTo<U	&\dTo>{U^T}\\
+	&			&\C
+\end{diagram}
+\end{exer}
+\begin{proof}
+To see that \(U\epsilon_D\)~is a \(T\)-algebra, recall that
+\begin{diagram}[nohug]
+UD	&\rTo^{\eta_{UD}}	&UFUD\\
+	&\rdTo<{1_{UD}}		&\dTo>{U\epsilon_D}\\
+	&					&UD
+\end{diagram}
+commutes by the triangle identity (10.1), and apply~\(U\) to the diagram
+\begin{diagram}
+FUFUD					&\rTo^{FU\epsilon_D}&FUD\\
+\dTo<{\epsilon_{FUD}}	&					&\dTo>{\epsilon_D}\\
+FUD						&\rTo_{\epsilon_D}	&D
+\end{diagram}
+which commutes since \(\epsilon\)~is natural.
+
+To see that \(Uf:U\epsilon_D\to U\epsilon_E\), apply~\(U\) to the diagram
+\begin{diagram}
+FUD					&\rTo^{FUf}	&FUE\\
+\dTo<{\epsilon_D}	&			&\dTo>{\epsilon_E}\\
+D					&\rTo_f		&E
+\end{diagram}
+which also commutes since \(\epsilon\)~is natural. It is then immediate that \(\Phi\)~is a functor which commutes with the forgetful functors.
+\end{proof}
+
 \begin{exer}[6]
 The triple \((\pow,\{-\},\bigunion)\) is a monad on~\(\Sets\), where \(\pow:\Sets\to\Sets\) is the covariant powerset functor, \(\{-\}_X:X\mapsto\pow(X)\) is the singleton function \(x\mapsto\{x\}\), and \(\bigunion_X:\pow(\pow(X))\to\pow(X)\) is the union function \(\alpha\mapsto\bigunion\alpha\).
 \end{exer}
