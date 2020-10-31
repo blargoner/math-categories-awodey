@@ -2396,6 +2396,26 @@ commutes since for \(\alpha\in\pow(X)\),
 Therefore we have a monad.
 \end{proof}
 
+\begin{exer}[8]
+Let \(F\adj U\) be the free forgetful adjunction between \(F:\Sets\to\Mon\) and \(U:\Mon\to\Sets\), and let \(T=UF\) be the associated monad. Every \(T\)-algebra \(\alpha:TA\to A\) arises from a unique monoid structure on~\(A\).
+\end{exer}
+\begin{proof}
+We use the notation of Example~10.7. The monoid structure must be defined by the unit \(1=\alpha[]\) and multiplication \(x\mult y=\alpha[x,y]\). This multiplication is associative since
+\begin{align*}
+(x\mult y)\mult z&=\alpha[\alpha[x,y],z]\\
+	&=\alpha[\alpha[x,y],\alpha[z]]\\
+	&=\alpha(\mu[[x,y],[z]])\\
+	&=\alpha[x,y,z]\\
+	&=\alpha(\mu[[x],[y,z]])\\
+	&=\alpha[\alpha[x],\alpha[y,z]]\\
+	&=\alpha[x,\alpha[y,z]]\\
+	&=x\mult(y\mult z)
+\end{align*}
+and is unital by a similar computation. It follows by induction that
+\[x_1\mult\cdots\mult x_n=\alpha[x_1,\ldots,x_n]\]
+so the algebra arises from the monoid structure as desired.
+\end{proof}
+
 % References
 \newpage
 \begin{thebibliography}{0}
