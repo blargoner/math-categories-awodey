@@ -127,7 +127,7 @@ This document contains notes and exercises from~\cite{awodey}.
 
 \section*{Chapter 1}
 \begin{rmk}
-If \(\C\)~is a category and \(C\in\C\), then the identity arrow \(C\to C\) is terminal in~\(\C/C\); moreover if \(C\)~is terminal in~\(\C\), then \(\C/C\iso\C\). In this sense, \emph{taking a slice at an object amounts to making that object terminal}.
+If \(\C\)~is a category and \(C\in\C\), then the identity arrow \(C\to C\) is terminal in~\(\C/C\);\footnote{The concept of a terminal object is defined in Chapter~2.} moreover if \(C\)~is terminal in~\(\C\), then \(\C/C\iso\C\). In this sense, \emph{taking a slice at an object amounts to making that object terminal}.
 \end{rmk}
 
 \begin{rmk}
@@ -171,14 +171,16 @@ For \(S\subseteq B\times C\),
 \begin{exer}[2]\
 \begin{enumerate}[itemsep=0pt]
 \item[(a)] \(\Rel\iso\Relop\)
+\item[(b)] \(\Sets\not\iso\Setsop\)
 \item[(c)] For any set~\(X\) with powerset~\(P(X)\), \(P(X)\iso\dual{P(X)}\) as poset categories.
 \end{enumerate}
 \begin{proof}\
 \begin{enumerate}[itemsep=0pt]
 \item[(a)] The functor in Exercise~1(c) is its own inverse, hence is an isomorphism.
+\item[(b)] The empty function is the only function into the empty set, but there is no set with exactly one function out of it.
 \item[(c)] Recall in~\(P(X)\) there exists a unique arrow \(A\to B\) if and only if \(A\subseteq B\), hence in~\(\dual{P(X)}\) there exists a unique arrow \(A\to B\) if and only if \(A\supseteq B\).
 
-For \(A\subseteq X\), write \(\comp{A}=X-A=\{\,x\in X\mid x\not\in A\,\}\). Define \(C:\dual{P(X)}\to P\) by \(C(A)=\comp{A}\) and
+For \(A\subseteq X\), write \(\comp{A}=X-A=\{\,x\in X\mid x\not\in A\,\}\). Define \(C:\dual{P(X)}\to P(X)\) by \(C(A)=\comp{A}\) and
 \[C(A\to B)=\comp{A}\to\comp{B}=C(A)\to C(B)\]
 which is well defined since \(A\supseteq B\) if and only if \(\comp{A}\subseteq\comp{B}\). Clearly \(C\)~maps objects to objects and arrows to arrows, and also preserves domains and codomains. Substituting \(A\)~for~\(B\) above shows that \(C\)~preserves identities. For \(X\supseteq A\supseteq B\supseteq D\),
 \[C(A\to B\to D)=\comp{A}\to\comp{B}\to\comp{D}=C(A)\to C(B)\to C(D)\]
