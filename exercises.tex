@@ -2305,7 +2305,7 @@ so \(h\after\varphi=\alpha\after Ph\), since this arrow is uniquely determined b
 \end{rmk}
 
 \begin{exer}[1]
-The natural numbers \((\N,0,s)\), where \(s:\N\to\N\) is the successor function \(s(n)=n+1\), form an initial algebra for the ``successor endofunctor`` \(S:\Sets\to\Sets\) with \(S(X)=X+1\).
+The natural numbers \((\N,0,s)\), where \(s:\N\to\N\) is the successor function \(s(n)=n+1\), form an initial algebra for the ``successor endofunctor'' \(S:\Sets\to\Sets\) with \(S(X)=X+1\).
 \end{exer}
 \begin{proof}
 We know that \((\N,0,s)\) is a natural numbers object in~\(\Sets\),\footnote{See Chapter~9.} which is the same thing as an initial \(S\)-algebra.
@@ -2414,6 +2414,39 @@ We use the notation of Example~10.7. The monoid structure must be defined by the
 and is unital by a similar computation. It follows by induction that
 \[x_1\mult\cdots\mult x_n=\alpha[x_1,\ldots,x_n]\]
 so the algebra arises from the monoid structure as desired.
+\end{proof}
+
+\begin{exer}[11]
+For a monad \((T,\eta,\mu)\) on a category~\(\C\), the Kleisli category~\(\C_T\) is indeed a category.
+\end{exer}
+\begin{proof}
+For arrows \(f_T:A_T\to B_T\), \(g_T:B_T\to C_T\), and \(h_T:C_T\to D_T\) in~\(\C_T\),
+\begin{align*}
+(h_T\after g_T)\after f_T&=\mu_D\after T(\mu_D\after Th\after g)\after f\\
+	&=\mu_D\after T\mu_D\after T^2h\after Tg\after f\\
+	&=\mu_D\after\mu_{TD}\after T^2h\after Tg\after f\\
+	&=\mu_D\after Th\after\mu_C\after Tg\after f\\
+	&=h_T\after(g_T\after f_T)
+\end{align*}
+where the third equality follows from associativity of~\(\mu\) (10.5), and the fourth equality follows from naturality of~\(\mu\):
+\begin{diagram}
+T^2C		&\rTo^{\mu_C}	&TC\\
+\dTo<{T^2h}	&				&\dTo>{Th}\\
+T^3D		&\rTo_{\mu_{TD}}&T^2D
+\end{diagram}
+Therefore composition in~\(\C_T\) is associative. Also
+\[f_T\after 1_{A_T}=\mu_B\after Tf\after\eta_A=\mu_B\after\eta_{TB}\after f=1_{TB}\after f=f_T\]
+by naturality and unity of~\(\eta\) (10.6):
+\begin{diagram}[nohug]
+A		&\rTo^{\eta_A}		&TA\\
+\dTo<f	&					&\dTo>{Tf}\\
+TB		&\rTo^{\eta_{TB}}	&T^2B\\
+		&\rdTo<{1_{TB}}		&\dTo>{\mu_B}\\
+		&					&TB
+\end{diagram}
+Finally
+\[1_{B_T}\after f_T=\mu_B\after T\eta_B\after f=1_{TB}\after f=f_T\]
+again by unity of~\(\eta\). Therefore composition in~\(\C_T\) is unital.
 \end{proof}
 
 % References
