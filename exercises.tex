@@ -521,6 +521,14 @@ Given \(x:M(A)\to N\) and \(y:M(B)\to N\), let \(\under{x}_A:A\to\under{N}\) be 
 It follows from the copairing and the universal property of~\(M(A)\) that \(z\after i_1=x\) since both \(z\after i_1\)~and~\(x\) extend~\(\under{x}_A\) to~\(M(A)\), and similarly \(z\after i_2=y\). Moreover it follows from uniqueness of the copairing and the extension that \(z\)~uniquely satisfies these equations. Therefore \(z\)~is a copairing~\(\copair{x}{y}\), and \(M(A+B)\)~is a coproduct of \(M(A)\)~and~\(M(B)\) as claimed.
 \end{proof}
 
+\begin{exer}[4]
+If \(\powBA:\Setsop\to\BA\) denotes the (contravariant) powerset Boolean algebra functor, then
+\[\powBA(A+B)\iso\powBA(A)\times\powBA(B)\]
+\end{exer}
+\begin{proof}
+We have \(\powBA\iso\Hom_{\Sets}(-,2)\),\footnote{See Chapter~7.} and the contravariant representable functors map coproducts to products by the dual of Corollary~2.22.
+\end{proof}
+
 \begin{exer}[5]
 Let \(\C\)~be the category of proofs in a natural deduction system with disjunction introduction rules
 \[\begin{array}{c}
