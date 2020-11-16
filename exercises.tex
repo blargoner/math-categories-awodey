@@ -836,6 +836,15 @@ Dually if \(i\in\J\) is a terminal object, then
 \[\colimit_{j\in\J}D_j=D_i\]
 \end{rmk}
 
+\begin{rmk}
+If \(F:\C\to\D\) creates limits of type~\(\J\), and \(\D\)~has all limits of type~\(\J\), then \(F\)~also preserves limits of type~\(\J\). In other words, \emph{creating limits is a stronger condition than preserving limits}, provided the target category has limits.
+\end{rmk}
+\begin{proof}
+If \(C:\J\to\C\) is a diagram of type~\(\J\) in~\(\C\) with limit \(p_j:L\to C_j\) in~\(\C\), then \(Fp_j:FL\to FC_j\) is a cone to~\(FC\) in~\(\D\). Let \(q_j:\limit_j FC_j\to FC_j\) denote the limit of~\(FC\) in~\(\D\). Since \(F\)~creates limits, there is a limit \(p_j':L'\to C_j\) to~\(C\) in~\(\C\) with \(FL'=\limit_j FC_j\) and \(Fp_j'=q_j\). By uniqueness of limits in~\(\C\), there is \(u:L\iso L'\) with \(p_j'\after u=p_j\), so \(Fu:FL\iso FL'=\limit_j FC_j\) with
+\[q_j\after Fu=Fp_j'\after Fu=F(p_j'\after u)=Fp_j\]
+That is, the cone \(Fp_j:FL\to FC_j\) is isomorphic to the cone \(q_j:\limit_j FC_j\to FC_j\) in~\(\D\), so \(Fp_j:FL\to FC_j\) is a limit to~\(FC\) in~\(\D\).
+\end{proof}
+
 \begin{exer}[1]
 Let \(\C\)~be a category and \(X\in\C\). A pullback in~\(\C\) over~\(X\) is just a product in~\(\C/X\).
 \end{exer}
