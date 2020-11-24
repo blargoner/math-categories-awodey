@@ -990,15 +990,19 @@ Immediate from definitions.
 
 \section*{Chapter~6}
 \begin{rmk}
-Let \(\C\)~be a locally small category with binary products and \(B,C\in\C\). An object \(C^B\in\C\) is an exponential for \(B\) and~\(C\) if and only if
+An exponential \emph{object} \(B^A\) in a category ``captures'' the \emph{arrows} \(A\to B\). The sense in which the arrows are captured depends on the category.
+\end{rmk}
+
+\begin{rmk}
+Let \(\C\)~be a (locally small) category with binary products and \(B,C\in\C\). An object \(C^B\in\C\) is an exponential for \(B\) and~\(C\) if and only if
 \[\Hom_{\C}(A\times B,C)\iso\Hom_{\C}(A,C^B)\tag{1}\]
 for all \(A\in\C\) and the isomorphism is natural in~\(A\).\footnote{The concept of naturality is defined in Chapter~7.}
 \end{rmk}
 \begin{proof}
 If \(C^B\)~is an exponential, let \(\eval:C^B\times B\to C\) be the evaluation arrow. We know that transposition relative to~\(\eval\) induces the isomorphism~(1). Moreover, if \(f:A\times B\to C\) and \(g:A'\to A\), then this diagram commutes:
 \begin{diagram}[nohug]
-C^B\times B					&\rTo^{\eval}					&C\\
-\uTo<{\curry{f}\times 1_B}	&								&\uTo>{1_C}\\
+C^B\times B					&								&\\
+\uTo<{\curry{f}\times 1_B}	&\rdTo^{\eval}					&\\
 A\times B					&\rTo_f							&C\\
 \uTo<{g\times 1_B}			&\ruTo>{f\after(g\times 1_B)}	&\\
 A'\times B					&								&
@@ -1023,14 +1027,17 @@ Conversely, if (1)~holds naturally in~\(A\), first take \(A=C^B\) and let \(\eva
 \end{diagram}
 implies
 \[\eval\after(\curry{f}\times 1_B)=f\]
-It follows that \(C^B\) (with~\(\eval\)) is an exponential.
+Moreover, \(\curry{f}\)~is unique with this property. So \(C^B\) (with~\(\eval\)) is an exponential.
 \end{proof}
 
 \begin{rmk}
-Let \(\C\)~be a locally small category with binary products and \(B\in\C\). If \(E:\C\to\C\) is a functor, then \(E\iso(-)^B\) if and only if
+Let \(\C\)~be a (locally small) category with binary products and \(B\in\C\). If \(E:\C\to\C\) is a functor, then \(E\iso(-)^B\) if and only if
 \[\Hom_{\C}(A\times B,C)\iso\Hom_{\C}(A,EC)\]
 for all \(A,C\in\C\) and the isomorphism is natural in both \(A\) and~\(C\).
 \end{rmk}
+\begin{proof}
+By extension of the previous argument, or by the fact that the product functor \((-)\times B\) is left adjoint to the exponential functor \((-)^B\).\footnote{See Chapter~9.}
+\end{proof}
 
 \begin{rmk}
 Let \(\C\)~be a cartesian closed category and \(\eta=\curry{1_{A\times B}}:A\to(A\times B)^B\). For \(f:A\times B\to C\), to see that the diagram
@@ -1059,11 +1066,11 @@ If \(p:A\to I\) is a function and \(A_i=\inv{p}(i)\), then the following diagram
 \dTo				&		&\dTo>{p^I}\\
 1					&\rTo	&I^I
 \end{diagram}
-In other words, \emph{multiplication over~\(I\) is the pullback of exponentiation by~\(I\)}. This idea allows us to define products in categories with pullbacks and exponentials.
+In other words, \emph{multiplication over~\(I\) is a pullback of exponentiation by~\(I\)}. This idea allows us to define products in categories with pullbacks and exponentials.
 \end{rmk}
 
 \begin{rmk}
-If \(\C\)~and~\(\D\) are cartesian closed categories, then so is~\(\C\times\D\). Moreover, the terminal object, products, and exponentials (including the evaluation and transpose maps for exponentials) are all computed pointwise.
+If \(\C\)~and~\(\D\) are cartesian closed categories, then so is~\(\C\times\D\). Moreover, the terminal object, products, and exponentials (including the evaluation and transpose maps for exponentials) are all computed componentwise.
 \end{rmk}
 \begin{proof}
 Let \(1_{\C}\)~be terminal in~\(\C\) and \(1_{\D}\)~be terminal in~\(\D\). Then for \((C,D)\in\C\times\D\), \((\term_C,\term_D):(C,D)\to(1_{\C},1_{\D})\) is unique, so \(1_{\C\times\D}=(1_{\C},1_{\D})\)~is terminal in~\(\C\times\D\).
