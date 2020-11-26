@@ -6,6 +6,7 @@
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\true}{\top}
+\newcommand{\false}{\bot}
 
 \newcommand{\iso}{\cong}
 \newcommand{\eq}{\sim}
@@ -68,6 +69,7 @@
 \newcommand{\comma}[2]{(#1|#2)}
 \newcommand{\tr}[1]{\overline{#1}}
 
+\newcommand{\2}{\cat{2}}
 \newcommand{\A}{\cat{A}}
 \newcommand{\B}{\cat{B}}
 \newcommand{\C}{\cat{C}}
@@ -91,6 +93,7 @@
 \newcommand{\Grp}{\cat{Groups}}
 \newcommand{\Pre}{\cat{Pre}}
 \newcommand{\Pos}{\cat{Pos}}
+\newcommand{\Posop}{\dual{\Pos}}
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
 \newcommand{\BA}{\cat{BA}}
@@ -98,6 +101,7 @@
 \newcommand{\Ordf}{\fin{\Ord}}
 
 \newcommand{\powBA}{\pow^{\BA}}
+\newcommand{\powU}{\pow^{\uparrow}}
 
 % Arrows
 \newarrow{Mono} >--->
@@ -391,14 +395,14 @@ The \(A\)-monoid~\((M,m)\) is initial if and only if for all \(A\)-monoids~\((N,
 \end{proof}
 
 \begin{exer}[12]
-For a Boolean algebra~\(B\), Boolean homomorphisms \(p:B\to\cat{2}\) correspond exactly to ultrafilters in~\(B\).
+For a Boolean algebra~\(B\), Boolean homomorphisms \(p:B\to\2\) correspond exactly to ultrafilters in~\(B\).
 \end{exer}
 \begin{proof}
-If \(p:B\to\cat{2}\) is a homomorphism, then \(U_p=\inv{p}(1)\) is an ultrafilter in~\(B\). Indeed, \(U_p\ne\emptyset\) since \(p(1)=1\), and \(U_p\ne B\) since \(p(0)=0\ne 1\). If \(a\in U_p\) and \(a\le b\), then \(1=p(a)\le p(b)\), so \(p(b)=1\) and \(b\in U_p\). If \(a\in U_p\) and \(b\in U_p\), then
+If \(p:B\to\2\) is a homomorphism, then \(U_p=\inv{p}(1)\) is an ultrafilter in~\(B\). Indeed, \(U_p\ne\emptyset\) since \(p(1)=1\), and \(U_p\ne B\) since \(p(0)=0\ne 1\). If \(a\in U_p\) and \(a\le b\), then \(1=p(a)\le p(b)\), so \(p(b)=1\) and \(b\in U_p\). If \(a\in U_p\) and \(b\in U_p\), then
 \[p(a\meet b)=p(a)\meet p(b)=1\meet 1=1\]
 so \(a\meet b\in U_p\). Finally, if \(a\not\in U_p\) then \(p(a)=0\), so \(p(\compl a)=\compl p(a)=1\) and \(\compl a\in U_p\). On the other hand, \(p(a)\meet p(\compl a)=0\), so we cannot have \(a\in U_p\) and \(\compl a\in U_p\).
 
-Conversely, if \(U\)~is an ultrafilter in~\(B\) and \(p_U:B\to\cat{2}\) is defined by
+Conversely, if \(U\)~is an ultrafilter in~\(B\) and \(p_U:B\to\2\) is defined by
 \[
 p_U(x)=\begin{cases}
 1&\text{if }x\in U\\
@@ -990,7 +994,7 @@ Immediate from definitions.
 
 \section*{Chapter~6}
 \begin{rmk}
-An exponential \emph{object} \(B^A\) in a category ``captures'' the \emph{arrows} \(A\to B\). The sense in which the arrows are captured depends on the category.
+An exponential \emph{object} \(B^A\) ``captures'' the \emph{arrows} \(A\to B\) in a category. The sense in which the arrows are captured depends on the category.
 \end{rmk}
 
 \begin{rmk}
@@ -1056,7 +1060,7 @@ A\times B				&						&
 \end{diagram}
 commutes and
 \[(f^B\times 1_B)\after(\eta\times 1_B)=(f^B\after\eta)\times 1_B\]
-This result shows that the transpose of~\(f\) can be obtained by applying~\(f\) after the transposed pairing operation~\(\eta\). The transpose~\(\eta\) is ``universal'' because every transpose can be obtained from it in this way.
+This result shows that the transpose of~\(f\) can be obtained by applying~\(f\) after the transposed pairing operation~\(\eta\). The transpose~\(\eta\) is ``universal'' because every transpose can be obtained from it in this way. Note \(\eta\)~is just the unit of the adjunction \((-)\times B\adj(-)^B\) at~\(A\), while \(\eval\)~is the counit.\footnote{See Chapter~9.}
 \end{rmk}
 
 \begin{rmk}
@@ -1106,6 +1110,30 @@ Conversely, for \(h:(X,Y)\to(C^A,D^B)\),
 So
 \[\curry{\uncurry{h}}=\curry{(\uncurry{h_1},\uncurry{h_2})}=(\curry{\uncurry{h_1}},\curry{\uncurry{h_2}})=(h_1,h_2)=h\]
 Therefore \((C,D)^{(A,B)}=(C^A,D^B)\) is an exponential in~\(\C\times\D\) as claimed.
+\end{proof}
+
+\begin{rmk}
+Let \(\2=\{\,\false\le\true\,\}\) be the initial Boolean algebra. Let \(\2^{(-)}:\Posop\to\Pos\) denote the functor sending a poset~\(I\) to the poset~\(\2^I\) of monotone maps \(I\to\2\) ordered pointwise, and sending a monotone map \(f:J\to I\) to the monotone map \(\2^f:\2^I\to\2^J\) defined by \(\varphi\mapsto\varphi\after f\).\footnote{See Exercise~12.} Note
+\[\2^{(-)}=\Hom_{\Pos}(-,\2)\]
+with induced poset structure.
+
+Let \(\powU:\Posop\to\Pos\) denote the functor sending a poset~\(I\) to the poset of upward closed subsets of~\(I\) ordered by inclusion, and sending a monotone map \(f:J\to I\) to the monotone map defined by \(S\mapsto\inv{f}(S)\). Then there is a natural isomorphism
+\[\2^I\iso\powU(I)\]
+In particular, \(\powU\)~is representable.\footnote{Compare to Example~7.4.} Dually, \(\2^{\dual{I}}\)~is just the poset of downward closed subsets of~\(I\) under inclusion.
+\end{rmk}
+\begin{proof}
+The isomorphism sends \(\varphi\in\2^I\) to the extension \(S_{\varphi}=\inv{\varphi}(\true)\) and sends \(S\in\powU(I)\) to the characteristic map \(\varphi_S:I\to\2\) defined by
+\[\varphi_S(x)=\begin{cases}
+\true&\text{if }x\in S\\
+\false&\text{otherwise}
+\end{cases}\]
+For \(f:J\to I\) monotone, the naturality square
+\begin{diagram}
+\2^I		&\rTo^{\iso}&\powU(I)\\
+\dTo<{\2^f}	&			&\dTo>{\powU(f)}\\
+\2^J		&\rTo_{\iso}&\powU(J)
+\end{diagram}
+obviously commutes.
 \end{proof}
 
 \begin{exer}[2]
