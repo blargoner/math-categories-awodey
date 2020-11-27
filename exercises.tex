@@ -1224,6 +1224,25 @@ However since \(N^M\)~is a monoid, there is only one homomorphism \(1\to N^M\) (
 ---contradicting that \(f'\ne g'\).\footnote{See also Exercise~9.}
 \end{proof}
 
+\begin{exer}[5]
+For graphs \(G\) and~\(H\), define \(H^G\) to be the graph whose vertices are arbitrary functions \(\varphi:G_v\to H_v\) and whose edges \(\theta:\varphi\to\psi\) are functions \(\theta:G_e\to H_e\) making these diagram commute:
+\begin{diagram}[eqno=(1)]
+G_v				&\lTo^s	&G_e			&\rTo^t	&G_v\\
+\dTo<{\varphi}	&		&\dTo>{\theta}	&		&\dTo>{\psi}\\
+H_v				&\lTo_s	&H_e			&\rTo_t	&H_v
+\end{diagram}
+The map \(\eval:H^G\times G\to H\) defined on vertices by \((\varphi,v)\mapsto\varphi(v)\) and on edges by \((\theta,e)\mapsto\theta_e\) is a graph homomorphism. Moreover, for any graph homomorphism \(f:F\times G\to H\) there is a graph homomorphism \(\curry{f}:F\to H^G\) defined on vertices by \(v\mapsto f(v,-)\) and on edges by \(e\mapsto f(e,-)\) unique with \(\eval\after(\curry{f}\times 1_G)=f\). In other words, \(H^G\) (with \(\eval\)) is an exponential for \(G\) and~\(H\).
+\end{exer}
+\begin{proof}
+That \(\eval\)~is a homomorphism follows immediately from~(1). That \(\curry{f}\)~is a homomorphism follows from commutativity of this diagram:
+\begin{diagram}
+G_v				&\lTo^s	&G_e			&\rTo^t	&G_v\\
+\dTo<{f(s(e),-)}&		&\dTo>{f(e,-)}	&		&\dTo>{f(t(e),-)}\\
+H_v				&\lTo_s	&H_e			&\rTo_t	&H_v
+\end{diagram}
+It is obvious that \(\curry{f}\)~is unique with \(\eval\after(\curry{f}\times 1_G)=f\).
+\end{proof}
+
 \begin{exer}[9]
 Let \(\C\)~be a cartesian closed category and \(A,B\in\C\). Then there is a bijective correspondence between arrows \(A\to B\) and arrows \(1\to B^A\).
 \end{exer}
