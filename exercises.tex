@@ -18,7 +18,10 @@
 \newcommand{\radj}{\vdash}
 \newcommand{\adjrule}{\frac}
 \newcommand{\limplies}{\Rightarrow}
+\newcommand{\ex}{\Rightarrow}
 
+\newcommand{\sect}{\cap}
+\newcommand{\bigunion}{\bigcup}
 \newcommand{\meet}{\wedge}
 \newcommand{\bigmeet}{\bigwedge}
 \newcommand{\join}{\vee}
@@ -28,7 +31,6 @@
 \newcommand{\after}{\circ}
 \newcommand{\limit}{\varprojlim}
 \newcommand{\colimit}{\varinjlim}
-\newcommand{\bigunion}{\bigcup}
 \newcommand{\eval}{\epsilon}
 \newcommand{\term}{{!}}
 \newcommand{\mult}{\cdot}
@@ -47,6 +49,7 @@
 \DeclareMathOperator{\pow}{\mathcal{P}}
 \DeclareMathOperator{\ult}{Ult}
 \DeclareMathOperator{\up}{\uparrow}
+\DeclareMathOperator{\down}{\downarrow}
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\id}{id}
 
@@ -101,7 +104,7 @@
 \newcommand{\Ordf}{\fin{\Ord}}
 
 \newcommand{\powBA}{\pow^{\BA}}
-\newcommand{\powU}{\pow^{\uparrow}}
+\newcommand{\powU}{\pow^{\up}}
 
 % Arrows
 \newarrow{Mono} >--->
@@ -201,7 +204,7 @@ so \(C\)~preserves composites. Therefore \(C\)~is a functor. Since \(C\)~is clea
 \item[(c)] In~\(\Pos\), the isomorphisms are \emph{not} the bijective homomorphisms.
 \end{enumerate}
 \begin{proof}\
-\begin{enumerate}
+\begin{enumerate}[itemsep=0pt]
 \item[(a)] A function \(f:A\to B\) has a (two-sided) inverse if and only if it is bijective. Indeed, suppose \(g:B\to A\) is an inverse of~\(f\). If \(a,a'\in A\) and \(f(a)=f(a')\), then
 \[a=1_A(a)=(g\after f)(a)=g(f(a))=g(f(a'))=(g\after f)(a')=1_A(a')=a'\]
 If \(b\in B\), then \(b=1_B(b)=(f\after g)(b)=f(g(b))\). Conversely, if \(f\)~is bijective, then for each \(b\in B\) we can let~\(g(b)\) be the unique \(a\in A\) with \(f(a)=b\). Then \(g:B\to A\) is clearly an inverse of~\(f\).
@@ -1113,13 +1116,13 @@ Therefore \((C,D)^{(A,B)}=(C^A,D^B)\) is an exponential in~\(\C\times\D\) as cla
 \end{proof}
 
 \begin{rmk}
-Let \(\2=\{\,\false\le\true\,\}\) be the initial Boolean algebra. Let \(\2^{(-)}:\Posop\to\Pos\) denote the functor sending a poset~\(I\) to the poset~\(\2^I\) of monotone maps \(I\to\2\) ordered pointwise, and sending a monotone map \(f:J\to I\) to the monotone map \(\2^f:\2^I\to\2^J\) defined by \(\varphi\mapsto\varphi\after f\).\footnote{See Exercise~12.} Note
+Let \(\2=\{\,\false\le\true\,\}\) be the initial Boolean algebra. Let \(\2^{(-)}:\Posop\to\Pos\) denote the functor sending a poset~\(I\) to the exponential poset~\(\2^I\) of monotone maps \(I\to\2\) ordered pointwise, and sending a monotone map \(f:J\to I\) to the monotone map \(\2^f:\2^I\to\2^J\) defined by \(\varphi\mapsto\varphi\after f\).\footnote{See Exercise~12.} Note
 \[\2^{(-)}=\Hom_{\Pos}(-,\2)\]
 with induced poset structure.
 
 Let \(\powU:\Posop\to\Pos\) denote the functor sending a poset~\(I\) to the poset of upward closed subsets of~\(I\) ordered by inclusion, and sending a monotone map \(f:J\to I\) to the monotone map defined by \(S\mapsto\inv{f}(S)\). Then there is a natural isomorphism
 \[\2^I\iso\powU(I)\]
-In particular, \(\powU\)~is representable.\footnote{Compare to Example~7.4.} Dually, \(\2^{\dual{I}}\)~is just the poset of downward closed subsets of~\(I\) under inclusion.
+In particular, \(\powU\)~is representable.\footnote{Compare to Example~7.4.} Dually, \(\2^{\dual{I}}\)~is naturally isomorphic to the poset of downward closed subsets of~\(I\) under inclusion.
 \end{rmk}
 \begin{proof}
 The isomorphism sends \(\varphi\in\2^I\) to the extension \(S_{\varphi}=\inv{\varphi}(\true)\) and sends \(S\in\powU(I)\) to the characteristic map \(\varphi_S:I\to\2\) defined by
@@ -1299,6 +1302,50 @@ from which it is immediate that \(p\)~is unique in satisfying the equations abov
 In~\(\Sets\), this exercise (circuitously) justifies the familiar distributive law \((a+b)c=ac+bc\) for \(a,b,c\in\N\).
 \end{rmk}
 
+\begin{exer}[15]
+Let \(\2=\{\,\false\le\true\,\}\) be the initial Boolean algebra.
+\begin{enumerate}[itemsep=0pt]
+\item[(a)] For any poset~\(I\), the exponential poset~\(\2^I\) is a Heyting algebra.
+\item[(b)] For any cartesian closed poset~\(\A\), where \(\2^{\dual{\A}}\) is thought of as the poset of downward closed subsets of~\(\A\) under inclusion,\footnote{See the remark above about \(\2^{\dual{I}}\) for posets~\(I\).} the map \(y:\A\to\2^{\dual{\A}}\) defined by
+\[y(a)=\down(a)=\{\,x\mid x\le a\,\}\]
+is monotone, injective, and preserves cartesian closed structure.
+\end{enumerate}
+\end{exer}
+\begin{proof}
+For~(a), the limits and colimits are computed pointwise. For example if \(\varphi,\psi\in\2^I\), then
+\[(\varphi\meet\psi)(x)=\varphi(x)\meet\psi(x)\]
+Indeed, \(\varphi\meet\psi:I\to\2\) and if \(x\le y\) then
+\[\varphi(x)\meet\psi(x)\le\varphi(x)\meet\psi(y)\le\varphi(y)\meet\psi(y)\]
+so \(\varphi\meet\psi\) is monotone. If \(\lambda\in\2^I\), then \(\lambda\le\varphi\meet\psi\) if and only if \(\lambda\le\varphi\) and \(\lambda\le\psi\), so \(\varphi\meet\psi\) is the product of \(\varphi\) and~\(\psi\).
+
+The exponential of \(\varphi\) and~\(\psi\) is defined by
+\[(\varphi\ex\psi)(x)=\begin{cases}
+\true&\text{if }\varphi(z)\le\psi(z)\text{ for all }z\ge x\\
+\false&\text{otherwise}
+\end{cases}\]
+Then \((\varphi\ex\psi):I\to\2\). If \(x\le y\) and \((\varphi\ex\psi)(x)=\true\), then in particular \(\varphi(z)\le\psi(z)\) for all \(z\ge y\), so \((\varphi\ex\psi)(y)=\true\) and therefore \((\varphi\ex\psi)\)~is monotone. If \(\lambda\in\2^I\), we claim
+\[\lambda\meet\varphi\le\psi\quad\text{if and only if}\quad\lambda\le(\varphi\ex\psi)\]
+Indeed, for the forward direction, if \(\lambda(x)=\true\) then \(\lambda(z)=\true\) for all \(z\ge x\), so
+\[\varphi(z)=\true\meet\varphi(z)=\lambda(z)\meet\varphi(z)\le\psi(z)\]
+for all \(z\ge x\), so \((\varphi\ex\psi)(x)=\true\) and therefore \(\lambda\le(\varphi\ex\psi)\). For the reverse direction, if \(\lambda(x)\meet\varphi(x)=\true\) then \(\lambda(x)=\true\) and \(\varphi(x)=\true\), so \((\varphi\ex\psi)(x)=\true\) and in particular we must have \(\psi(x)=\true\) and therefore \(\lambda\meet\varphi\le\psi\).
+
+For~(b), \(a\le b\) if and only if \(\down(a)\subseteq\down(b)\), so it is immediate that \(y\)~is monotone and injective. Moreover \(\down(1)=\A\) and
+\[\down(a\meet b)=\down(a)\sect\down(b)\]
+so \(y\)~preserves all finite products. Note the exponential of \(S\) and~\(T\) in~\(\2^{\dual{\A}}\) is
+\[T^S=\{\,x\mid\down(x)\sect S\subseteq T\,\}\]
+so
+\[\down(a\ex b)=\down(b)^{\down(a)}\]
+which means \(y\)~preserves exponentials.
+\end{proof}
+\begin{rmk}
+For a poset~\(I\), the Yoneda embedding \(y:I\to\Sets^{\dual{I}}\) is given by\footnote{See Chapter~8.}
+\[y(a)(x)=\Hom_I(x,a)=\begin{cases}
+\{x\le a\}&\text{if }x\le a\\
+\emptyset&\text{otherwise}
+\end{cases}\]
+But we might as well take \(\{x\le a\}=\true\) and \(\emptyset=\false\), yielding \(y:I\to\2^{\dual{I}}\) above.
+\end{rmk}
+
 \section*{Chapter~7}
 \begin{rmk}
 A natural transformation \(\theta:F\to G\) between two functors \(F:\C\to\D\) and \(G:\C\to\D\) looks like this:
@@ -1413,7 +1460,7 @@ By induction on the number of elements less than~\(b\).
 
 \begin{rmk}[Lemma~7.33]
 If \(B\)~is a finite Boolean algebra, then
-\begin{enumerate}
+\begin{enumerate}[itemsep=0pt]
 \item[(i)] \(b=\bigjoin\{\,a\in A(B)\mid a\le b\,\}\)
 \item[(ii)] If \(a\in A(B)\) and \(a\le b\join b'\), then \(a\le b\) or \(a\le b'\).
 \end{enumerate}
