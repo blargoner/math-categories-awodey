@@ -7,6 +7,7 @@
 
 \newcommand{\true}{\top}
 \newcommand{\false}{\bot}
+\newcommand{\vertex}{\bullet}
 
 \newcommand{\iso}{\cong}
 \newcommand{\eq}{\sim}
@@ -19,6 +20,7 @@
 \newcommand{\adjrule}{\frac}
 \newcommand{\limplies}{\Rightarrow}
 \newcommand{\ex}{\Rightarrow}
+\newcommand{\edge}{\rightarrow}
 
 \newcommand{\sect}{\cap}
 \newcommand{\bigunion}{\bigcup}
@@ -102,6 +104,7 @@
 \newcommand{\BA}{\cat{BA}}
 \newcommand{\Ord}{\cat{Ord}}
 \newcommand{\Ordf}{\fin{\Ord}}
+\newcommand{\Grph}{\cat{Graphs}}
 
 \newcommand{\powBA}{\pow^{\BA}}
 \newcommand{\powU}{\pow^{\up}}
@@ -1225,7 +1228,7 @@ However since \(N^M\)~is a monoid, there is only one homomorphism \(1\to N^M\) (
 \end{proof}
 
 \begin{exer}[5]
-For graphs \(G\) and~\(H\), define \(H^G\) to be the graph whose vertices are arbitrary functions \(\varphi:G_v\to H_v\) and whose edges \(\theta:\varphi\to\psi\) are functions \(\theta:G_e\to H_e\) making these diagram commute:
+For graphs \(G\) and~\(H\), define \(H^G\) to be the graph whose vertices are arbitrary functions \(\varphi:G_v\to H_v\) and whose edges \(\theta:\varphi\to\psi\) are functions \(\theta:G_e\to H_e\) making these diagram commute:\footnote{The edge is the whole triple \((\theta,\varphi,\psi)\)---otherwise the source and target are not uniquely determined!}
 \begin{diagram}[eqno=(1)]
 G_v				&\lTo^s	&G_e			&\rTo^t	&G_v\\
 \dTo<{\varphi}	&		&\dTo>{\theta}	&		&\dTo>{\psi}\\
@@ -1242,6 +1245,42 @@ H_v				&\lTo_s	&H_e			&\rTo_t	&H_v
 \end{diagram}
 It is obvious that \(\curry{f}\)~is unique with \(\eval\after(\curry{f}\times 1_G)=f\).
 \end{proof}
+
+\begin{rmk}
+It is instructive to see how this falls out of the general construction of exponentials in categories of sheaves using the Yoneda lemma.\footnote{See Chapter~8.} To this end, let \(\Gamma\)~be the category
+\begin{diagram}
+e&\pile{\rTo^s\\\rTo_t}&v
+\end{diagram}
+so the category of graphs is \(\Grph=\Sets^{\Gamma}\), and let \(y:\dual{\Gamma}\to\Grph$ be the (contravariant) Yoneda embedding. Then it is easy to verify:
+\begin{itemize}
+\item \(y(v)\)~is the ``vertex graph'' \(\vertex\) consisting of a single vertex with no edges.
+\item \(y(e)\)~is the ``edge graph'' \(\vertex\edge\vertex\) consisting of two vertices with one edge between them.
+\item \(y(s):y(v)\to y(e)\) is the ``source vertex homomorphism'' which picks out the source vertex of the edge graph.
+\item \(y(t):y(v)\to y(e)\) is the ``target vertex homomorphism'' which picks out the target vertex of the edge graph.
+\item The graph \(\vertex\times G\) is the graph of ``vertices of~\(G\)'' consisting of the vertices of~\(G\) with no edges between them.
+\item The graph \((\vertex\edge\vertex)\times G\) is the graph of ``edges of~\(G\)'' consisting of (i) two copies \(v_s\) and~\(v_t\) of each vertex~\(v\) of~\(G\), where \(v_s\) represents ``\(v\)~as a possible source vertex'' and \(v_t\) represents ``\(v\)~as a possible target vertex'', and (ii) an edge \(s(e)_s\to t(e)_t\) for each edge~\(e\) of~\(G\).
+\item \(y(s)\times 1_G\) sends each vertex of~\(G\) to that vertex considered as a possible source vertex.
+\item \(y(t)\times 1_G\) sends each vertex of~\(G\) to that vertex considered as a possible target vertex.
+\end{itemize}
+Now if \(H^G\)~is an exponential graph we must have
+\begin{align*}
+(H^G)_v&\iso\Hom_{\Grph}(y(v),H^G)\\
+	&\iso\Hom_{\Grph}(\vertex\, ,H^G)\\
+	&\iso\Hom_{\Grph}(\vertex\times G,H)\\
+	&\iso\Hom_{\Sets}(G_v,H_v)
+\end{align*}
+which checks out, and
+\begin{align*}
+(H^G)_e&\iso\Hom_{\Grph}(y(e),H^G)\\
+	&\iso\Hom_{\Grph}(\vertex\edge\vertex,H^G)\\
+	&\iso\Hom_{\Grph}((\vertex\edge\vertex)\times G,H)
+\end{align*}
+with
+\[(H^G)_s\iso\Hom_{\Grph}(y(s)\times 1_G,H)\]
+and
+\[(H^G)_t\iso\Hom_{\Grph}(y(t)\times 1_G,H)\]
+This also checks out, since graph homomorphisms from the graph of ``edges of~\(G\)'' to~\(H\) correspond to edge mappings \(\theta:\varphi\to\psi\) satisfying~(1), where \(\varphi\)~is the induced mapping of ``vertices as possible source vertices'' and \(\psi\)~is the induced mapping of ``vertices as possible target vertices''.
+\end{rmk}
 
 \begin{exer}[9]
 Let \(\C\)~be a cartesian closed category and \(A,B\in\C\). Then there is a bijective correspondence between arrows \(A\to B\) and arrows \(1\to B^A\).
