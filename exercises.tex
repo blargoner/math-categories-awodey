@@ -1142,6 +1142,30 @@ For \(f:J\to I\) monotone, the naturality square
 obviously commutes.
 \end{proof}
 
+\begin{rmk}
+Let \(I\)~be a poset. It is instructive to see how exponentials in~\(\Sets^I\) fall out of the general construction of exponentials in categories of sheaves using the Yoneda lemma.\footnote{See Chapter~8.} To this end, let \(y:\dual{I}\to\Sets^I\) be the (contravariant) Yoneda embedding. Then
+\[y(i)_j=\Hom_I(i,j)\iso\begin{cases}
+1&\text{if }i\le j\\
+0&\text{otherwise}
+\end{cases}\]
+and \(y(i)_{jk}:y(i)_j\to y(i)_k\) is the obvious function. Also \(y(i\le j):y(j)\to y(i)\) is the obvious family of functions.
+
+For \(A,B\in\Sets^I\) we must have
+\begin{align*}
+(B^A)_i&\iso\Hom(y(i),B^A)\\
+	&\iso\Hom(y(i)\times A,B)\\
+	&\iso\Hom(A|_i,B|_i)
+\end{align*}
+since
+\[(y(i)\times A)_j=y(i)_j\times A_j\iso\begin{cases}
+A_j&\text{if }i\le j\\
+0&\text{otherwise}
+\end{cases}\]
+Finally
+\[(B^A)_{ij}\iso\Hom(y(i\le j)\times 1_A,B)\]
+which obviously sends \(f:A|_i\to B|_i\) to \(f|_j:A|_j\to B|_j\).
+\end{rmk}
+
 \begin{exer}[2]
 Let \(\C\)~be a cartesian closed category and \(A,B,C\in\C\).
 \begin{enumerate}[itemsep=0pt]
