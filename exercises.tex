@@ -102,11 +102,13 @@
 \newcommand{\Types}{\C(\lambda)}
 \newcommand{\Cat}{\cat{Cat}}
 \newcommand{\BA}{\cat{BA}}
+\newcommand{\BAop}{\dual{\BA}}
 \newcommand{\Ord}{\cat{Ord}}
 \newcommand{\Ordf}{\fin{\Ord}}
 \newcommand{\Grph}{\cat{Graphs}}
 
 \newcommand{\powBA}{\pow^{\BA}}
+\newcommand{\powBAop}{\dual{(\powBA)}}
 \newcommand{\powU}{\pow^{\up}}
 
 % Arrows
@@ -1531,6 +1533,36 @@ This is a monad homomorphism on~\(\C\).
 
 \begin{rmk}
 The fact that \(\Par\eqv\Setsp\) can be used to explain the use of sentinel values in computer programming. The points introduced by the equivalence functor \(F:\Par\to\Setsp\) are just sentinel values used to signal where partial functions are undefined.
+\end{rmk}
+
+\begin{rmk}
+For the functors
+\begin{diagram}
+\Sets&\pile{\rTo^{\powBAop}\\\lTo_{\ult}}&\BAop
+\end{diagram}
+there is an adjunction\footnote{See Chapter~9.}
+\[\powBAop\adj\ult\]
+\end{rmk}
+\begin{proof}
+Let \(\mathcal{U}=\ult\after\powBAop\). For a set~\(X\), the function \(\eta_X:X\to\mathcal{U}(X)\) sending an element \(x\in X\) to the principal ultrafilter
+\[\eta_X(x)=\{\,S\subseteq X\mid x\in S\,\}\]
+is the component at~\(X\) of a natural transformation \(\eta:1_{\Sets}\to\mathcal{U}\).\footnote{See Section~3.} For a Boolean algebra~\(B\) and function \(f:X\to\ult(B)\), if there is a Boolean homomorphism \(h:B\to\powBA(X)\) making the diagram
+\begin{diagram}[nohug]
+\mathcal{U}(X)	&\rTo^{\ult(h)}	&\ult(B)\\
+\uTo<{\eta_X}	&\ruTo>f		&\\
+X				&				&
+\end{diagram}
+commute, then for any \(x\in X\),
+\[\inv{h}(\eta_X(x))=f(x)\]
+which means for any \(b\in B\),
+\[h(b)=\{\,x\in X\mid b\in f(x)\,\}=\inv{f}(\{\,V\in\ult(B)\mid b\in V\,\})\]
+It is easy to verify that this definition makes~\(h\) a Boolean homomorphism, so \(\eta\)~is the unit of the indicated adjunction.
+\end{proof}
+\begin{rmk}
+Dually, there is an adjunction
+\[\dual{\ult}\adj\powBA\]
+whose unit is the Stone representation
+\[\phi_B(b)=\{\,V\in\ult(B)\mid b\in V\,\}\]
 \end{rmk}
 
 \begin{rmk}
