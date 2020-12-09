@@ -106,6 +106,8 @@
 \newcommand{\Ord}{\cat{Ord}}
 \newcommand{\Ordf}{\fin{\Ord}}
 \newcommand{\Grph}{\cat{Graphs}}
+\newcommand{\Vect}{\cat{Vect}}
+\newcommand{\Vectop}{\dual{\Vect}}
 
 \newcommand{\powBA}{\pow^{\BA}}
 \newcommand{\powBAop}{\dual{(\powBA)}}
@@ -1494,6 +1496,36 @@ Such characterizations are useful when applying the Yoneda principle.\footnote{S
 \end{rmk}
 
 \begin{rmk}
+The functor \((-)^*:\Vectop\to\Vect\) is self-adjoint.\footnote{See Chapter~9.} More precisely, for the functors
+\begin{diagram}
+\Vect&\pile{\rTo^{\dual{{(-)^*}}}\\\lTo_{(-)^*}}&\Vectop
+\end{diagram}
+there is an adjunction
+\[\dual{{(-)^*}}\adj(-)^*\]
+\end{rmk}
+\begin{proof}
+Let \((-)^{**}=(-)^*\after\dual{{(-)^*}}\). For a vector space~\(V\), the linear transformation \(\eta_V:V\to V^{**}\) given by \(x\mapsto\ev_x\), where \(\ev_x\)~is ``evaluation at~\(x\)'', is the component at~\(V\) of a natural transformation \(\eta:1_{\Vect}\to(-)^{**}\).\footnote{See Example~7.12.} For a vector space~\(W\) and linear transformation \(f:V\to W^*\), if there is a linear transformation \(g:W\to V^*\) making the diagram
+\begin{diagram}[nohug]
+V^{**}			&\rTo^{g^*}	&W^*\\
+\uTo<{\eta_V}	&\ruTo>f	&\\
+V				&			&
+\end{diagram}
+commute, then for any \(x\in V\) and \(w\in W\),
+\begin{align*}
+f(x)(w)&=(g^*\after\eta_V)(x)(w)\\
+	&=g^*(\ev_x)(w)\\
+	&=(\ev_x\after g)(w)\\
+	&=g(w)(x)
+\end{align*}
+It is easy to verify that the definition
+\[g(w)(x)=f(x)(w)\]
+makes \(g:W\to V^*\) a linear transformation, so \(\eta\)~is the unit of the indicated adjunction (and essentially the counit, since the adjunction is self-dual).
+\end{proof}
+\begin{rmk}
+This result shows that the natural isomorphism \(V\iso V^{**}\) for finite-dimensional vector spaces arises directly from the dual operation itself.
+\end{rmk}
+
+\begin{rmk}
 The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a functor if and only if it is functorial in each argument and the functors in each argument induce natural transformations between the functors in the other argument (this is the ``interchange law'').
 
 More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\) and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(-,\beta)\)~is a natural transformation from~\(F(-,B)\) to~\(F(-,B')\) and \(F(\alpha,-)\)~is a natural transformation from~\(F(A,-)\) to~\(F(A',-)\):
@@ -1546,7 +1578,7 @@ there is an adjunction\footnote{See Chapter~9.}
 \begin{proof}
 Let \(\mathcal{U}=\ult\after\powBAop\). For a set~\(X\), the function \(\eta_X:X\to\mathcal{U}(X)\) sending an element \(x\in X\) to the principal ultrafilter
 \[\eta_X(x)=\{\,S\subseteq X\mid x\in S\,\}\]
-is the component at~\(X\) of a natural transformation \(\eta:1_{\Sets}\to\mathcal{U}\).\footnote{See Section~3.} For a Boolean algebra~\(B\) and function \(f:X\to\ult(B)\), if there is a Boolean homomorphism \(h:B\to\powBA(X)\) making the diagram
+is the component at~\(X\) of a natural transformation \(\eta:1_{\Sets}\to\mathcal{U}\).\footnote{See Section~7.3.} For a Boolean algebra~\(B\) and function \(f:X\to\ult(B)\), if there is a Boolean homomorphism \(h:B\to\powBA(X)\) making the diagram
 \begin{diagram}[nohug]
 \mathcal{U}(X)	&\rTo^{\ult(h)}	&\ult(B)\\
 \uTo<{\eta_X}	&\ruTo>f		&\\
