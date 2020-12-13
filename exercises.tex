@@ -4,6 +4,7 @@
 \usepackage[hidelinks]{hyperref}
 
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
 
 \newcommand{\true}{\top}
 \newcommand{\false}{\bot}
@@ -37,6 +38,7 @@
 \newcommand{\term}{{!}}
 \newcommand{\mult}{\cdot}
 \newcommand{\mprod}{\otimes}
+\newcommand{\tprod}{\otimes}
 
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -1170,6 +1172,12 @@ Finally
 which obviously sends \(f:A|_i\to B|_i\) to \(f|_j:A|_j\to B|_j\).
 \end{rmk}
 
+\begin{rmk}
+The category \(\Vect\) of vector spaces and linear maps (over \(\R\), say) is \emph{not} cartesian closed because it does not have exponentials,\footnote{See Exercise~9.} although for any vector spaces \(V\) and~\(W\) there \emph{is} the vector space \(L(V,W)\) of linear maps from \(V\) to~\(W\). Instead, there is a natural isomorphism
+\[\Hom(U\tprod V,W)\iso\Hom(U,L(V,W))\]
+where \(U\tprod V\) is the tensor product of \(U\) and~\(V\). For this reason, \(\Vect\)~is called \emph{monoidal closed}.
+\end{rmk}
+
 \begin{exer}[2]
 Let \(\C\)~be a cartesian closed category and \(A,B,C\in\C\).
 \begin{enumerate}[itemsep=0pt]
@@ -1522,7 +1530,9 @@ It is easy to verify that the definition
 makes \(g:W\to V^*\) a linear transformation, so \(\eta\)~is the unit of the indicated adjunction (and essentially the counit, since the adjunction is self-dual).
 \end{proof}
 \begin{rmk}
-This result shows that the natural isomorphism \(V\iso V^{**}\) for finite-dimensional vector spaces arises directly from the dual operation itself.
+This proof can be shortened using the natural isomorphisms
+\[L(V,W^*)\iso(V\tprod W)^*\iso(W\tprod V)^*\iso L(W,V^*)\]
+In the finite-dimensional case, this result shows that the natural isomorphism \(V\iso V^{**}\) arises directly from the dual operation itself.
 \end{rmk}
 
 \begin{rmk}
