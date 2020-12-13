@@ -14,6 +14,7 @@
 \newcommand{\eq}{\sim}
 \newcommand{\eqv}{\simeq}
 \newcommand{\xto}{\xrightarrow}
+\newcommand{\parto}{\rightharpoondown}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\adj}{\dashv}
@@ -94,6 +95,7 @@
 \newcommand{\Setsop}{\dual{\Sets}}
 \newcommand{\Setsp}{\Sets_*}
 \newcommand{\Setsf}{\fin{\Sets}}
+\newcommand{\Setsfop}{\dual{\Setsf}}
 \newcommand{\SetsCop}{\Sets^{\Cop}}
 \newcommand{\Par}{\cat{Par}}
 \newcommand{\Mon}{\cat{Mon}}
@@ -105,6 +107,7 @@
 \newcommand{\Cat}{\cat{Cat}}
 \newcommand{\BA}{\cat{BA}}
 \newcommand{\BAop}{\dual{\BA}}
+\newcommand{\BAf}{\fin{\BA}}
 \newcommand{\Ord}{\cat{Ord}}
 \newcommand{\Ordf}{\fin{\Ord}}
 \newcommand{\Grph}{\cat{Graphs}}
@@ -1585,12 +1588,38 @@ The fact that \(\Par\eqv\Setsp\) can be used to explain the use of sentinel valu
 \end{rmk}
 
 \begin{rmk}
+For the pseudo-inverse functors
+\begin{diagram}
+\Par&\pile{\rTo^F\\\lTo_G}&\Setsp
+\end{diagram}
+there is an ``ambidextrous'' adjunction\footnote{See Chapter~9.}
+\[\cdots\adj F\adj G\adj F\adj\cdots\]
+In particular, the equivalence \(\Par\eqv\Setsp\) is an adjoint equivalence.\footnote{This phenomenon actually occurs for \emph{any} adjoint equivalence.}
+\end{rmk}
+\begin{proof}
+For a set~\(A\), pointed set~\((B,b)\), and partial function \(f:A\parto B-\{b\}\), there is a pointed function \(g:A_*\to(B,b)\) unique with \(Gg=f\) given by
+\[g(x)=\begin{cases}
+f(x)&\text{if }x\in U_f\\
+b&\text{otherwise}
+\end{cases}\]
+This means that the identity natural transformation \(1_{1_{\Par}}:1_{\Par}\to 1_{\Par}=GF\) is the unit of the adjunction \(F\adj G\).
+
+On the other hand, given a pointed set~\((A,a)\), set~\(B\), and partial function \(f:A-\{a\}\parto B\), there is a pointed function \(g:(A,a)\to B_*\) unique with \(Gg=f\) given by
+\[g(x)=\begin{cases}
+f(x)&\text{if }x\in U_f\\
+{*}&\text{otherwise}
+\end{cases}\]
+So \(1_{1_{\Par}}\)~is also the counit of the adjunction \(G\adj F\).
+\end{proof}
+
+\begin{rmk}
 For the functors
 \begin{diagram}
 \Sets&\pile{\rTo^{\powBAop}\\\lTo_{\ult}}&\BAop
 \end{diagram}
 there is an adjunction\footnote{See Chapter~9.}
 \[\powBAop\adj\ult\]
+In particular, the equivalence \(\BAf\eqv\Setsfop\) is an adjoint equivalence.
 \end{rmk}
 \begin{proof}
 Let \(\mathcal{U}=\ult\after\powBAop\). For a set~\(X\), the function \(\eta_X:X\to\mathcal{U}(X)\) sending an element \(x\in X\) to the principal ultrafilter
