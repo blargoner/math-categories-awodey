@@ -1838,7 +1838,7 @@ It is immediate from this diagram that \(\pair{x}{y}=F(p)\after\inv{\vartheta_Z}
 \end{proof}
 
 \begin{exer}[13]
-The ``size'' of a category is respected by isomorphism but not by equivalence. For example, we know \(\Ordf\eqv\Setsf\), but \(\Ordf\)~is countably infinite while \(\Setsf\)~is not even small.
+The ``size'' of a category is respected by isomorphism but not by equivalence. For example, we know \(\Ordf\eqv\Setsf\), but \(\Ordf\)~is countably infinite while \(\Setsf\)~is not even small.\footnote{Here \(\Setsf\)~is understood as the category of \emph{all} finite sets and functions between them.}
 \end{exer}
 
 \begin{exer}[17]
@@ -1858,8 +1858,7 @@ Define \(\Phi_I:\Sets^I\to\Sets/I\) as follows:
 \[\Phi_I((A_i)_{i\in I})=\pi_I=[p_i]:\coprod_{i\in I}A_i\to I\]
 where we take \(\coprod_{i\in I}A_i=\bigunion_{i\in I}(A_i\times\{i\})\).
 \item Arrows: for an indexed family of functions \((f_i:A_i\to B_i)_{i\in I}\), define
-\[\Phi_I((f_i:A_i\to B_i)_{i\in I})=[\mu_i\after f_i]:\coprod_{i\in I}A_i\to\coprod_{i\in I}B_i\]
-where \(\mu_i:B_i\to\coprod_{i\in I}B_i\) is the \(i\)-th coproduct injection.
+\[\Phi_I((f_i:A_i\to B_i)_{i\in I})=\coprod_{i\in I}f_i:\coprod_{i\in I}A_i\to\coprod_{i\in I}B_i\]
 \end{itemize}
 It is immediate that \(\Phi_I\)~is a functor. Define \(\Psi_I:\Sets/I\to\Sets^I\) as follows:
 \begin{itemize}
@@ -1868,7 +1867,7 @@ It is immediate that \(\Phi_I\)~is a functor. Define \(\Psi_I:\Sets/I\to\Sets^I\
 \item Arrows: for functions \(\alpha:X\to I\), \(\beta:Y\to I\), and \(\gamma:X\to Y\) with \(\alpha=\beta\after\gamma\), define
 \[\Psi_I(\gamma)=\bigl(\,\gamma|_{\inv{\alpha}(i)}:\inv{\alpha}(i)\to\inv{\beta}(i)\,\bigr)_{i\in I}\]
 \end{itemize}
-It is also immediate that \(\Psi_I\)~is a functor, \(\Psi_I\after\Phi_I\iso1_{\Sets^I}\), and \(\Phi_I\after\Psi_I\iso 1_{\Sets/I}\), where for \(\alpha:X\to I\) in~\(\Sets/I\), a natural isomorphism from~\(\alpha\) to~\((\Phi_I\after\Psi_I)(\alpha)\) is given by \(x\mapsto(x,\alpha(x))\). Therefore \(\Sets^I\eqv\Sets/I\).
+It is also immediate that \(\Psi_I\)~is a functor, \(\Psi_I\after\Phi_I\iso1_{\Sets^I}\), and \(\Phi_I\after\Psi_I\iso 1_{\Sets/I}\). Therefore \(\Sets^I\eqv\Sets/I\).
 
 Now suppose \(f:J\to I\) is a function. Define
 \begin{align*}
@@ -1876,7 +1875,7 @@ Now suppose \(f:J\to I\) is a function. Define
 (A_i)_{i\in I}&\mapsto(A_{f(j)})_{j\in J}\\
 (f_i:A_i\to B_i)_{i\in I}&\mapsto(f_{f(j)}:A_{f(j)}\to B_{f(j)})_{j\in J}
 \end{align*}
-It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f=\pull{f}\after\Phi_I\), which is equivalent up to natural isomorphism to \(\Sets^f=\Psi_J\after\pull{f}\after\Phi_I\). The latter follows from the pullback diagram
+It is immediate that \(\Sets^f\)~is a functor (the ``reindexing functor''). We already know that pullback \(\pull{f}:\Sets/I\to\Sets/J\) is a functor (Proposition~5.10). We claim that \(\Phi_J\after\Sets^f\iso\pull{f}\after\Phi_I\), which is equivalent to \(\Sets^f\iso\Psi_J\after\pull{f}\after\Phi_I\). The latter follows from the pullback diagram
 \begin{diagram}
 \coprod_{j\in J}A_{f(j)}	&\rTo	&\coprod_{i\in I}A_i\\
 \dTo<{\pi_J}				&		&\dTo>{\pi_I}\\
@@ -1889,7 +1888,7 @@ We already know that \(\Sets^I\iso\prod_{i\in I}\Sets\) (Example~7.15), so this 
 \end{rmk}
 
 \begin{rmk}
-We have a functor \(\Sets^{(-)}:\Setsop\to\Cat\), which maps a set~\(I\) to the category~\(\Sets^I\) and maps a function \(f:J\to I\) to the functor \(\Sets^f:\Sets^I\to\Sets^J\). Indeed, note for \(g:K\to J\) that
+We have a functor \(\Sets^{(-)}:\Setsop\to\Cat\),\footnote{Here we ignore size issues.} which maps a set~\(I\) to the category~\(\Sets^I\) and maps a function \(f:J\to I\) to the functor \(\Sets^f:\Sets^I\to\Sets^J\). Indeed, note for \(g:K\to J\) that
 \[\Sets^{fg}=\Sets^g\after\Sets^f\]
 since
 \begin{align*}
