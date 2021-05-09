@@ -76,6 +76,7 @@
 \newcommand{\fin}[1]{#1_{\mathrm{fin}}}
 \newcommand{\comma}[2]{(#1|#2)}
 \newcommand{\tr}[1]{\overline{#1}}
+\newcommand{\sprod}[2]{\langle#1,#2\rangle}
 
 \newcommand{\2}{\cat{2}}
 \newcommand{\A}{\cat{A}}
@@ -88,6 +89,8 @@
 \newcommand{\Ee}{\mathcal{E}}
 \newcommand{\J}{\cat{J}}
 \renewcommand{\P}{\cat{P}}
+\newcommand{\V}{\cat{V}}
+\newcommand{\Vop}{\dual{\V}}
 \newcommand{\X}{\cat{X}}
 \newcommand{\Rel}{\cat{Rel}}
 \newcommand{\Relop}{\dual{\Rel}}
@@ -1546,6 +1549,20 @@ In the finite-dimensional case, this result shows that the natural isomorphism \
 \end{rmk}
 
 \begin{rmk}
+In the finite-dimensional case, how do we actually know that there is no natural way to choose an isomorphism \(V\iso V^*\)? What would it even mean for there to be a natural way? Arguably, for such an isomorphism to be natural it should at least respect change of basis in~\(V\).
+
+Let \(\V\)~be the subcategory of~\(\Vect\) consisting of the finite-dimensional spaces (over some fixed field of characteristic zero) and the automorphisms of these spaces. Let \(\inv{(-)}:\Vop\to\V\) denote the inversion functor and \((-)^*:\Vop\to\V\) the dual functor. An isomorphism \(V\iso V^*\) respecting change of basis would be a natural isomorphism \(\zeta:\inv{(-)}\iso(-)^*\)---for any automorphism \(f:V\to V\), the following diagram would commute:
+\begin{diagram}
+V				&\rTo^{\zeta_V}_{\iso}	&V^*\\
+\dTo<{\inv{f}}	&						&\dTo>{f^*}\\
+V				&\rTo_{\zeta_V}^{\iso}	&V^*
+\end{diagram}
+In bracket notation, this is equivalent to
+\[\sprod{x}{\zeta_V(y)}=\sprod{f(x)}{\zeta_V(f(y))}\tag{1}\]
+for all \(x,y\in V\). However, it can be proved that there is no such~\(\zeta\) satisfying~(1) for all~\(V\) in~\(\V\).\footnote{See for example Exercise~9.8 in~\cite{blyth}.} Therefore there is no natural isomorphism \(V\iso V^*\).
+\end{rmk}
+
+\begin{rmk}
 The bifunctor lemma (Lemma~7.14) just says that a map \(F:\A\times\B\to\C\) is a functor if and only if it is functorial in each argument and the functors in each argument induce natural transformations between the functors in the other argument (this is the ``interchange law'').
 
 More specifically, \(F\)~is a functor if and only if for each fixed \(A\in\A\) and \(B\in\B\), \(F(A,-)\) and~\(F(-,B)\) are functors and for any \(\alpha:A\to A'\) and \(\beta:B\to B'\), \(F(-,\beta)\)~is a natural transformation from~\(F(-,B)\) to~\(F(-,B')\) and \(F(\alpha,-)\)~is a natural transformation from~\(F(A,-)\) to~\(F(A',-)\):
@@ -2743,6 +2760,7 @@ again by unity of~\(\eta\). Therefore composition in~\(\C_T\) is unital.
 \begin{thebibliography}{0}
 \bibitem{awodey} Awodey, S. \textit{Category Theory}, 2nd~ed. Oxford, 2010.
 \bibitem{bergman} Bergman, G. \textit{An Invitation to General Algebra and Universal Constructions}, 2nd~ed. Springer, 2015.
+\bibitem{blyth} Blyth, T. \textit{Module Theory: An Approach to Linear Algebra.} Oxford, 1977.
 \bibitem{lang} Lang, S. \textit{Algebra}, 3rd~ed. Springer, 2002.
 \end{thebibliography}
 \end{document}
